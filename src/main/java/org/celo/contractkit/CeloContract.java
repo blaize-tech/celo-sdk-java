@@ -1,0 +1,27 @@
+package org.celo.contractkit;
+
+public enum CeloContract {
+    Accounts,
+    Attestations,
+    BlockchainParameters,
+    DoubleSigningSlasher,
+    DowntimeSlasher,
+    Election,
+    EpochRewards,
+    Escrow,
+    Exchange,
+    FeeCurrencyWhitelist,
+    Freezer,
+    GasPriceMinimum,
+    GoldToken,
+    Governance,
+    LockedGold,
+//    MultiSig,
+    Random,
+    Registry,
+    Reserve,
+    SortedOracles,
+    StableToken,
+    TransferWhitelist,
+    Validators,
+}
