@@ -5,7 +5,6 @@ import org.celo.contractkit.wrapper.GoldTokenWrapper;
 import org.celo.contractkit.wrapper.StableTokenWrapper;
 import org.junit.Before;
 import org.junit.Test;
-import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
@@ -25,8 +24,8 @@ public class ExchangeTest {
     @Before
     public void initialize() {
         Web3j web3j = Web3j.build(new HttpService(ContractKit.ALFAJORES_TESTNET));
-        Credentials credentials = Credentials.create(PRIVATE_KEY_2);
-        contractKit = new ContractKit(web3j, credentials);
+        contractKit = new ContractKit(web3j);
+        contractKit.addAccount(PRIVATE_KEY_2);
         exchange = contractKit.contracts.getExchange();
     }
 

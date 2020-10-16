@@ -164,9 +164,9 @@ public class LockedGold extends Contract {
     }
 
     public List<AccountSlashedEventResponse> getAccountSlashedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ACCOUNTSLASHED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ACCOUNTSLASHED_EVENT, transactionReceipt);
         ArrayList<AccountSlashedEventResponse> responses = new ArrayList<AccountSlashedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             AccountSlashedEventResponse typedResponse = new AccountSlashedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.slashed = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -182,7 +182,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, AccountSlashedEventResponse>() {
             @Override
             public AccountSlashedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(ACCOUNTSLASHED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(ACCOUNTSLASHED_EVENT, log);
                 AccountSlashedEventResponse typedResponse = new AccountSlashedEventResponse();
                 typedResponse.log = log;
                 typedResponse.slashed = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -201,9 +201,9 @@ public class LockedGold extends Contract {
     }
 
     public List<GoldLockedEventResponse> getGoldLockedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDLOCKED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDLOCKED_EVENT, transactionReceipt);
         ArrayList<GoldLockedEventResponse> responses = new ArrayList<GoldLockedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             GoldLockedEventResponse typedResponse = new GoldLockedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -217,7 +217,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, GoldLockedEventResponse>() {
             @Override
             public GoldLockedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDLOCKED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDLOCKED_EVENT, log);
                 GoldLockedEventResponse typedResponse = new GoldLockedEventResponse();
                 typedResponse.log = log;
                 typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -234,9 +234,9 @@ public class LockedGold extends Contract {
     }
 
     public List<GoldRelockedEventResponse> getGoldRelockedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDRELOCKED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDRELOCKED_EVENT, transactionReceipt);
         ArrayList<GoldRelockedEventResponse> responses = new ArrayList<GoldRelockedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             GoldRelockedEventResponse typedResponse = new GoldRelockedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -250,7 +250,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, GoldRelockedEventResponse>() {
             @Override
             public GoldRelockedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDRELOCKED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDRELOCKED_EVENT, log);
                 GoldRelockedEventResponse typedResponse = new GoldRelockedEventResponse();
                 typedResponse.log = log;
                 typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -267,9 +267,9 @@ public class LockedGold extends Contract {
     }
 
     public List<GoldUnlockedEventResponse> getGoldUnlockedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDUNLOCKED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDUNLOCKED_EVENT, transactionReceipt);
         ArrayList<GoldUnlockedEventResponse> responses = new ArrayList<GoldUnlockedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             GoldUnlockedEventResponse typedResponse = new GoldUnlockedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -284,7 +284,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, GoldUnlockedEventResponse>() {
             @Override
             public GoldUnlockedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDUNLOCKED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDUNLOCKED_EVENT, log);
                 GoldUnlockedEventResponse typedResponse = new GoldUnlockedEventResponse();
                 typedResponse.log = log;
                 typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -302,9 +302,9 @@ public class LockedGold extends Contract {
     }
 
     public List<GoldWithdrawnEventResponse> getGoldWithdrawnEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDWITHDRAWN_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(GOLDWITHDRAWN_EVENT, transactionReceipt);
         ArrayList<GoldWithdrawnEventResponse> responses = new ArrayList<GoldWithdrawnEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             GoldWithdrawnEventResponse typedResponse = new GoldWithdrawnEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -318,7 +318,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, GoldWithdrawnEventResponse>() {
             @Override
             public GoldWithdrawnEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDWITHDRAWN_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(GOLDWITHDRAWN_EVENT, log);
                 GoldWithdrawnEventResponse typedResponse = new GoldWithdrawnEventResponse();
                 typedResponse.log = log;
                 typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -335,9 +335,9 @@ public class LockedGold extends Contract {
     }
 
     public List<OwnershipTransferredEventResponse> getOwnershipTransferredEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
         ArrayList<OwnershipTransferredEventResponse> responses = new ArrayList<OwnershipTransferredEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -351,7 +351,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, OwnershipTransferredEventResponse>() {
             @Override
             public OwnershipTransferredEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
                 OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
                 typedResponse.log = log;
                 typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -368,9 +368,9 @@ public class LockedGold extends Contract {
     }
 
     public List<RegistrySetEventResponse> getRegistrySetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(REGISTRYSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(REGISTRYSET_EVENT, transactionReceipt);
         ArrayList<RegistrySetEventResponse> responses = new ArrayList<RegistrySetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             RegistrySetEventResponse typedResponse = new RegistrySetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.registryAddress = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -383,7 +383,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, RegistrySetEventResponse>() {
             @Override
             public RegistrySetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(REGISTRYSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(REGISTRYSET_EVENT, log);
                 RegistrySetEventResponse typedResponse = new RegistrySetEventResponse();
                 typedResponse.log = log;
                 typedResponse.registryAddress = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -399,9 +399,9 @@ public class LockedGold extends Contract {
     }
 
     public List<SlasherWhitelistAddedEventResponse> getSlasherWhitelistAddedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(SLASHERWHITELISTADDED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(SLASHERWHITELISTADDED_EVENT, transactionReceipt);
         ArrayList<SlasherWhitelistAddedEventResponse> responses = new ArrayList<SlasherWhitelistAddedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             SlasherWhitelistAddedEventResponse typedResponse = new SlasherWhitelistAddedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.slasherIdentifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -414,7 +414,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, SlasherWhitelistAddedEventResponse>() {
             @Override
             public SlasherWhitelistAddedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(SLASHERWHITELISTADDED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(SLASHERWHITELISTADDED_EVENT, log);
                 SlasherWhitelistAddedEventResponse typedResponse = new SlasherWhitelistAddedEventResponse();
                 typedResponse.log = log;
                 typedResponse.slasherIdentifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -430,9 +430,9 @@ public class LockedGold extends Contract {
     }
 
     public List<SlasherWhitelistRemovedEventResponse> getSlasherWhitelistRemovedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(SLASHERWHITELISTREMOVED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(SLASHERWHITELISTREMOVED_EVENT, transactionReceipt);
         ArrayList<SlasherWhitelistRemovedEventResponse> responses = new ArrayList<SlasherWhitelistRemovedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             SlasherWhitelistRemovedEventResponse typedResponse = new SlasherWhitelistRemovedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.slasherIdentifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -445,7 +445,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, SlasherWhitelistRemovedEventResponse>() {
             @Override
             public SlasherWhitelistRemovedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(SLASHERWHITELISTREMOVED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(SLASHERWHITELISTREMOVED_EVENT, log);
                 SlasherWhitelistRemovedEventResponse typedResponse = new SlasherWhitelistRemovedEventResponse();
                 typedResponse.log = log;
                 typedResponse.slasherIdentifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -461,9 +461,9 @@ public class LockedGold extends Contract {
     }
 
     public List<UnlockingPeriodSetEventResponse> getUnlockingPeriodSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(UNLOCKINGPERIODSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(UNLOCKINGPERIODSET_EVENT, transactionReceipt);
         ArrayList<UnlockingPeriodSetEventResponse> responses = new ArrayList<UnlockingPeriodSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             UnlockingPeriodSetEventResponse typedResponse = new UnlockingPeriodSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.period = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -476,7 +476,7 @@ public class LockedGold extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, UnlockingPeriodSetEventResponse>() {
             @Override
             public UnlockingPeriodSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(UNLOCKINGPERIODSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(UNLOCKINGPERIODSET_EVENT, log);
                 UnlockingPeriodSetEventResponse typedResponse = new UnlockingPeriodSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.period = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -530,14 +530,14 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<byte[]> slashingWhitelist(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_SLASHINGWHITELIST, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
@@ -552,7 +552,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -566,7 +566,7 @@ public class LockedGold extends Contract {
 
     public RemoteFunctionCall<Boolean> isSlasher(String slasher) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISSLASHER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(slasher)), 
+                Arrays.<Type>asList(new Address(slasher)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -592,8 +592,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress, BigInteger _unlockingPeriod) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(registryAddress), 
-                new org.web3j.abi.datatypes.generated.Uint256(_unlockingPeriod)), 
+                Arrays.<Type>asList(new Address(registryAddress), 
+                new Uint256(_unlockingPeriod)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -601,7 +601,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setUnlockingPeriod(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETUNLOCKINGPERIOD, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -617,8 +617,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> incrementNonvotingAccountBalance(String account, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INCREMENTNONVOTINGACCOUNTBALANCE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account), 
-                new org.web3j.abi.datatypes.generated.Uint256(value)), 
+                Arrays.<Type>asList(new Address(account), 
+                new Uint256(value)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -626,8 +626,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> decrementNonvotingAccountBalance(String account, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_DECREMENTNONVOTINGACCOUNTBALANCE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account), 
-                new org.web3j.abi.datatypes.generated.Uint256(value)), 
+                Arrays.<Type>asList(new Address(account), 
+                new Uint256(value)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -635,7 +635,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> unlock(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_UNLOCK, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -643,8 +643,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> relock(BigInteger index, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_RELOCK, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(index), 
-                new org.web3j.abi.datatypes.generated.Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(index), 
+                new Uint256(value)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -652,7 +652,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> withdraw(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WITHDRAW, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -673,21 +673,21 @@ public class LockedGold extends Contract {
 
     public RemoteFunctionCall<BigInteger> getAccountTotalLockedGold(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETACCOUNTTOTALLOCKEDGOLD, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> getAccountNonvotingLockedGold(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETACCOUNTNONVOTINGLOCKEDGOLD, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Tuple2<List<BigInteger>, List<BigInteger>>> getPendingWithdrawals(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPENDINGWITHDRAWALS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Uint256>>() {}));
         return new RemoteFunctionCall<Tuple2<List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple2<List<BigInteger>, List<BigInteger>>>() {
@@ -703,7 +703,7 @@ public class LockedGold extends Contract {
 
     public RemoteFunctionCall<BigInteger> getTotalPendingWithdrawals(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETTOTALPENDINGWITHDRAWALS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -726,7 +726,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> addSlasher(String slasherIdentifier) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_ADDSLASHER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(slasherIdentifier)), 
+                Arrays.<Type>asList(new Utf8String(slasherIdentifier)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -734,8 +734,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeSlasher(String slasherIdentifier, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVESLASHER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(slasherIdentifier), 
-                new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Utf8String(slasherIdentifier), 
+                new Uint256(index)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -743,19 +743,19 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> slash(String account, BigInteger penalty, String reporter, BigInteger reward, List<String> lessers, List<String> greaters, List<BigInteger> indices) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SLASH, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account), 
-                new org.web3j.abi.datatypes.generated.Uint256(penalty), 
-                new org.web3j.abi.datatypes.Address(reporter), 
-                new org.web3j.abi.datatypes.generated.Uint256(reward), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.Address>(
-                        org.web3j.abi.datatypes.Address.class,
-                        org.web3j.abi.Utils.typeMap(lessers, org.web3j.abi.datatypes.Address.class)), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.Address>(
-                        org.web3j.abi.datatypes.Address.class,
-                        org.web3j.abi.Utils.typeMap(greaters, org.web3j.abi.datatypes.Address.class)), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint256>(
-                        org.web3j.abi.datatypes.generated.Uint256.class,
-                        org.web3j.abi.Utils.typeMap(indices, org.web3j.abi.datatypes.generated.Uint256.class))), 
+                Arrays.<Type>asList(new Address(account), 
+                new Uint256(penalty), 
+                new Address(reporter), 
+                new Uint256(reward), 
+                new DynamicArray<Address>(
+                        Address.class,
+                        org.web3j.abi.Utils.typeMap(lessers, Address.class)), 
+                new DynamicArray<Address>(
+                        Address.class,
+                        org.web3j.abi.Utils.typeMap(greaters, Address.class)), 
+                new DynamicArray<Uint256>(
+                        Uint256.class,
+                        org.web3j.abi.Utils.typeMap(indices, Uint256.class))), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

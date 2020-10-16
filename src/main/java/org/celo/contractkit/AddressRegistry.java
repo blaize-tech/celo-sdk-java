@@ -27,6 +27,10 @@ public class AddressRegistry {
         registryContract = Registry.load(REGISTRY_CONTRACT_ADDRESS, web3j, transactionManager, new DefaultGasProvider());
     }
 
+    public Registry getRegistryContract() {
+        return registryContract;
+    }
+
     /**
      * Get the address for a `CeloContract`
      */

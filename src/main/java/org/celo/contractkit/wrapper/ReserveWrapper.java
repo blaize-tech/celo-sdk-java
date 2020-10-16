@@ -8,6 +8,7 @@ import org.web3j.tuples.generated.Tuple4;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ReserveWrapper extends BaseWrapper<Reserve> {
     public ReserveWrapper(Reserve contract) {
@@ -212,5 +213,15 @@ public class ReserveWrapper extends BaseWrapper<Reserve> {
 
     public RemoteFunctionCall<BigInteger> getReserveRatio() {
         return contract.getReserveRatio();
+    }
+
+    public List<String> getSpenders(TransactionReceipt transactionReceipt) {
+        List<String> spendersAdded =
+                contract.getSpenderAddedEvents(transactionReceipt).stream().map(event -> event.spender).collect(Collectors.toList());
+
+        List<String> spendersRemoved =
+                contract.getSpenderRemovedEvents(transactionReceipt).stream().map(event -> event.spender).collect(Collectors.toList());
+
+        return spendersAdded.stream().filter((o) -> !spendersRemoved.contains(o)).collect(Collectors.toList());
     }
 }

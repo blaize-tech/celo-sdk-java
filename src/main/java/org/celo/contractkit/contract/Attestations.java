@@ -214,9 +214,9 @@ public class Attestations extends Contract {
     }
 
     public List<AttestationCompletedEventResponse> getAttestationCompletedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONCOMPLETED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONCOMPLETED_EVENT, transactionReceipt);
         ArrayList<AttestationCompletedEventResponse> responses = new ArrayList<AttestationCompletedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             AttestationCompletedEventResponse typedResponse = new AttestationCompletedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -231,7 +231,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, AttestationCompletedEventResponse>() {
             @Override
             public AttestationCompletedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONCOMPLETED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONCOMPLETED_EVENT, log);
                 AttestationCompletedEventResponse typedResponse = new AttestationCompletedEventResponse();
                 typedResponse.log = log;
                 typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -249,9 +249,9 @@ public class Attestations extends Contract {
     }
 
     public List<AttestationExpiryBlocksSetEventResponse> getAttestationExpiryBlocksSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONEXPIRYBLOCKSSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONEXPIRYBLOCKSSET_EVENT, transactionReceipt);
         ArrayList<AttestationExpiryBlocksSetEventResponse> responses = new ArrayList<AttestationExpiryBlocksSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             AttestationExpiryBlocksSetEventResponse typedResponse = new AttestationExpiryBlocksSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -264,7 +264,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, AttestationExpiryBlocksSetEventResponse>() {
             @Override
             public AttestationExpiryBlocksSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONEXPIRYBLOCKSSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONEXPIRYBLOCKSSET_EVENT, log);
                 AttestationExpiryBlocksSetEventResponse typedResponse = new AttestationExpiryBlocksSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -280,9 +280,9 @@ public class Attestations extends Contract {
     }
 
     public List<AttestationIssuerSelectedEventResponse> getAttestationIssuerSelectedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONISSUERSELECTED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONISSUERSELECTED_EVENT, transactionReceipt);
         ArrayList<AttestationIssuerSelectedEventResponse> responses = new ArrayList<AttestationIssuerSelectedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             AttestationIssuerSelectedEventResponse typedResponse = new AttestationIssuerSelectedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -298,7 +298,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, AttestationIssuerSelectedEventResponse>() {
             @Override
             public AttestationIssuerSelectedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONISSUERSELECTED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONISSUERSELECTED_EVENT, log);
                 AttestationIssuerSelectedEventResponse typedResponse = new AttestationIssuerSelectedEventResponse();
                 typedResponse.log = log;
                 typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -317,9 +317,9 @@ public class Attestations extends Contract {
     }
 
     public List<AttestationRequestFeeSetEventResponse> getAttestationRequestFeeSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONREQUESTFEESET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONREQUESTFEESET_EVENT, transactionReceipt);
         ArrayList<AttestationRequestFeeSetEventResponse> responses = new ArrayList<AttestationRequestFeeSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             AttestationRequestFeeSetEventResponse typedResponse = new AttestationRequestFeeSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.token = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -333,7 +333,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, AttestationRequestFeeSetEventResponse>() {
             @Override
             public AttestationRequestFeeSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONREQUESTFEESET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONREQUESTFEESET_EVENT, log);
                 AttestationRequestFeeSetEventResponse typedResponse = new AttestationRequestFeeSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.token = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -350,9 +350,9 @@ public class Attestations extends Contract {
     }
 
     public List<AttestationsRequestedEventResponse> getAttestationsRequestedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONSREQUESTED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONSREQUESTED_EVENT, transactionReceipt);
         ArrayList<AttestationsRequestedEventResponse> responses = new ArrayList<AttestationsRequestedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             AttestationsRequestedEventResponse typedResponse = new AttestationsRequestedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -368,7 +368,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, AttestationsRequestedEventResponse>() {
             @Override
             public AttestationsRequestedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONSREQUESTED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONSREQUESTED_EVENT, log);
                 AttestationsRequestedEventResponse typedResponse = new AttestationsRequestedEventResponse();
                 typedResponse.log = log;
                 typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -387,9 +387,9 @@ public class Attestations extends Contract {
     }
 
     public List<AttestationsTransferredEventResponse> getAttestationsTransferredEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONSTRANSFERRED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(ATTESTATIONSTRANSFERRED_EVENT, transactionReceipt);
         ArrayList<AttestationsTransferredEventResponse> responses = new ArrayList<AttestationsTransferredEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             AttestationsTransferredEventResponse typedResponse = new AttestationsTransferredEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -404,7 +404,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, AttestationsTransferredEventResponse>() {
             @Override
             public AttestationsTransferredEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONSTRANSFERRED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(ATTESTATIONSTRANSFERRED_EVENT, log);
                 AttestationsTransferredEventResponse typedResponse = new AttestationsTransferredEventResponse();
                 typedResponse.log = log;
                 typedResponse.identifier = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -422,9 +422,9 @@ public class Attestations extends Contract {
     }
 
     public List<MaxAttestationsSetEventResponse> getMaxAttestationsSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(MAXATTESTATIONSSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(MAXATTESTATIONSSET_EVENT, transactionReceipt);
         ArrayList<MaxAttestationsSetEventResponse> responses = new ArrayList<MaxAttestationsSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             MaxAttestationsSetEventResponse typedResponse = new MaxAttestationsSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -437,7 +437,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, MaxAttestationsSetEventResponse>() {
             @Override
             public MaxAttestationsSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(MAXATTESTATIONSSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(MAXATTESTATIONSSET_EVENT, log);
                 MaxAttestationsSetEventResponse typedResponse = new MaxAttestationsSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -453,9 +453,9 @@ public class Attestations extends Contract {
     }
 
     public List<OwnershipTransferredEventResponse> getOwnershipTransferredEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
         ArrayList<OwnershipTransferredEventResponse> responses = new ArrayList<OwnershipTransferredEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -469,7 +469,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, OwnershipTransferredEventResponse>() {
             @Override
             public OwnershipTransferredEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
                 OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
                 typedResponse.log = log;
                 typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -486,9 +486,9 @@ public class Attestations extends Contract {
     }
 
     public List<RegistrySetEventResponse> getRegistrySetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(REGISTRYSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(REGISTRYSET_EVENT, transactionReceipt);
         ArrayList<RegistrySetEventResponse> responses = new ArrayList<RegistrySetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             RegistrySetEventResponse typedResponse = new RegistrySetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.registryAddress = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -501,7 +501,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, RegistrySetEventResponse>() {
             @Override
             public RegistrySetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(REGISTRYSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(REGISTRYSET_EVENT, log);
                 RegistrySetEventResponse typedResponse = new RegistrySetEventResponse();
                 typedResponse.log = log;
                 typedResponse.registryAddress = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -517,9 +517,9 @@ public class Attestations extends Contract {
     }
 
     public List<SelectIssuersWaitBlocksSetEventResponse> getSelectIssuersWaitBlocksSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(SELECTISSUERSWAITBLOCKSSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(SELECTISSUERSWAITBLOCKSSET_EVENT, transactionReceipt);
         ArrayList<SelectIssuersWaitBlocksSetEventResponse> responses = new ArrayList<SelectIssuersWaitBlocksSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             SelectIssuersWaitBlocksSetEventResponse typedResponse = new SelectIssuersWaitBlocksSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -532,7 +532,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, SelectIssuersWaitBlocksSetEventResponse>() {
             @Override
             public SelectIssuersWaitBlocksSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(SELECTISSUERSWAITBLOCKSSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(SELECTISSUERSWAITBLOCKSSET_EVENT, log);
                 SelectIssuersWaitBlocksSetEventResponse typedResponse = new SelectIssuersWaitBlocksSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.value = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -548,9 +548,9 @@ public class Attestations extends Contract {
     }
 
     public List<TransferApprovalEventResponse> getTransferApprovalEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(TRANSFERAPPROVAL_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(TRANSFERAPPROVAL_EVENT, transactionReceipt);
         ArrayList<TransferApprovalEventResponse> responses = new ArrayList<TransferApprovalEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             TransferApprovalEventResponse typedResponse = new TransferApprovalEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.approver = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -567,7 +567,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, TransferApprovalEventResponse>() {
             @Override
             public TransferApprovalEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(TRANSFERAPPROVAL_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(TRANSFERAPPROVAL_EVENT, log);
                 TransferApprovalEventResponse typedResponse = new TransferApprovalEventResponse();
                 typedResponse.log = log;
                 typedResponse.approver = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -587,9 +587,9 @@ public class Attestations extends Contract {
     }
 
     public List<WithdrawalEventResponse> getWithdrawalEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(WITHDRAWAL_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(WITHDRAWAL_EVENT, transactionReceipt);
         ArrayList<WithdrawalEventResponse> responses = new ArrayList<WithdrawalEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             WithdrawalEventResponse typedResponse = new WithdrawalEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -604,7 +604,7 @@ public class Attestations extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, WithdrawalEventResponse>() {
             @Override
             public WithdrawalEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(WITHDRAWAL_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(WITHDRAWAL_EVENT, log);
                 WithdrawalEventResponse typedResponse = new WithdrawalEventResponse();
                 typedResponse.log = log;
                 typedResponse.account = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -630,28 +630,28 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> attestationRequestFees(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ATTESTATIONREQUESTFEES, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Boolean> checkProofOfPossession(String sender, byte[] blsKey, byte[] blsPop) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_CHECKPROOFOFPOSSESSION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(sender), 
-                new org.web3j.abi.datatypes.DynamicBytes(blsKey), 
-                new org.web3j.abi.datatypes.DynamicBytes(blsPop)), 
+                Arrays.<Type>asList(new Address(sender), 
+                new DynamicBytes(blsKey), 
+                new DynamicBytes(blsPop)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> fractionMulExp(BigInteger aNumerator, BigInteger aDenominator, BigInteger bNumerator, BigInteger bDenominator, BigInteger exponent, BigInteger _decimals) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_FRACTIONMULEXP, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(aNumerator), 
-                new org.web3j.abi.datatypes.generated.Uint256(aDenominator), 
-                new org.web3j.abi.datatypes.generated.Uint256(bNumerator), 
-                new org.web3j.abi.datatypes.generated.Uint256(bDenominator), 
-                new org.web3j.abi.datatypes.generated.Uint256(exponent), 
-                new org.web3j.abi.datatypes.generated.Uint256(_decimals)), 
+                Arrays.<Type>asList(new Uint256(aNumerator), 
+                new Uint256(aDenominator), 
+                new Uint256(bNumerator), 
+                new Uint256(bDenominator), 
+                new Uint256(exponent), 
+                new Uint256(_decimals)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -667,7 +667,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> getBlockNumberFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETBLOCKNUMBERFROMHEADER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -681,7 +681,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> getEpochNumberOfBlock(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETEPOCHNUMBEROFBLOCK, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -695,21 +695,21 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<byte[]> getParentSealBitmap(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPARENTSEALBITMAP, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> getVerifiedSealBitmapFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETVERIFIEDSEALBITMAPFROMHEADER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> hashHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_HASHHEADER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
@@ -737,7 +737,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> minQuorumSize(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_MINQUORUMSIZE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -758,7 +758,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> numberValidatorsInSet(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_NUMBERVALIDATORSINSET, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -772,8 +772,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> pendingWithdrawals(String param0, String param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_PENDINGWITHDRAWALS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(param0), 
-                new org.web3j.abi.datatypes.Address(param1)), 
+                Arrays.<Type>asList(new Address(param0), 
+                new Address(param1)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -803,15 +803,15 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Boolean> transferApprovals(String param0, byte[] param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_TRANSFERAPPROVALS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(param0), 
-                new org.web3j.abi.datatypes.generated.Bytes32(param1)), 
+                Arrays.<Type>asList(new Address(param0), 
+                new Bytes32(param1)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -819,22 +819,22 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromCurrentSet(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMCURRENTSET, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromSet(BigInteger index, BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMSET, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(index), 
-                new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(index), 
+                new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -842,16 +842,16 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress, BigInteger _attestationExpiryBlocks, BigInteger _selectIssuersWaitBlocks, BigInteger _maxAttestations, List<String> attestationRequestFeeTokens, List<BigInteger> attestationRequestFeeValues) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(registryAddress), 
-                new org.web3j.abi.datatypes.generated.Uint256(_attestationExpiryBlocks), 
-                new org.web3j.abi.datatypes.generated.Uint256(_selectIssuersWaitBlocks), 
-                new org.web3j.abi.datatypes.generated.Uint256(_maxAttestations), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.Address>(
-                        org.web3j.abi.datatypes.Address.class,
-                        org.web3j.abi.Utils.typeMap(attestationRequestFeeTokens, org.web3j.abi.datatypes.Address.class)), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint256>(
-                        org.web3j.abi.datatypes.generated.Uint256.class,
-                        org.web3j.abi.Utils.typeMap(attestationRequestFeeValues, org.web3j.abi.datatypes.generated.Uint256.class))), 
+                Arrays.<Type>asList(new Address(registryAddress), 
+                new Uint256(_attestationExpiryBlocks), 
+                new Uint256(_selectIssuersWaitBlocks), 
+                new Uint256(_maxAttestations), 
+                new DynamicArray<Address>(
+                        Address.class,
+                        org.web3j.abi.Utils.typeMap(attestationRequestFeeTokens, Address.class)), 
+                new DynamicArray<Uint256>(
+                        Uint256.class,
+                        org.web3j.abi.Utils.typeMap(attestationRequestFeeValues, Uint256.class))), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -877,9 +877,9 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> request(byte[] identifier, BigInteger attestationsRequested, String attestationRequestFeeToken) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REQUEST, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.generated.Uint256(attestationsRequested), 
-                new org.web3j.abi.datatypes.Address(attestationRequestFeeToken)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Uint256(attestationsRequested), 
+                new Address(attestationRequestFeeToken)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -887,7 +887,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> selectIssuers(byte[] identifier) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SELECTISSUERS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier)), 
+                Arrays.<Type>asList(new Bytes32(identifier)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -895,10 +895,10 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> complete(byte[] identifier, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_COMPLETE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.generated.Uint8(v), 
-                new org.web3j.abi.datatypes.generated.Bytes32(r), 
-                new org.web3j.abi.datatypes.generated.Bytes32(s)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Uint8(v), 
+                new Bytes32(r), 
+                new Bytes32(s)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -906,8 +906,8 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> revoke(byte[] identifier, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REVOKE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Uint256(index)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -915,15 +915,15 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> withdraw(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WITHDRAW, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(token)), 
+                Arrays.<Type>asList(new Address(token)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>> getUnselectedRequest(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETUNSELECTEDREQUEST, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint32>() {}, new TypeReference<Uint32>() {}, new TypeReference<Address>() {}));
         return new RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>>(function,
                 new Callable<Tuple3<BigInteger, BigInteger, String>>() {
@@ -940,8 +940,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<List> getAttestationIssuers(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONISSUERS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {
@@ -956,8 +956,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> getAttestationStats(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONSTATS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint32>() {}, new TypeReference<Uint32>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -973,9 +973,9 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, List<BigInteger>>> batchGetAttestationStats(List<byte[]> identifiersToLookup) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_BATCHGETATTESTATIONSTATS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Bytes32>(
-                        org.web3j.abi.datatypes.generated.Bytes32.class,
-                        org.web3j.abi.Utils.typeMap(identifiersToLookup, org.web3j.abi.datatypes.generated.Bytes32.class))), 
+                Arrays.<Type>asList(new DynamicArray<Bytes32>(
+                        Bytes32.class,
+                        org.web3j.abi.Utils.typeMap(identifiersToLookup, Bytes32.class))), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Address>>() {}, new TypeReference<DynamicArray<Uint64>>() {}, new TypeReference<DynamicArray<Uint64>>() {}));
         return new RemoteFunctionCall<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, List<BigInteger>>>() {
@@ -993,9 +993,9 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>> getAttestationState(byte[] identifier, String account, String issuer) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONSTATE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.Address(account), 
-                new org.web3j.abi.datatypes.Address(issuer)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Address(account), 
+                new Address(issuer)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint8>() {}, new TypeReference<Uint32>() {}, new TypeReference<Address>() {}));
         return new RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>>(function,
                 new Callable<Tuple3<BigInteger, BigInteger, String>>() {
@@ -1012,8 +1012,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, byte[]>> getCompletableAttestations(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETCOMPLETABLEATTESTATIONS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint32>>() {}, new TypeReference<DynamicArray<Address>>() {}, new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicBytes>() {}));
         return new RemoteFunctionCall<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, byte[]>>(function,
                 new Callable<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, byte[]>>() {
@@ -1031,7 +1031,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> getAttestationRequestFee(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONREQUESTFEE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(token)), 
+                Arrays.<Type>asList(new Address(token)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1039,8 +1039,8 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setAttestationRequestFee(String token, BigInteger fee) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETATTESTATIONREQUESTFEE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(token), 
-                new org.web3j.abi.datatypes.generated.Uint256(fee)), 
+                Arrays.<Type>asList(new Address(token), 
+                new Uint256(fee)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1048,7 +1048,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setAttestationExpiryBlocks(BigInteger _attestationExpiryBlocks) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETATTESTATIONEXPIRYBLOCKS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_attestationExpiryBlocks)), 
+                Arrays.<Type>asList(new Uint256(_attestationExpiryBlocks)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1056,7 +1056,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setSelectIssuersWaitBlocks(BigInteger _selectIssuersWaitBlocks) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETSELECTISSUERSWAITBLOCKS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_selectIssuersWaitBlocks)), 
+                Arrays.<Type>asList(new Uint256(_selectIssuersWaitBlocks)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1064,7 +1064,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setMaxAttestations(BigInteger _maxAttestations) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETMAXATTESTATIONS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_maxAttestations)), 
+                Arrays.<Type>asList(new Uint256(_maxAttestations)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1078,18 +1078,18 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<String> validateAttestationCode(byte[] identifier, String account, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATEATTESTATIONCODE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.Address(account), 
-                new org.web3j.abi.datatypes.generated.Uint8(v), 
-                new org.web3j.abi.datatypes.generated.Bytes32(r), 
-                new org.web3j.abi.datatypes.generated.Bytes32(s)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Address(account), 
+                new Uint8(v), 
+                new Bytes32(r), 
+                new Bytes32(s)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<List> lookupAccountsForIdentifier(byte[] identifier) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_LOOKUPACCOUNTSFORIDENTIFIER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier)), 
+                Arrays.<Type>asList(new Bytes32(identifier)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {
@@ -1105,11 +1105,11 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> approveTransfer(byte[] identifier, BigInteger index, String from, String to, Boolean status) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_APPROVETRANSFER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(identifier), 
-                new org.web3j.abi.datatypes.generated.Uint256(index), 
-                new org.web3j.abi.datatypes.Address(from), 
-                new org.web3j.abi.datatypes.Address(to), 
-                new org.web3j.abi.datatypes.Bool(status)), 
+                Arrays.<Type>asList(new Bytes32(identifier), 
+                new Uint256(index), 
+                new Address(from), 
+                new Address(to), 
+                new Bool(status)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

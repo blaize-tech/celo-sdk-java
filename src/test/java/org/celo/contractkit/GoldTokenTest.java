@@ -1,10 +1,8 @@
 package org.celo.contractkit;
 
-import org.celo.contractkit.contract.GoldToken;
 import org.celo.contractkit.wrapper.GoldTokenWrapper;
 import org.junit.Before;
 import org.junit.Test;
-import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
@@ -23,8 +21,8 @@ public class GoldTokenTest {
     @Before
     public void initialize() {
         Web3j web3j = Web3j.build(new HttpService(ContractKit.ALFAJORES_TESTNET));
-        Credentials credentials = Credentials.create(PRIVATE_KEY_1);
-        contractKit = new ContractKit(web3j, credentials);
+        contractKit = new ContractKit(web3j);
+        contractKit.addAccount(PRIVATE_KEY_1);
         goldToken = contractKit.contracts.getGoldToken();
     }
 
@@ -54,7 +52,7 @@ public class GoldTokenTest {
     public void testTransferFrom() throws Exception {
         BigInteger initialBalance = goldToken.balanceOf(PUBLIC_KEY_2);
 
-        TransactionReceipt increaseTxHash = goldToken.increaseAllowance(contractKit.credentials.getAddress(), ONE_GWEI).send();
+        TransactionReceipt increaseTxHash = goldToken.increaseAllowance(contractKit.getAddress(), ONE_GWEI).send();
         assertTrue(increaseTxHash.isStatusOK());
         assertNotNull(increaseTxHash.getTransactionHash());
 

@@ -39,7 +39,7 @@ import java.util.concurrent.Callable;
  *
  * <p>Generated with web3j version 4.6.1.
  */
-@SuppressWarnings("rawtypes")
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class Governance extends Contract {
     public static final String BINARY = "";
 
@@ -354,9 +354,9 @@ public class Governance extends Contract {
     }
 
     public List<ApprovalStageDurationSetEventResponse> getApprovalStageDurationSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVALSTAGEDURATIONSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVALSTAGEDURATIONSET_EVENT, transactionReceipt);
         ArrayList<ApprovalStageDurationSetEventResponse> responses = new ArrayList<ApprovalStageDurationSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ApprovalStageDurationSetEventResponse typedResponse = new ApprovalStageDurationSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.approvalStageDuration = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -369,7 +369,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ApprovalStageDurationSetEventResponse>() {
             @Override
             public ApprovalStageDurationSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVALSTAGEDURATIONSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVALSTAGEDURATIONSET_EVENT, log);
                 ApprovalStageDurationSetEventResponse typedResponse = new ApprovalStageDurationSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.approvalStageDuration = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -385,9 +385,9 @@ public class Governance extends Contract {
     }
 
     public List<ApproverSetEventResponse> getApproverSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVERSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(APPROVERSET_EVENT, transactionReceipt);
         ArrayList<ApproverSetEventResponse> responses = new ArrayList<ApproverSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ApproverSetEventResponse typedResponse = new ApproverSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.approver = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -400,7 +400,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ApproverSetEventResponse>() {
             @Override
             public ApproverSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVERSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(APPROVERSET_EVENT, log);
                 ApproverSetEventResponse typedResponse = new ApproverSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.approver = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -416,9 +416,9 @@ public class Governance extends Contract {
     }
 
     public List<ConcurrentProposalsSetEventResponse> getConcurrentProposalsSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(CONCURRENTPROPOSALSSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(CONCURRENTPROPOSALSSET_EVENT, transactionReceipt);
         ArrayList<ConcurrentProposalsSetEventResponse> responses = new ArrayList<ConcurrentProposalsSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ConcurrentProposalsSetEventResponse typedResponse = new ConcurrentProposalsSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.concurrentProposals = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -431,7 +431,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ConcurrentProposalsSetEventResponse>() {
             @Override
             public ConcurrentProposalsSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(CONCURRENTPROPOSALSSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(CONCURRENTPROPOSALSSET_EVENT, log);
                 ConcurrentProposalsSetEventResponse typedResponse = new ConcurrentProposalsSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.concurrentProposals = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -447,9 +447,9 @@ public class Governance extends Contract {
     }
 
     public List<ConstitutionSetEventResponse> getConstitutionSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(CONSTITUTIONSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(CONSTITUTIONSET_EVENT, transactionReceipt);
         ArrayList<ConstitutionSetEventResponse> responses = new ArrayList<ConstitutionSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ConstitutionSetEventResponse typedResponse = new ConstitutionSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.destination = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -464,7 +464,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ConstitutionSetEventResponse>() {
             @Override
             public ConstitutionSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(CONSTITUTIONSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(CONSTITUTIONSET_EVENT, log);
                 ConstitutionSetEventResponse typedResponse = new ConstitutionSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.destination = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -482,9 +482,9 @@ public class Governance extends Contract {
     }
 
     public List<DequeueFrequencySetEventResponse> getDequeueFrequencySetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(DEQUEUEFREQUENCYSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(DEQUEUEFREQUENCYSET_EVENT, transactionReceipt);
         ArrayList<DequeueFrequencySetEventResponse> responses = new ArrayList<DequeueFrequencySetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             DequeueFrequencySetEventResponse typedResponse = new DequeueFrequencySetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.dequeueFrequency = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -497,7 +497,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, DequeueFrequencySetEventResponse>() {
             @Override
             public DequeueFrequencySetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(DEQUEUEFREQUENCYSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(DEQUEUEFREQUENCYSET_EVENT, log);
                 DequeueFrequencySetEventResponse typedResponse = new DequeueFrequencySetEventResponse();
                 typedResponse.log = log;
                 typedResponse.dequeueFrequency = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -513,9 +513,9 @@ public class Governance extends Contract {
     }
 
     public List<ExecutionStageDurationSetEventResponse> getExecutionStageDurationSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(EXECUTIONSTAGEDURATIONSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(EXECUTIONSTAGEDURATIONSET_EVENT, transactionReceipt);
         ArrayList<ExecutionStageDurationSetEventResponse> responses = new ArrayList<ExecutionStageDurationSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ExecutionStageDurationSetEventResponse typedResponse = new ExecutionStageDurationSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.executionStageDuration = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -528,7 +528,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ExecutionStageDurationSetEventResponse>() {
             @Override
             public ExecutionStageDurationSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(EXECUTIONSTAGEDURATIONSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(EXECUTIONSTAGEDURATIONSET_EVENT, log);
                 ExecutionStageDurationSetEventResponse typedResponse = new ExecutionStageDurationSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.executionStageDuration = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -544,9 +544,9 @@ public class Governance extends Contract {
     }
 
     public List<HotfixApprovedEventResponse> getHotfixApprovedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXAPPROVED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXAPPROVED_EVENT, transactionReceipt);
         ArrayList<HotfixApprovedEventResponse> responses = new ArrayList<HotfixApprovedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             HotfixApprovedEventResponse typedResponse = new HotfixApprovedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -559,7 +559,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, HotfixApprovedEventResponse>() {
             @Override
             public HotfixApprovedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXAPPROVED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXAPPROVED_EVENT, log);
                 HotfixApprovedEventResponse typedResponse = new HotfixApprovedEventResponse();
                 typedResponse.log = log;
                 typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -575,9 +575,9 @@ public class Governance extends Contract {
     }
 
     public List<HotfixExecutedEventResponse> getHotfixExecutedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXEXECUTED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXEXECUTED_EVENT, transactionReceipt);
         ArrayList<HotfixExecutedEventResponse> responses = new ArrayList<HotfixExecutedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             HotfixExecutedEventResponse typedResponse = new HotfixExecutedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -590,7 +590,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, HotfixExecutedEventResponse>() {
             @Override
             public HotfixExecutedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXEXECUTED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXEXECUTED_EVENT, log);
                 HotfixExecutedEventResponse typedResponse = new HotfixExecutedEventResponse();
                 typedResponse.log = log;
                 typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -606,9 +606,9 @@ public class Governance extends Contract {
     }
 
     public List<HotfixPreparedEventResponse> getHotfixPreparedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXPREPARED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXPREPARED_EVENT, transactionReceipt);
         ArrayList<HotfixPreparedEventResponse> responses = new ArrayList<HotfixPreparedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             HotfixPreparedEventResponse typedResponse = new HotfixPreparedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -622,7 +622,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, HotfixPreparedEventResponse>() {
             @Override
             public HotfixPreparedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXPREPARED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXPREPARED_EVENT, log);
                 HotfixPreparedEventResponse typedResponse = new HotfixPreparedEventResponse();
                 typedResponse.log = log;
                 typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -639,9 +639,9 @@ public class Governance extends Contract {
     }
 
     public List<HotfixWhitelistedEventResponse> getHotfixWhitelistedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXWHITELISTED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(HOTFIXWHITELISTED_EVENT, transactionReceipt);
         ArrayList<HotfixWhitelistedEventResponse> responses = new ArrayList<HotfixWhitelistedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             HotfixWhitelistedEventResponse typedResponse = new HotfixWhitelistedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -655,7 +655,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, HotfixWhitelistedEventResponse>() {
             @Override
             public HotfixWhitelistedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXWHITELISTED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(HOTFIXWHITELISTED_EVENT, log);
                 HotfixWhitelistedEventResponse typedResponse = new HotfixWhitelistedEventResponse();
                 typedResponse.log = log;
                 typedResponse.hash = (byte[]) eventValues.getIndexedValues().get(0).getValue();
@@ -672,9 +672,9 @@ public class Governance extends Contract {
     }
 
     public List<MinDepositSetEventResponse> getMinDepositSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(MINDEPOSITSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(MINDEPOSITSET_EVENT, transactionReceipt);
         ArrayList<MinDepositSetEventResponse> responses = new ArrayList<MinDepositSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             MinDepositSetEventResponse typedResponse = new MinDepositSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.minDeposit = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -687,7 +687,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, MinDepositSetEventResponse>() {
             @Override
             public MinDepositSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(MINDEPOSITSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(MINDEPOSITSET_EVENT, log);
                 MinDepositSetEventResponse typedResponse = new MinDepositSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.minDeposit = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -703,9 +703,9 @@ public class Governance extends Contract {
     }
 
     public List<OwnershipTransferredEventResponse> getOwnershipTransferredEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, transactionReceipt);
         ArrayList<OwnershipTransferredEventResponse> responses = new ArrayList<OwnershipTransferredEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -719,7 +719,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, OwnershipTransferredEventResponse>() {
             @Override
             public OwnershipTransferredEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(OWNERSHIPTRANSFERRED_EVENT, log);
                 OwnershipTransferredEventResponse typedResponse = new OwnershipTransferredEventResponse();
                 typedResponse.log = log;
                 typedResponse.previousOwner = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -736,9 +736,9 @@ public class Governance extends Contract {
     }
 
     public List<ParticipationBaselineQuorumFactorSetEventResponse> getParticipationBaselineQuorumFactorSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONBASELINEQUORUMFACTORSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONBASELINEQUORUMFACTORSET_EVENT, transactionReceipt);
         ArrayList<ParticipationBaselineQuorumFactorSetEventResponse> responses = new ArrayList<ParticipationBaselineQuorumFactorSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ParticipationBaselineQuorumFactorSetEventResponse typedResponse = new ParticipationBaselineQuorumFactorSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.baselineQuorumFactor = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -751,7 +751,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ParticipationBaselineQuorumFactorSetEventResponse>() {
             @Override
             public ParticipationBaselineQuorumFactorSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONBASELINEQUORUMFACTORSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONBASELINEQUORUMFACTORSET_EVENT, log);
                 ParticipationBaselineQuorumFactorSetEventResponse typedResponse = new ParticipationBaselineQuorumFactorSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.baselineQuorumFactor = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -767,9 +767,9 @@ public class Governance extends Contract {
     }
 
     public List<ParticipationBaselineUpdateFactorSetEventResponse> getParticipationBaselineUpdateFactorSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATEFACTORSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATEFACTORSET_EVENT, transactionReceipt);
         ArrayList<ParticipationBaselineUpdateFactorSetEventResponse> responses = new ArrayList<ParticipationBaselineUpdateFactorSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ParticipationBaselineUpdateFactorSetEventResponse typedResponse = new ParticipationBaselineUpdateFactorSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.baselineUpdateFactor = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -782,7 +782,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ParticipationBaselineUpdateFactorSetEventResponse>() {
             @Override
             public ParticipationBaselineUpdateFactorSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATEFACTORSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATEFACTORSET_EVENT, log);
                 ParticipationBaselineUpdateFactorSetEventResponse typedResponse = new ParticipationBaselineUpdateFactorSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.baselineUpdateFactor = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -798,9 +798,9 @@ public class Governance extends Contract {
     }
 
     public List<ParticipationBaselineUpdatedEventResponse> getParticipationBaselineUpdatedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATED_EVENT, transactionReceipt);
         ArrayList<ParticipationBaselineUpdatedEventResponse> responses = new ArrayList<ParticipationBaselineUpdatedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ParticipationBaselineUpdatedEventResponse typedResponse = new ParticipationBaselineUpdatedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.participationBaseline = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -813,7 +813,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ParticipationBaselineUpdatedEventResponse>() {
             @Override
             public ParticipationBaselineUpdatedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONBASELINEUPDATED_EVENT, log);
                 ParticipationBaselineUpdatedEventResponse typedResponse = new ParticipationBaselineUpdatedEventResponse();
                 typedResponse.log = log;
                 typedResponse.participationBaseline = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -829,9 +829,9 @@ public class Governance extends Contract {
     }
 
     public List<ParticipationFloorSetEventResponse> getParticipationFloorSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONFLOORSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PARTICIPATIONFLOORSET_EVENT, transactionReceipt);
         ArrayList<ParticipationFloorSetEventResponse> responses = new ArrayList<ParticipationFloorSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ParticipationFloorSetEventResponse typedResponse = new ParticipationFloorSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.participationFloor = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -844,7 +844,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ParticipationFloorSetEventResponse>() {
             @Override
             public ParticipationFloorSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONFLOORSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PARTICIPATIONFLOORSET_EVENT, log);
                 ParticipationFloorSetEventResponse typedResponse = new ParticipationFloorSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.participationFloor = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -860,9 +860,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalApprovedEventResponse> getProposalApprovedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALAPPROVED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALAPPROVED_EVENT, transactionReceipt);
         ArrayList<ProposalApprovedEventResponse> responses = new ArrayList<ProposalApprovedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalApprovedEventResponse typedResponse = new ProposalApprovedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -875,7 +875,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalApprovedEventResponse>() {
             @Override
             public ProposalApprovedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALAPPROVED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALAPPROVED_EVENT, log);
                 ProposalApprovedEventResponse typedResponse = new ProposalApprovedEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -891,9 +891,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalDequeuedEventResponse> getProposalDequeuedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALDEQUEUED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALDEQUEUED_EVENT, transactionReceipt);
         ArrayList<ProposalDequeuedEventResponse> responses = new ArrayList<ProposalDequeuedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalDequeuedEventResponse typedResponse = new ProposalDequeuedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -907,7 +907,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalDequeuedEventResponse>() {
             @Override
             public ProposalDequeuedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALDEQUEUED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALDEQUEUED_EVENT, log);
                 ProposalDequeuedEventResponse typedResponse = new ProposalDequeuedEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -924,9 +924,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalExecutedEventResponse> getProposalExecutedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALEXECUTED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALEXECUTED_EVENT, transactionReceipt);
         ArrayList<ProposalExecutedEventResponse> responses = new ArrayList<ProposalExecutedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalExecutedEventResponse typedResponse = new ProposalExecutedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -939,7 +939,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalExecutedEventResponse>() {
             @Override
             public ProposalExecutedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALEXECUTED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALEXECUTED_EVENT, log);
                 ProposalExecutedEventResponse typedResponse = new ProposalExecutedEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -955,9 +955,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalExpiredEventResponse> getProposalExpiredEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALEXPIRED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALEXPIRED_EVENT, transactionReceipt);
         ArrayList<ProposalExpiredEventResponse> responses = new ArrayList<ProposalExpiredEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalExpiredEventResponse typedResponse = new ProposalExpiredEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -970,7 +970,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalExpiredEventResponse>() {
             @Override
             public ProposalExpiredEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALEXPIRED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALEXPIRED_EVENT, log);
                 ProposalExpiredEventResponse typedResponse = new ProposalExpiredEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -986,9 +986,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalQueuedEventResponse> getProposalQueuedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALQUEUED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALQUEUED_EVENT, transactionReceipt);
         ArrayList<ProposalQueuedEventResponse> responses = new ArrayList<ProposalQueuedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalQueuedEventResponse typedResponse = new ProposalQueuedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1005,7 +1005,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalQueuedEventResponse>() {
             @Override
             public ProposalQueuedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALQUEUED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALQUEUED_EVENT, log);
                 ProposalQueuedEventResponse typedResponse = new ProposalQueuedEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1025,9 +1025,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalUpvoteRevokedEventResponse> getProposalUpvoteRevokedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALUPVOTEREVOKED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALUPVOTEREVOKED_EVENT, transactionReceipt);
         ArrayList<ProposalUpvoteRevokedEventResponse> responses = new ArrayList<ProposalUpvoteRevokedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalUpvoteRevokedEventResponse typedResponse = new ProposalUpvoteRevokedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1042,7 +1042,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalUpvoteRevokedEventResponse>() {
             @Override
             public ProposalUpvoteRevokedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALUPVOTEREVOKED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALUPVOTEREVOKED_EVENT, log);
                 ProposalUpvoteRevokedEventResponse typedResponse = new ProposalUpvoteRevokedEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1060,9 +1060,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalUpvotedEventResponse> getProposalUpvotedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALUPVOTED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALUPVOTED_EVENT, transactionReceipt);
         ArrayList<ProposalUpvotedEventResponse> responses = new ArrayList<ProposalUpvotedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalUpvotedEventResponse typedResponse = new ProposalUpvotedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1077,7 +1077,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalUpvotedEventResponse>() {
             @Override
             public ProposalUpvotedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALUPVOTED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALUPVOTED_EVENT, log);
                 ProposalUpvotedEventResponse typedResponse = new ProposalUpvotedEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1095,9 +1095,9 @@ public class Governance extends Contract {
     }
 
     public List<ProposalVotedEventResponse> getProposalVotedEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALVOTED_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(PROPOSALVOTED_EVENT, transactionReceipt);
         ArrayList<ProposalVotedEventResponse> responses = new ArrayList<ProposalVotedEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ProposalVotedEventResponse typedResponse = new ProposalVotedEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1113,7 +1113,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ProposalVotedEventResponse>() {
             @Override
             public ProposalVotedEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALVOTED_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(PROPOSALVOTED_EVENT, log);
                 ProposalVotedEventResponse typedResponse = new ProposalVotedEventResponse();
                 typedResponse.log = log;
                 typedResponse.proposalId = (BigInteger) eventValues.getIndexedValues().get(0).getValue();
@@ -1132,9 +1132,9 @@ public class Governance extends Contract {
     }
 
     public List<QueueExpirySetEventResponse> getQueueExpirySetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(QUEUEEXPIRYSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(QUEUEEXPIRYSET_EVENT, transactionReceipt);
         ArrayList<QueueExpirySetEventResponse> responses = new ArrayList<QueueExpirySetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             QueueExpirySetEventResponse typedResponse = new QueueExpirySetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.queueExpiry = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -1147,7 +1147,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, QueueExpirySetEventResponse>() {
             @Override
             public QueueExpirySetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(QUEUEEXPIRYSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(QUEUEEXPIRYSET_EVENT, log);
                 QueueExpirySetEventResponse typedResponse = new QueueExpirySetEventResponse();
                 typedResponse.log = log;
                 typedResponse.queueExpiry = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -1163,9 +1163,9 @@ public class Governance extends Contract {
     }
 
     public List<ReferendumStageDurationSetEventResponse> getReferendumStageDurationSetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(REFERENDUMSTAGEDURATIONSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(REFERENDUMSTAGEDURATIONSET_EVENT, transactionReceipt);
         ArrayList<ReferendumStageDurationSetEventResponse> responses = new ArrayList<ReferendumStageDurationSetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             ReferendumStageDurationSetEventResponse typedResponse = new ReferendumStageDurationSetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.referendumStageDuration = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -1178,7 +1178,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, ReferendumStageDurationSetEventResponse>() {
             @Override
             public ReferendumStageDurationSetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(REFERENDUMSTAGEDURATIONSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(REFERENDUMSTAGEDURATIONSET_EVENT, log);
                 ReferendumStageDurationSetEventResponse typedResponse = new ReferendumStageDurationSetEventResponse();
                 typedResponse.log = log;
                 typedResponse.referendumStageDuration = (BigInteger) eventValues.getNonIndexedValues().get(0).getValue();
@@ -1194,9 +1194,9 @@ public class Governance extends Contract {
     }
 
     public List<RegistrySetEventResponse> getRegistrySetEvents(TransactionReceipt transactionReceipt) {
-        List<Contract.EventValuesWithLog> valueList = extractEventParametersWithLog(REGISTRYSET_EVENT, transactionReceipt);
+        List<EventValuesWithLog> valueList = extractEventParametersWithLog(REGISTRYSET_EVENT, transactionReceipt);
         ArrayList<RegistrySetEventResponse> responses = new ArrayList<RegistrySetEventResponse>(valueList.size());
-        for (Contract.EventValuesWithLog eventValues : valueList) {
+        for (EventValuesWithLog eventValues : valueList) {
             RegistrySetEventResponse typedResponse = new RegistrySetEventResponse();
             typedResponse.log = eventValues.getLog();
             typedResponse.registryAddress = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -1209,7 +1209,7 @@ public class Governance extends Contract {
         return web3j.ethLogFlowable(filter).map(new Function<Log, RegistrySetEventResponse>() {
             @Override
             public RegistrySetEventResponse apply(Log log) {
-                Contract.EventValuesWithLog eventValues = extractEventParametersWithLog(REGISTRYSET_EVENT, log);
+                EventValuesWithLog eventValues = extractEventParametersWithLog(REGISTRYSET_EVENT, log);
                 RegistrySetEventResponse typedResponse = new RegistrySetEventResponse();
                 typedResponse.log = log;
                 typedResponse.registryAddress = (String) eventValues.getIndexedValues().get(0).getValue();
@@ -1233,9 +1233,9 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Boolean> checkProofOfPossession(String sender, byte[] blsKey, byte[] blsPop) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_CHECKPROOFOFPOSSESSION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(sender), 
-                new org.web3j.abi.datatypes.DynamicBytes(blsKey), 
-                new org.web3j.abi.datatypes.DynamicBytes(blsPop)), 
+                Arrays.<Type>asList(new Address(sender), 
+                new DynamicBytes(blsKey), 
+                new DynamicBytes(blsPop)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -1256,26 +1256,26 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> dequeued(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_DEQUEUED, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> emptyIndices(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_EMPTYINDICES, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> fractionMulExp(BigInteger aNumerator, BigInteger aDenominator, BigInteger bNumerator, BigInteger bDenominator, BigInteger exponent, BigInteger _decimals) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_FRACTIONMULEXP, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(aNumerator), 
-                new org.web3j.abi.datatypes.generated.Uint256(aDenominator), 
-                new org.web3j.abi.datatypes.generated.Uint256(bNumerator), 
-                new org.web3j.abi.datatypes.generated.Uint256(bDenominator), 
-                new org.web3j.abi.datatypes.generated.Uint256(exponent), 
-                new org.web3j.abi.datatypes.generated.Uint256(_decimals)), 
+                Arrays.<Type>asList(new Uint256(aNumerator), 
+                new Uint256(aDenominator), 
+                new Uint256(bNumerator), 
+                new Uint256(bDenominator), 
+                new Uint256(exponent), 
+                new Uint256(_decimals)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -1291,7 +1291,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> getBlockNumberFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETBLOCKNUMBERFROMHEADER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1305,7 +1305,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> getEpochNumberOfBlock(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETEPOCHNUMBEROFBLOCK, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1319,28 +1319,28 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<byte[]> getParentSealBitmap(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPARENTSEALBITMAP, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> getVerifiedSealBitmapFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETVERIFIEDSEALBITMAPFROMHEADER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> hashHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_HASHHEADER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<Tuple3<Boolean, Boolean, BigInteger>> hotfixes(byte[] param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_HOTFIXES, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(param0)), 
+                Arrays.<Type>asList(new Bytes32(param0)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}, new TypeReference<Bool>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple3<Boolean, Boolean, BigInteger>>(function,
                 new Callable<Tuple3<Boolean, Boolean, BigInteger>>() {
@@ -1385,7 +1385,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> minQuorumSize(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_MINQUORUMSIZE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1406,7 +1406,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> numberValidatorsInSet(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_NUMBERVALIDATORSINSET, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1434,7 +1434,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> refundedDeposits(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_REFUNDEDDEPOSITS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1457,7 +1457,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1482,22 +1482,22 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromCurrentSet(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMCURRENTSET, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromSet(BigInteger index, BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMSET, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(index), 
-                new org.web3j.abi.datatypes.generated.Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(index), 
+                new Uint256(blockNumber)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -1523,19 +1523,19 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress, String _approver, BigInteger _concurrentProposals, BigInteger _minDeposit, BigInteger _queueExpiry, BigInteger _dequeueFrequency, BigInteger approvalStageDuration, BigInteger referendumStageDuration, BigInteger executionStageDuration, BigInteger participationBaseline, BigInteger participationFloor, BigInteger baselineUpdateFactor, BigInteger baselineQuorumFactor) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(registryAddress), 
-                new org.web3j.abi.datatypes.Address(_approver), 
-                new org.web3j.abi.datatypes.generated.Uint256(_concurrentProposals), 
-                new org.web3j.abi.datatypes.generated.Uint256(_minDeposit), 
-                new org.web3j.abi.datatypes.generated.Uint256(_queueExpiry), 
-                new org.web3j.abi.datatypes.generated.Uint256(_dequeueFrequency), 
-                new org.web3j.abi.datatypes.generated.Uint256(approvalStageDuration), 
-                new org.web3j.abi.datatypes.generated.Uint256(referendumStageDuration), 
-                new org.web3j.abi.datatypes.generated.Uint256(executionStageDuration), 
-                new org.web3j.abi.datatypes.generated.Uint256(participationBaseline), 
-                new org.web3j.abi.datatypes.generated.Uint256(participationFloor), 
-                new org.web3j.abi.datatypes.generated.Uint256(baselineUpdateFactor), 
-                new org.web3j.abi.datatypes.generated.Uint256(baselineQuorumFactor)), 
+                Arrays.<Type>asList(new Address(registryAddress), 
+                new Address(_approver), 
+                new Uint256(_concurrentProposals), 
+                new Uint256(_minDeposit), 
+                new Uint256(_queueExpiry), 
+                new Uint256(_dequeueFrequency), 
+                new Uint256(approvalStageDuration), 
+                new Uint256(referendumStageDuration), 
+                new Uint256(executionStageDuration), 
+                new Uint256(participationBaseline), 
+                new Uint256(participationFloor), 
+                new Uint256(baselineUpdateFactor), 
+                new Uint256(baselineQuorumFactor)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1543,7 +1543,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setApprover(String _approver) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETAPPROVER, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(_approver)), 
+                Arrays.<Type>asList(new Address(_approver)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1551,7 +1551,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setConcurrentProposals(BigInteger _concurrentProposals) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETCONCURRENTPROPOSALS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_concurrentProposals)), 
+                Arrays.<Type>asList(new Uint256(_concurrentProposals)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1559,7 +1559,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setMinDeposit(BigInteger _minDeposit) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETMINDEPOSIT, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_minDeposit)), 
+                Arrays.<Type>asList(new Uint256(_minDeposit)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1567,7 +1567,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setQueueExpiry(BigInteger _queueExpiry) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETQUEUEEXPIRY, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_queueExpiry)), 
+                Arrays.<Type>asList(new Uint256(_queueExpiry)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1575,7 +1575,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setDequeueFrequency(BigInteger _dequeueFrequency) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETDEQUEUEFREQUENCY, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(_dequeueFrequency)), 
+                Arrays.<Type>asList(new Uint256(_dequeueFrequency)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1583,7 +1583,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setApprovalStageDuration(BigInteger approvalStageDuration) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETAPPROVALSTAGEDURATION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(approvalStageDuration)), 
+                Arrays.<Type>asList(new Uint256(approvalStageDuration)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1591,7 +1591,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setReferendumStageDuration(BigInteger referendumStageDuration) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREFERENDUMSTAGEDURATION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(referendumStageDuration)), 
+                Arrays.<Type>asList(new Uint256(referendumStageDuration)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1599,7 +1599,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setExecutionStageDuration(BigInteger executionStageDuration) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETEXECUTIONSTAGEDURATION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(executionStageDuration)), 
+                Arrays.<Type>asList(new Uint256(executionStageDuration)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1607,7 +1607,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setParticipationBaseline(BigInteger participationBaseline) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETPARTICIPATIONBASELINE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(participationBaseline)), 
+                Arrays.<Type>asList(new Uint256(participationBaseline)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1615,7 +1615,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setParticipationFloor(BigInteger participationFloor) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETPARTICIPATIONFLOOR, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(participationFloor)), 
+                Arrays.<Type>asList(new Uint256(participationFloor)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1623,7 +1623,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setBaselineUpdateFactor(BigInteger baselineUpdateFactor) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETBASELINEUPDATEFACTOR, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(baselineUpdateFactor)), 
+                Arrays.<Type>asList(new Uint256(baselineUpdateFactor)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1631,7 +1631,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setBaselineQuorumFactor(BigInteger baselineQuorumFactor) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETBASELINEQUORUMFACTOR, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(baselineQuorumFactor)), 
+                Arrays.<Type>asList(new Uint256(baselineQuorumFactor)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1639,9 +1639,9 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setConstitution(String destination, byte[] functionId, BigInteger threshold) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETCONSTITUTION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(destination), 
-                new org.web3j.abi.datatypes.generated.Bytes4(functionId), 
-                new org.web3j.abi.datatypes.generated.Uint256(threshold)), 
+                Arrays.<Type>asList(new Address(destination), 
+                new Bytes4(functionId), 
+                new Uint256(threshold)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1649,17 +1649,17 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> propose(List<BigInteger> values, List<String> destinations, byte[] data, List<BigInteger> dataLengths, String descriptionUrl, BigInteger weiValue) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_PROPOSE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint256>(
-                        org.web3j.abi.datatypes.generated.Uint256.class,
-                        org.web3j.abi.Utils.typeMap(values, org.web3j.abi.datatypes.generated.Uint256.class)), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.Address>(
-                        org.web3j.abi.datatypes.Address.class,
-                        org.web3j.abi.Utils.typeMap(destinations, org.web3j.abi.datatypes.Address.class)), 
-                new org.web3j.abi.datatypes.DynamicBytes(data), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint256>(
-                        org.web3j.abi.datatypes.generated.Uint256.class,
-                        org.web3j.abi.Utils.typeMap(dataLengths, org.web3j.abi.datatypes.generated.Uint256.class)), 
-                new org.web3j.abi.datatypes.Utf8String(descriptionUrl)), 
+                Arrays.<Type>asList(new DynamicArray<Uint256>(
+                        Uint256.class,
+                        org.web3j.abi.Utils.typeMap(values, Uint256.class)), 
+                new DynamicArray<Address>(
+                        Address.class,
+                        org.web3j.abi.Utils.typeMap(destinations, Address.class)), 
+                new DynamicBytes(data), 
+                new DynamicArray<Uint256>(
+                        Uint256.class,
+                        org.web3j.abi.Utils.typeMap(dataLengths, Uint256.class)), 
+                new Utf8String(descriptionUrl)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function, weiValue);
     }
@@ -1667,16 +1667,16 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> upvote(BigInteger proposalId, BigInteger lesser, BigInteger greater) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_UPVOTE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId), 
-                new org.web3j.abi.datatypes.generated.Uint256(lesser), 
-                new org.web3j.abi.datatypes.generated.Uint256(greater)), 
+                Arrays.<Type>asList(new Uint256(proposalId), 
+                new Uint256(lesser), 
+                new Uint256(greater)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<BigInteger> getProposalStage(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPROPOSALSTAGE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint8>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1684,8 +1684,8 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> revokeUpvote(BigInteger lesser, BigInteger greater) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REVOKEUPVOTE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(lesser), 
-                new org.web3j.abi.datatypes.generated.Uint256(greater)), 
+                Arrays.<Type>asList(new Uint256(lesser), 
+                new Uint256(greater)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1693,8 +1693,8 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> approve(BigInteger proposalId, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_APPROVE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId), 
-                new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(proposalId), 
+                new Uint256(index)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1702,9 +1702,9 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> vote(BigInteger proposalId, BigInteger index, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_VOTE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId), 
-                new org.web3j.abi.datatypes.generated.Uint256(index), 
-                new org.web3j.abi.datatypes.generated.Uint8(value)), 
+                Arrays.<Type>asList(new Uint256(proposalId), 
+                new Uint256(index), 
+                new Uint8(value)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1712,8 +1712,8 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> execute(BigInteger proposalId, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_EXECUTE, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId), 
-                new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(proposalId), 
+                new Uint256(index)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1721,15 +1721,15 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> approveHotfix(byte[] hash) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_APPROVEHOTFIX, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(hash)), 
+                Arrays.<Type>asList(new Bytes32(hash)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Boolean> isHotfixWhitelistedBy(byte[] hash, String whitelister) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISHOTFIXWHITELISTEDBY, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(hash), 
-                new org.web3j.abi.datatypes.Address(whitelister)), 
+                Arrays.<Type>asList(new Bytes32(hash), 
+                new Address(whitelister)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -1737,7 +1737,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> whitelistHotfix(byte[] hash) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WHITELISTHOTFIX, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(hash)), 
+                Arrays.<Type>asList(new Bytes32(hash)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1745,7 +1745,7 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> prepareHotfix(byte[] hash) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_PREPAREHOTFIX, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(hash)), 
+                Arrays.<Type>asList(new Bytes32(hash)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1753,17 +1753,17 @@ public class Governance extends Contract {
     public RemoteFunctionCall<TransactionReceipt> executeHotfix(List<BigInteger> values, List<String> destinations, byte[] data, List<BigInteger> dataLengths, byte[] salt) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_EXECUTEHOTFIX, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint256>(
-                        org.web3j.abi.datatypes.generated.Uint256.class,
-                        org.web3j.abi.Utils.typeMap(values, org.web3j.abi.datatypes.generated.Uint256.class)), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.Address>(
-                        org.web3j.abi.datatypes.Address.class,
-                        org.web3j.abi.Utils.typeMap(destinations, org.web3j.abi.datatypes.Address.class)), 
-                new org.web3j.abi.datatypes.DynamicBytes(data), 
-                new org.web3j.abi.datatypes.DynamicArray<org.web3j.abi.datatypes.generated.Uint256>(
-                        org.web3j.abi.datatypes.generated.Uint256.class,
-                        org.web3j.abi.Utils.typeMap(dataLengths, org.web3j.abi.datatypes.generated.Uint256.class)), 
-                new org.web3j.abi.datatypes.generated.Bytes32(salt)), 
+                Arrays.<Type>asList(new DynamicArray<Uint256>(
+                        Uint256.class,
+                        org.web3j.abi.Utils.typeMap(values, Uint256.class)), 
+                new DynamicArray<Address>(
+                        Address.class,
+                        org.web3j.abi.Utils.typeMap(destinations, Address.class)), 
+                new DynamicBytes(data), 
+                new DynamicArray<Uint256>(
+                        Uint256.class,
+                        org.web3j.abi.Utils.typeMap(dataLengths, Uint256.class)), 
+                new Bytes32(salt)), 
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1778,7 +1778,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Boolean> isVoting(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISVOTING, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -1824,14 +1824,14 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Boolean> proposalExists(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_PROPOSALEXISTS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Tuple5<String, BigInteger, BigInteger, BigInteger, String>> getProposal(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPROPOSAL, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Utf8String>() {}));
         return new RemoteFunctionCall<Tuple5<String, BigInteger, BigInteger, BigInteger, String>>(function,
                 new Callable<Tuple5<String, BigInteger, BigInteger, BigInteger, String>>() {
@@ -1850,8 +1850,8 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Tuple3<BigInteger, String, byte[]>> getProposalTransaction(BigInteger proposalId, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPROPOSALTRANSACTION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId), 
-                new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(proposalId), 
+                new Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Address>() {}, new TypeReference<DynamicBytes>() {}));
         return new RemoteFunctionCall<Tuple3<BigInteger, String, byte[]>>(function,
                 new Callable<Tuple3<BigInteger, String, byte[]>>() {
@@ -1868,14 +1868,14 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Boolean> isApproved(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISAPPROVED, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Tuple3<BigInteger, BigInteger, BigInteger>> getVoteTotals(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETVOTETOTALS, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple3<BigInteger, BigInteger, BigInteger>>(function,
                 new Callable<Tuple3<BigInteger, BigInteger, BigInteger>>() {
@@ -1892,8 +1892,8 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Tuple3<BigInteger, BigInteger, BigInteger>> getVoteRecord(String account, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETVOTERECORD, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account), 
-                new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Address(account), 
+                new Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple3<BigInteger, BigInteger, BigInteger>>(function,
                 new Callable<Tuple3<BigInteger, BigInteger, BigInteger>>() {
@@ -1917,7 +1917,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> getUpvotes(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETUPVOTES, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1955,7 +1955,7 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> getUpvoteRecord(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETUPVOTERECORD, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -1971,28 +1971,28 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<BigInteger> getMostRecentReferendumProposal(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETMOSTRECENTREFERENDUMPROPOSAL, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(account)), 
+                Arrays.<Type>asList(new Address(account)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> hotfixWhitelistValidatorTally(byte[] hash) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_HOTFIXWHITELISTVALIDATORTALLY, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(hash)), 
+                Arrays.<Type>asList(new Bytes32(hash)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Boolean> isHotfixPassing(byte[] hash) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISHOTFIXPASSING, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(hash)), 
+                Arrays.<Type>asList(new Bytes32(hash)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Tuple3<Boolean, Boolean, BigInteger>> getHotfixRecord(byte[] hash) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETHOTFIXRECORD, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Bytes32(hash)), 
+                Arrays.<Type>asList(new Bytes32(hash)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}, new TypeReference<Bool>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple3<Boolean, Boolean, BigInteger>>(function,
                 new Callable<Tuple3<Boolean, Boolean, BigInteger>>() {
@@ -2017,44 +2017,44 @@ public class Governance extends Contract {
 
     public RemoteFunctionCall<Boolean> isQueued(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISQUEUED, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Boolean> isProposalPassing(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISPROPOSALPASSING, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Boolean> isDequeuedProposal(BigInteger proposalId, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISDEQUEUEDPROPOSAL, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId), 
-                new org.web3j.abi.datatypes.generated.Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(proposalId), 
+                new Uint256(index)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Boolean> isDequeuedProposalExpired(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISDEQUEUEDPROPOSALEXPIRED, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Boolean> isQueuedProposalExpired(BigInteger proposalId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISQUEUEDPROPOSALEXPIRED, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.generated.Uint256(proposalId)), 
+                Arrays.<Type>asList(new Uint256(proposalId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<BigInteger> getConstitution(String destination, byte[] functionId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETCONSTITUTION, 
-                Arrays.<Type>asList(new org.web3j.abi.datatypes.Address(destination), 
-                new org.web3j.abi.datatypes.generated.Bytes4(functionId)), 
+                Arrays.<Type>asList(new Address(destination), 
+                new Bytes4(functionId)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }

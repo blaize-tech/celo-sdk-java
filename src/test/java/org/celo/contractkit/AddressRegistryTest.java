@@ -25,12 +25,4 @@ public class AddressRegistryTest {
         System.out.println(address);
         assertEquals(42, address.length());
     }
-
-//    @Test
-//    @Ignore
-//    public void testGetAllContractAddresses() {
-//        Map<CeloContract, String> addresses = registry.allAddresses();
-//
-//        assertEquals(CeloContract.values().length, addresses.size());
-//    }
 }

@@ -16,7 +16,7 @@ public enum CeloContract {
     GoldToken,
     Governance,
     LockedGold,
-//    MultiSig,
+    MultiSig,
     Random,
     Registry,
     Reserve,

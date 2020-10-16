@@ -3,7 +3,6 @@ package org.celo.contractkit;
 import org.celo.contractkit.wrapper.StableTokenWrapper;
 import org.junit.Before;
 import org.junit.Test;
-import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
@@ -22,8 +21,8 @@ public class StableTokenTest {
     @Before
     public void initialize() {
         Web3j web3j = Web3j.build(new HttpService(ContractKit.ALFAJORES_TESTNET));
-        Credentials credentials = Credentials.create(PRIVATE_KEY_1);
-        contractKit = new ContractKit(web3j, credentials);
+        contractKit = new ContractKit(web3j);
+        contractKit.addAccount(PRIVATE_KEY_1);
         stableToken = contractKit.contracts.getStableToken();
     }
 
@@ -54,7 +53,7 @@ public class StableTokenTest {
     public void testTransferFrom() throws Exception {
         BigInteger initialBalance = stableToken.balanceOf(PUBLIC_KEY_2).send();
 
-        TransactionReceipt increaseTxHash = stableToken.increaseAllowance(contractKit.credentials.getAddress(), ONE_GWEI).send();
+        TransactionReceipt increaseTxHash = stableToken.increaseAllowance(contractKit.getAddress(), ONE_GWEI).send();
         assertTrue(increaseTxHash.isStatusOK());
         assertNotNull(increaseTxHash.getTransactionHash());
 

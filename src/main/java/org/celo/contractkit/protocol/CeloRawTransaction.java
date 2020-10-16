@@ -23,6 +23,7 @@ public class CeloRawTransaction extends RawTransaction {
      * Value paid to the gateway fee recipient, denominated in the fee currency
      */
     private BigInteger gatewayFee;
+    private String from;
 
     public CeloRawTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, String to, BigInteger value, String data, String feeCurrency, String gatewayFeeRecipient, BigInteger gatewayFee) {
         super(nonce, gasPrice, gasLimit, to, value, data);
@@ -36,6 +37,14 @@ public class CeloRawTransaction extends RawTransaction {
         this.feeCurrency = feeCurrency;
         this.gatewayFeeRecipient = gatewayFeeRecipient;
         this.gatewayFee = gatewayFee;
+    }
+
+    public CeloRawTransaction(BigInteger nonce, BigInteger gasPrice, BigInteger gasLimit, String to, BigInteger value, String data, BigInteger gasPremium, BigInteger feeCap, String feeCurrency, String gatewayFeeRecipient, BigInteger gatewayFee, String from) {
+        super(nonce, gasPrice, gasLimit, to, value, data, gasPremium, feeCap);
+        this.feeCurrency = feeCurrency;
+        this.gatewayFeeRecipient = gatewayFeeRecipient;
+        this.gatewayFee = gatewayFee;
+        this.from = from;
     }
 
     public static CeloRawTransaction createCeloTransaction(
@@ -73,6 +82,14 @@ public class CeloRawTransaction extends RawTransaction {
 
     public void setGatewayFee(BigInteger gatewayFee) {
         this.gatewayFee = gatewayFee;
+    }
+
+    public String getFrom() {
+        return from;
+    }
+
+    public void setFrom(String from) {
+        this.from = from;
     }
 
     @Override

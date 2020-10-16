@@ -9,6 +9,7 @@ import org.web3j.tuples.generated.Tuple5;
 import org.web3j.tuples.generated.Tuple7;
 
 import java.math.BigInteger;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class ValidatorsWrapper extends BaseWrapper<Validators> {
@@ -168,8 +169,12 @@ public class ValidatorsWrapper extends BaseWrapper<Validators> {
         return contract.setValidatorLockedGoldRequirements(value, duration);
     }
 
-    public RemoteFunctionCall<TransactionReceipt> registerValidator(byte[] ecdsaPublicKey, byte[] blsPublicKey, byte[] blsPop) {
-        return contract.registerValidator(ecdsaPublicKey, blsPublicKey, blsPop);
+    public RemoteFunctionCall<TransactionReceipt> registerValidator(byte[] ecdsaPublicKey, String blsPublicKey, String blsPop) {
+        return contract.registerValidator(
+                ecdsaPublicKey,
+                blsPublicKey.getBytes(StandardCharsets.UTF_8),
+                blsPop.getBytes(StandardCharsets.UTF_8)
+        );
     }
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> getValidatorScoreParameters() {

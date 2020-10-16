@@ -212,4 +212,15 @@ public class WrapperCache {
             return wrapper;
         }
     }
+
+    public MultiSigWrapper getMultiSig(String address) {
+        if (cache.containsKey(CeloContract.MultiSig)) {
+            return (MultiSigWrapper) cache.get(CeloContract.MultiSig);
+        } else {
+            MultiSig contract = MultiSig.load(address, web3j, transactionManager, gasProvider);
+            MultiSigWrapper wrapper = new MultiSigWrapper(contract);
+            cache.put(CeloContract.MultiSig, wrapper);
+            return wrapper;
+        }
+    }
 }

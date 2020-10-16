@@ -1,10 +1,7 @@
 package org.celo.contractkit;
 
-import org.celo.contractkit.contract.GasPriceMinimum;
-import org.celo.contractkit.contract.GoldToken;
-import org.celo.contractkit.contract.LockedGold;
-import org.celo.contractkit.contract.StableToken;
 import org.celo.contractkit.protocol.CeloRawTransaction;
+import org.celo.contractkit.protocol.CeloRawTransactionBuilder;
 import org.celo.contractkit.protocol.CeloTransaction;
 import org.celo.contractkit.protocol.CeloTransactionManager;
 import org.celo.contractkit.wrapper.GasPriceMinimumWrapper;
@@ -27,31 +24,23 @@ public class ContractKit {
     public static final String BAKLAVA_TESTNET = "https://baklava-blockscout.celo-testnet.org";
     public static final String MAINNET = "https://rc1-forno.celo-testnet.org";
 
-    public static final long CHAIN_ID = 44787;
-
     private static final Logger logger = LoggerFactory.getLogger(ContractKit.class);
 
     public final Web3j web3j;
-    public final Credentials credentials;
     public final WrapperCache contracts;
     public final ContractKitOptions config;
     public final CeloTransactionManager transactionManager;
 
     public ContractKit(Web3j web3j) {
-        this(web3j, null, null);
+        this(web3j, null);
     }
 
-    public ContractKit(Web3j web3j, Credentials credentials) {
-        this(web3j, credentials, null);
-    }
-
-    public ContractKit(Web3j web3j, Credentials credentials, ContractKitOptions config) {
+    public ContractKit(Web3j web3j, ContractKitOptions config) {
         this.web3j = web3j;
         this.config = config != null ? config : ContractKitOptions.DEFAULT;
-        this.credentials = credentials;
 
         // TODO add chain id
-        this.transactionManager = new CeloTransactionManager(web3j, this.credentials, this.config.from, CHAIN_ID, this.config.gasInflationFactor);
+        this.transactionManager = new CeloTransactionManager(web3j, this.config.from, this.config.chainId, this.config.gasInflationFactor);
         this.contracts = new WrapperCache(web3j, transactionManager);
 
         setFeeCurrency(this.config.feeCurrency);
@@ -69,6 +58,11 @@ public class ContractKit {
 
     public void setGatewayFeeRecipient(String gatewayFeeRecipient) {
         transactionManager.setGatewayFeeRecipient(gatewayFeeRecipient);
+    }
+
+    public String getAddress() {
+        Credentials credentials = transactionManager.wallet.getDefaultAccount();
+        return credentials != null ? credentials.getAddress() : null;
     }
 
     public void setGatewayFee(BigInteger gatewayFee) {
@@ -118,11 +112,11 @@ public class ContractKit {
      * - estimatesGas before sending
      * TODO add celo exception
      */
-    public EthSendTransaction sendTransaction(CeloRawTransaction tx) throws Exception {
+    public EthSendTransaction sendTransaction(CeloRawTransaction tx, String from) throws Exception {
         String feeCurrency = tx.getFeeCurrency() != null ? tx.getFeeCurrency() : contracts.addressFor(config.feeCurrency);
         BigInteger minimalGasPrice = getGasPriceMinimum(feeCurrency, config.gasPrice);
 
-        CeloTransaction callTransaction = CeloTransaction.createCeloCallTransaction(config.from, tx.getTo(), tx.getData());
+        CeloTransaction callTransaction = CeloTransaction.createCeloCallTransaction(from != null ? from : config.from, tx.getTo(), tx.getData());
         EthEstimateGas estimateGas = web3j.ethEstimateGas(callTransaction).send();
         BigInteger gasLimit = BigDecimal.valueOf(estimateGas.getAmountUsed().doubleValue() * config.gasInflationFactor).toBigInteger();
         logger.debug("Estimated Gas, {}", gasLimit);
@@ -130,9 +124,21 @@ public class ContractKit {
         return transactionManager.sendTransaction(
                 minimalGasPrice,
                 gasLimit,
-                tx.getTo() != null ? tx.getTo() : credentials.getAddress(),
+                tx.getTo(),
                 tx.getData(),
-                tx.getValue()
+                tx.getValue(),
+                from
         );
+    }
+
+    public EthSendTransaction sendTransaction(CeloContract contract, String data, String from) throws Exception {
+        CeloRawTransaction tx = new CeloRawTransactionBuilder()
+                .setTo(contracts.addressFor(contract))
+                .setData(data).build();
+        return sendTransaction(tx, from);
+    }
+
+    public void addAccount(String privateKey) {
+        this.transactionManager.wallet.addKey(privateKey);
     }
 }

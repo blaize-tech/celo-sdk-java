@@ -8,12 +8,233 @@ import org.web3j.tuples.generated.Tuple3;
 import org.web3j.tuples.generated.Tuple4;
 import org.web3j.tuples.generated.Tuple5;
 
+import java.io.ByteArrayOutputStream;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class GovernanceWrapper extends BaseWrapper<Governance> {
+    public enum ProposalStage {
+        None(0),
+        Queued(1),
+        Approval(2),
+        Referendum(3),
+        Execution(4),
+        Expiration(5);
+
+        public int id;
+
+        ProposalStage(int id) {
+            this.id = id;
+        }
+
+        public static ProposalStage fromId(BigInteger id) {
+            int intId = id.intValue();
+            for (ProposalStage type : values()) {
+                if (type.id == intId) {
+                    return type;
+                }
+            }
+            return null;
+        }
+    }
+
+    public static class ProposalMetadata {
+        public final String proposer;
+        public final BigInteger deposit;
+        public final BigInteger timestamp;
+        public final int transactionCount;
+        public final String descriptionURL;
+
+        public ProposalMetadata(String proposer, BigInteger deposit, BigInteger timestamp, int transactionCount, String descriptionURL) {
+            this.proposer = proposer;
+            this.deposit = deposit;
+            this.timestamp = timestamp;
+            this.transactionCount = transactionCount;
+            this.descriptionURL = descriptionURL;
+        }
+    }
+
+    enum VoteValue {
+        NONE,
+        Abstain,
+        No,
+        Yes,
+    }
+
+    public static class Transaction {
+        public final BigInteger value;
+        public final String destination;
+        public final byte[] data;
+        public final String to;
+        public final String input;
+
+        public Transaction(BigInteger value, String destination, byte[] data, String to, String input) {
+            this.value = value;
+            this.destination = destination;
+            this.data = data;
+            this.to = to;
+            this.input = input;
+        }
+    }
+
+    public static class Votes {
+        public final BigInteger yes;
+        public final BigInteger no;
+        public final BigInteger abstain;
+
+        public Votes() {
+            this.yes = BigInteger.valueOf(0);
+            this.no = BigInteger.valueOf(0);
+            this.abstain = BigInteger.valueOf(0);
+        }
+
+        public Votes(BigInteger yes, BigInteger no, BigInteger abstain) {
+            this.yes = yes;
+            this.no = no;
+            this.abstain = abstain;
+        }
+    }
+
+
+    public static class ProposalRecord {
+        public final ProposalStage stage;
+        public final ProposalMetadata metadata;
+        public final BigInteger upvotes;
+        public final Votes votes;
+        public final Proposal proposal;
+        public final boolean passing;
+
+        public ProposalRecord(ProposalStage stage, ProposalMetadata metadata, BigInteger upvotes, Votes votes, Proposal proposal, boolean passing) {
+            this.stage = stage;
+            this.metadata = metadata;
+            this.upvotes = upvotes;
+            this.votes = votes;
+            this.proposal = proposal;
+            this.passing = passing;
+        }
+    }
+
+    public static class Proposal {
+        public final List<Transaction> transactions;
+
+        public Proposal() {
+            this.transactions = new ArrayList<>();
+        }
+
+        public Proposal(List<Transaction> transactions) {
+            this.transactions = transactions;
+        }
+
+        public void addTx() {
+
+        }
+    }
+
+    public static class ProposalParams {
+        public final List<BigInteger> values;
+        public final List<String> destinations;
+        public final byte[] data;
+        public final List<BigInteger> dataLengths;
+        public final String descriptionUrl;
+
+        public ProposalParams(List<BigInteger> values, List<String> destinations, byte[] data, List<BigInteger> dataLengths, String descriptionUrl) {
+            this.values = values;
+            this.destinations = destinations;
+            this.data = data;
+            this.dataLengths = dataLengths;
+            this.descriptionUrl = descriptionUrl;
+        }
+    }
+
+    public static class Config {
+        public final BigInteger concurrentProposals;
+        public final BigInteger dequeueFrequency;
+        public final BigInteger minDeposit;
+        public final BigInteger queueExpiry;
+        public final BigInteger stageDurationsApproval;
+        public final BigInteger stageDurationsReferendum;
+        public final BigInteger stageDurationsExecution;
+
+        Config(BigInteger concurrentProposals, BigInteger dequeueFrequency, BigInteger minDeposit, BigInteger queueExpiry, Tuple3<BigInteger, BigInteger, BigInteger> stageDurations) {
+            this.concurrentProposals = concurrentProposals;
+            this.dequeueFrequency = dequeueFrequency;
+            this.minDeposit = minDeposit;
+            this.queueExpiry = queueExpiry;
+            this.stageDurationsApproval = stageDurations.component1();
+            this.stageDurationsReferendum = stageDurations.component2();
+            this.stageDurationsExecution = stageDurations.component3();
+        }
+    }
+
     public GovernanceWrapper(Governance contract) {
         super(contract);
+    }
+
+    public Config getConfig() throws Exception {
+        return new Config(
+                this.concurrentProposals().send(),
+                this.dequeueFrequency().send(),
+                this.minDeposit().send(),
+                this.queueExpiry().send(),
+                this.stageDurations().send()
+        );
+    }
+
+    public static ProposalParams proposalToParams(Proposal proposal, String description) {
+        List<Transaction> transactions = proposal.transactions;
+
+        List<byte[]> arrays = transactions.stream().map(transaction -> transaction.data).collect(Collectors.toList());
+        final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        for (final byte[] array : arrays) {
+            if (array != null) {
+                out.write(array, 0, array.length);
+            }
+        }
+
+        return new ProposalParams(
+                transactions.stream().map(transaction -> transaction.value).collect(Collectors.toList()),
+                transactions.stream().map(transaction -> transaction.to).collect(Collectors.toList()),
+                out.toByteArray(),
+                arrays.stream().map(array -> BigInteger.valueOf(array.length)).collect(Collectors.toList()),
+                description
+        );
+    }
+
+    public Proposal getProposal(BigInteger proposalID) throws Exception {
+        ProposalMetadata metadata = this.getProposalMetadata(proposalID);
+
+        List<Transaction> transactions = IntStream.range(0, metadata.transactionCount).mapToObj((idx) -> {
+            try {
+                Tuple3<BigInteger, String, byte[]> transaction = this.getProposalTransaction(proposalID, BigInteger.valueOf(idx)).send();
+                return new Transaction(
+                        transaction.component1(),
+                        transaction.component2(),
+                        transaction.component3(),
+                        "to",
+                        "input");
+            } catch (Exception e) {
+                return null;
+            }
+        }).filter(Objects::nonNull).collect(Collectors.toList());
+
+        return new Proposal(transactions);
+    }
+
+    private BigInteger getIndex(BigInteger id, List<BigInteger> array) {
+        int index = array.indexOf(id);
+        if (index == -1) {
+            throw new Error("ID " + id + " not found in array");
+        }
+        return BigInteger.valueOf(index);
+    }
+
+    public BigInteger getDequeueIndex(BigInteger proposalID) throws Exception {
+        List dequeue = getDequeue().send();
+        return this.getIndex(proposalID, dequeue);
     }
 
     public RemoteFunctionCall<String> approver() {
@@ -26,6 +247,49 @@ public class GovernanceWrapper extends BaseWrapper<Governance> {
 
     public RemoteFunctionCall<BigInteger> concurrentProposals() {
         return contract.concurrentProposals();
+    }
+
+    public ProposalMetadata getProposalMetadata(BigInteger proposalID) throws Exception {
+        Tuple5<String, BigInteger, BigInteger, BigInteger, String> proposal = contract.getProposal(proposalID).send();
+        return new ProposalMetadata(
+                proposal.component1(),
+                proposal.component2(),
+                proposal.component3(),
+                proposal.component4().intValue(),
+                proposal.component5()
+        );
+    }
+
+    public ProposalRecord getProposalRecord(BigInteger proposalID) throws Exception {
+        ProposalMetadata metadata = this.getProposalMetadata(proposalID);
+        Proposal proposal = this.getProposal(proposalID);
+        BigInteger stageValue = this.getProposalStage(proposalID).send();
+        ProposalStage stage = ProposalStage.fromId(stageValue);
+        Boolean passing = this.isProposalPassing(proposalID).send();
+
+        BigInteger upvotes = BigInteger.ZERO;
+        Votes votes = new Votes();
+
+        if (stage == ProposalStage.Queued) {
+            upvotes = this.getUpvotes(proposalID).send();
+        } else if (stage != ProposalStage.Expiration) {
+            votes = this.getVotes(proposalID);
+        }
+
+        return new ProposalRecord(
+                stage,
+                metadata,
+                upvotes,
+                votes,
+                proposal,
+                passing
+        );
+    }
+
+    private Votes getVotes(BigInteger proposalID) throws Exception {
+        Tuple3<BigInteger, BigInteger, BigInteger> votes = contract.getVoteTotals(proposalID).send();
+
+        return new Votes(votes.component1(), votes.component2(), votes.component3());
     }
 
     public RemoteFunctionCall<BigInteger> dequeueFrequency() {
@@ -212,6 +476,18 @@ public class GovernanceWrapper extends BaseWrapper<Governance> {
         return contract.setConstitution(destination, functionId, threshold);
     }
 
+    public RemoteFunctionCall<TransactionReceipt> propose(Proposal proposal, String descriptionUrl) {
+        ProposalParams params = proposalToParams(proposal, descriptionUrl);
+        return contract.propose(
+                params.values,
+                params.destinations,
+                params.data,
+                params.dataLengths,
+                params.descriptionUrl,
+                BigInteger.ZERO
+        );
+    }
+
     public RemoteFunctionCall<TransactionReceipt> propose(List<BigInteger> values, List<String> destinations, byte[] data, List<BigInteger> dataLengths, String descriptionUrl, BigInteger weiValue) {
         return contract.propose(values, destinations, data, dataLengths, descriptionUrl, weiValue);
     }
@@ -232,7 +508,8 @@ public class GovernanceWrapper extends BaseWrapper<Governance> {
         return contract.approve(proposalId, index);
     }
 
-    public RemoteFunctionCall<TransactionReceipt> vote(BigInteger proposalId, BigInteger index, BigInteger value) {
+    public RemoteFunctionCall<TransactionReceipt> vote(BigInteger proposalId, BigInteger value) throws Exception {
+        BigInteger index = this.getDequeueIndex(proposalId);
         return contract.vote(proposalId, index, value);
     }
 
@@ -286,10 +563,6 @@ public class GovernanceWrapper extends BaseWrapper<Governance> {
 
     public RemoteFunctionCall<Boolean> proposalExists(BigInteger proposalId) {
         return contract.proposalExists(proposalId);
-    }
-
-    public RemoteFunctionCall<Tuple5<String, BigInteger, BigInteger, BigInteger, String>> getProposal(BigInteger proposalId) {
-        return contract.getProposal(proposalId);
     }
 
     public RemoteFunctionCall<Tuple3<BigInteger, String, byte[]>> getProposalTransaction(BigInteger proposalId, BigInteger index) {

@@ -7,6 +7,8 @@ public class ContractKitOptions {
     private static final double DEFAULT_GAS_PRICE_SUGGESTION_MULTIPLIER = 5;
     /** Gas price is 0 means the node will compute gasPrice on its own */
     private static final BigInteger DEFAULT_PRICE = BigInteger.ZERO;
+    public static final long CHAIN_ID = 44787;
+    public static final long GANACHE_CHAIN_ID = 1337;
 
     public double gasInflationFactor;
     // TODO: remove once cUSD gasPrice is available on minimumClientVersion node rpc
@@ -14,13 +16,15 @@ public class ContractKitOptions {
     public BigInteger gasPrice;
     public CeloContract feeCurrency;
     public String from;
+    public long chainId;
 
-    public ContractKitOptions(double gasInflationFactor, double gasPriceSuggestionMultiplier, BigInteger gasPrice, CeloContract feeCurrency, String from) {
+    public ContractKitOptions(double gasInflationFactor, double gasPriceSuggestionMultiplier, BigInteger gasPrice, CeloContract feeCurrency, String from, long chainId) {
         this.gasInflationFactor = gasInflationFactor;
         this.gasPriceSuggestionMultiplier = gasPriceSuggestionMultiplier;
         this.gasPrice = gasPrice;
         this.feeCurrency = feeCurrency;
         this.from = from;
+        this.chainId = chainId;
     }
 
     static class Builder {
@@ -29,6 +33,7 @@ public class ContractKitOptions {
         private BigInteger gasPrice;
         private CeloContract feeCurrency;
         private String from;
+        private long chainId;
 
         public Builder setGasInflationFactor(double gasInflationFactor) {
             this.gasInflationFactor = gasInflationFactor;
@@ -55,8 +60,13 @@ public class ContractKitOptions {
             return this;
         }
 
+        public Builder setChainId(long chainId) {
+            this.chainId = chainId;
+            return this;
+        }
+
         public ContractKitOptions build() {
-            return new ContractKitOptions(gasInflationFactor, gasPriceSuggestionMultiplier, gasPrice, feeCurrency, from);
+            return new ContractKitOptions(gasInflationFactor, gasPriceSuggestionMultiplier, gasPrice, feeCurrency, from, chainId);
         }
     }
 
@@ -65,5 +75,14 @@ public class ContractKitOptions {
             .setGasPriceSuggestionMultiplier(DEFAULT_GAS_PRICE_SUGGESTION_MULTIPLIER)
             .setGasPrice(DEFAULT_PRICE)
             .setFeeCurrency(CeloContract.StableToken)
+            .setChainId(CHAIN_ID)
+            .build();
+
+    public static final ContractKitOptions GANACHE_OPTIONS = new Builder()
+            .setGasInflationFactor(DEFAULT_GAS_INFLATION_FACTOR)
+            .setGasPriceSuggestionMultiplier(DEFAULT_GAS_PRICE_SUGGESTION_MULTIPLIER)
+            .setGasPrice(DEFAULT_PRICE)
+            .setFeeCurrency(CeloContract.StableToken)
+            .setChainId(GANACHE_CHAIN_ID)
             .build();
 }

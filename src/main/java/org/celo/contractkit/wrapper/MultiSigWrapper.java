@@ -13,6 +13,10 @@ public class MultiSigWrapper extends BaseWrapper<MultiSig> {
         super(contract);
     }
 
+    public String getAddress() {
+        return contract.getContractAddress();
+    }
+
     public RemoteFunctionCall<BigInteger> MAX_OWNER_COUNT() {
         return contract.MAX_OWNER_COUNT();
     }

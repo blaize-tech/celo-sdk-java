@@ -102,4 +102,8 @@ public class AccountsWrapper extends BaseWrapper<Accounts> {
     public RemoteFunctionCall<Boolean> isAuthorizedSigner(String signer) {
         return contract.isAuthorizedSigner(signer);
     }
+
+    public RemoteFunctionCall<TransactionReceipt> setWalletAddress(String address) {
+        return contract.setWalletAddress(address, BigInteger.ZERO, "0x0".getBytes(), "0x0".getBytes());
+    }
 }

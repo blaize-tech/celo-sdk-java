@@ -3,6 +3,7 @@ package org.celo.contractkit.protocol;
 import org.web3j.crypto.Credentials;
 import org.web3j.crypto.Hash;
 import org.web3j.crypto.RawTransaction;
+import org.web3j.crypto.TransactionEncoder;
 import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.DefaultBlockParameter;
 import org.web3j.protocol.core.DefaultBlockParameterName;
@@ -20,13 +21,15 @@ import org.web3j.utils.TxHashVerifier;
 import java.io.IOException;
 import java.math.BigInteger;
 
+import static org.celo.contractkit.ContractKitOptions.GANACHE_CHAIN_ID;
+
 public class CeloTransactionManager extends TransactionManager {
 
     private final Web3j web3j;
-    private final Credentials credentials;
 
     private final double gasInflationFactor;
     private final long chainId;
+    public final CeloWallet wallet;
 
     private String feeCurrency;
     private String gatewayFeeRecipient;
@@ -34,11 +37,12 @@ public class CeloTransactionManager extends TransactionManager {
 
     protected TxHashVerifier txHashVerifier = new TxHashVerifier();
 
-    public CeloTransactionManager(Web3j web3j, Credentials credentials, String from, long chainId, double gasInflationFactor) {
-        super(web3j, credentials != null ? credentials.getAddress() : from);
+    public CeloTransactionManager(Web3j web3j, String from, long chainId, double gasInflationFactor) {
+        super(web3j, from);
 
         this.web3j = web3j;
-        this.credentials = credentials;
+        this.wallet = new CeloWallet();
+
         this.gasInflationFactor = gasInflationFactor;
         this.chainId = chainId;
     }
@@ -59,10 +63,19 @@ public class CeloTransactionManager extends TransactionManager {
         this.gatewayFee = gatewayFee;
     }
 
-    protected BigInteger getNonce() throws IOException {
+    public Credentials getCredentials() {
+        return wallet.getDefaultAccount();
+    }
+
+    public Credentials getCredentials(String from) {
+        Credentials credentials = wallet.getKey(from);
+        return credentials != null ? credentials : getCredentials();
+    }
+
+    protected BigInteger getNonce(String from) throws IOException {
         EthGetTransactionCount ethGetTransactionCount =
                 web3j.ethGetTransactionCount(
-                        credentials.getAddress(), DefaultBlockParameterName.PENDING)
+                        getCredentials(from).getAddress(), DefaultBlockParameterName.PENDING)
                         .send();
 
         return ethGetTransactionCount.getTransactionCount();
@@ -73,7 +86,11 @@ public class CeloTransactionManager extends TransactionManager {
      * @return The transaction signed and encoded without ever broadcasting it
      */
     public String sign(CeloRawTransaction rawTransaction) {
-        byte[] signedMessage = CeloTransactionEncoder.signMessage(rawTransaction, chainId, credentials);
+        String from = rawTransaction.getFrom();
+
+        byte[] signedMessage = chainId != GANACHE_CHAIN_ID
+                ? CeloTransactionEncoder.signMessage(rawTransaction, chainId, getCredentials(from))
+                : TransactionEncoder.signMessage(rawTransaction, chainId, getCredentials(from));
         return Numeric.toHexString(signedMessage);
     }
 
@@ -90,6 +107,25 @@ public class CeloTransactionManager extends TransactionManager {
         }
 
         return ethSendTransaction;
+    }
+
+    public EthSendTransaction signAndSend(RawTransaction rawTransaction, String from) throws IOException {
+        CeloRawTransaction celoRawTransaction = new CeloRawTransaction(
+                rawTransaction.getNonce(),
+                rawTransaction.getGasPrice(),
+                rawTransaction.getGasLimit(),
+                rawTransaction.getTo(),
+                rawTransaction.getValue(),
+                rawTransaction.getData(),
+                rawTransaction.getGasPremium(),
+                rawTransaction.getFeeCap(),
+                feeCurrency,
+                gatewayFeeRecipient,
+                gatewayFee,
+                from
+        );
+
+        return signAndSend(celoRawTransaction);
     }
 
     public EthSendTransaction signAndSend(RawTransaction rawTransaction) throws IOException {
@@ -120,17 +156,39 @@ public class CeloTransactionManager extends TransactionManager {
             boolean constructor)
             throws IOException {
 
-        if (credentials == null) {
+        if (getCredentials() == null) {
             throw new UnsupportedOperationException(
                     "Only read operations are supported by this transaction manager");
         }
 
-        BigInteger nonce = getNonce();
+        BigInteger nonce = getNonce(null);
 
         RawTransaction rawTransaction =
                 RawTransaction.createTransaction(nonce, gasPrice, gasLimit, to, value, data);
 
         return signAndSend(rawTransaction);
+    }
+
+    public EthSendTransaction sendTransaction(
+            BigInteger gasPrice,
+            BigInteger gasLimit,
+            String to,
+            String data,
+            BigInteger value,
+            String from)
+            throws IOException {
+
+        if (getCredentials(from) == null) {
+            throw new UnsupportedOperationException(
+                    "Only read operations are supported by this transaction manager");
+        }
+
+        BigInteger nonce = getNonce(from);
+
+        RawTransaction rawTransaction =
+                RawTransaction.createTransaction(nonce, gasPrice, gasLimit, to, value, data);
+
+        return signAndSend(rawTransaction, from);
     }
 
     @Override
@@ -144,12 +202,12 @@ public class CeloTransactionManager extends TransactionManager {
             boolean constructor)
             throws IOException {
 
-        if (credentials == null) {
+        if (getCredentials() == null) {
             throw new UnsupportedOperationException(
                     "Only read operations are supported by this transaction manager");
         }
 
-        BigInteger nonce = getNonce();
+        BigInteger nonce = getNonce(null);
 
         RawTransaction rawTransaction =
                 RawTransaction.createTransaction(
