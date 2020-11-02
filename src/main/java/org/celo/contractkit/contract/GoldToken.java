@@ -329,7 +329,7 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -337,7 +337,7 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -345,7 +345,7 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -353,8 +353,8 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transfer(String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFER, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -362,9 +362,9 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferWithComment(String to, BigInteger value, String comment) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFERWITHCOMMENT, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value), 
-                new Utf8String(comment)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value),
+                new Utf8String(comment)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -372,8 +372,8 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> approve(String spender, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_APPROVE, 
-                Arrays.<Type>asList(new Address(spender), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(spender),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -381,8 +381,8 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> increaseAllowance(String spender, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INCREASEALLOWANCE, 
-                Arrays.<Type>asList(new Address(spender), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(spender),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -390,8 +390,8 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> decreaseAllowance(String spender, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_DECREASEALLOWANCE, 
-                Arrays.<Type>asList(new Address(spender), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(spender),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -399,9 +399,9 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferFrom(String from, String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFERFROM, 
-                Arrays.<Type>asList(new Address(from), 
-                new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(from),
+                new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -409,8 +409,8 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> mint(String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_MINT, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -445,8 +445,8 @@ public class GoldToken extends Contract {
 
     public RemoteFunctionCall<BigInteger> allowance(String owner, String spender) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ALLOWANCE, 
-                Arrays.<Type>asList(new Address(owner), 
-                new Address(spender)), 
+                Arrays.<Type>asList(new Address(owner),
+                new Address(spender)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -454,7 +454,7 @@ public class GoldToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> increaseSupply(BigInteger amount) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INCREASESUPPLY, 
-                Arrays.<Type>asList(new Uint256(amount)), 
+                Arrays.<Type>asList(new Uint256(amount)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.Exchange;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -12,8 +16,18 @@ import java.math.BigInteger;
  * using a Constant Product Market Maker Model
  */
 public class ExchangeWrapper extends BaseWrapper<Exchange> {
-    public ExchangeWrapper(Exchange contract) {
-        super(contract);
+
+    public ExchangeWrapper(Exchange contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static ExchangeWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        Exchange contract = Exchange.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new ExchangeWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<Exchange> deploy() {
+        return Exchange.deploy(web3j, transactionManager, gasProvider);
     }
 
     /**

@@ -128,7 +128,7 @@ public class Freezer extends Contract {
 
     public RemoteFunctionCall<Boolean> isFrozen(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISFROZEN, 
-                Arrays.<Type>asList(new Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -158,7 +158,7 @@ public class Freezer extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -174,7 +174,7 @@ public class Freezer extends Contract {
     public RemoteFunctionCall<TransactionReceipt> freeze(String target) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_FREEZE, 
-                Arrays.<Type>asList(new Address(target)), 
+                Arrays.<Type>asList(new Address(target)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -182,7 +182,7 @@ public class Freezer extends Contract {
     public RemoteFunctionCall<TransactionReceipt> unfreeze(String target) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_UNFREEZE, 
-                Arrays.<Type>asList(new Address(target)), 
+                Arrays.<Type>asList(new Address(target)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

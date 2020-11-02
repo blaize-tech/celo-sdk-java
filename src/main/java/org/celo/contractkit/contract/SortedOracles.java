@@ -387,8 +387,8 @@ public class SortedOracles extends Contract {
 
     public RemoteFunctionCall<Boolean> isOracle(String param0, String param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISORACLE, 
-                Arrays.<Type>asList(new Address(param0), 
-                new Address(param1)), 
+                Arrays.<Type>asList(new Address(param0),
+                new Address(param1)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -402,8 +402,8 @@ public class SortedOracles extends Contract {
 
     public RemoteFunctionCall<String> oracles(String param0, BigInteger param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ORACLES, 
-                Arrays.<Type>asList(new Address(param0), 
-                new Uint256(param1)), 
+                Arrays.<Type>asList(new Address(param0),
+                new Uint256(param1)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -433,7 +433,7 @@ public class SortedOracles extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -459,7 +459,7 @@ public class SortedOracles extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(BigInteger _reportExpirySeconds) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Uint256(_reportExpirySeconds)), 
+                Arrays.<Type>asList(new Uint256(_reportExpirySeconds)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -467,7 +467,7 @@ public class SortedOracles extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setReportExpiry(BigInteger _reportExpirySeconds) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREPORTEXPIRY, 
-                Arrays.<Type>asList(new Uint256(_reportExpirySeconds)), 
+                Arrays.<Type>asList(new Uint256(_reportExpirySeconds)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -475,8 +475,8 @@ public class SortedOracles extends Contract {
     public RemoteFunctionCall<TransactionReceipt> addOracle(String token, String oracleAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_ADDORACLE, 
-                Arrays.<Type>asList(new Address(token), 
-                new Address(oracleAddress)), 
+                Arrays.<Type>asList(new Address(token),
+                new Address(oracleAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -484,9 +484,9 @@ public class SortedOracles extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeOracle(String token, String oracleAddress, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVEORACLE, 
-                Arrays.<Type>asList(new Address(token), 
-                new Address(oracleAddress), 
-                new Uint256(index)), 
+                Arrays.<Type>asList(new Address(token),
+                new Address(oracleAddress),
+                new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -494,15 +494,15 @@ public class SortedOracles extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeExpiredReports(String token, BigInteger n) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVEEXPIREDREPORTS, 
-                Arrays.<Type>asList(new Address(token), 
-                new Uint256(n)), 
+                Arrays.<Type>asList(new Address(token),
+                new Uint256(n)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Tuple2<Boolean, String>> isOldestReportExpired(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISOLDESTREPORTEXPIRED, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}, new TypeReference<Address>() {}));
         return new RemoteFunctionCall<Tuple2<Boolean, String>>(function,
                 new Callable<Tuple2<Boolean, String>>() {
@@ -519,24 +519,24 @@ public class SortedOracles extends Contract {
     public RemoteFunctionCall<TransactionReceipt> report(String token, BigInteger value, String lesserKey, String greaterKey) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REPORT, 
-                Arrays.<Type>asList(new Address(token), 
-                new Uint256(value), 
-                new Address(lesserKey), 
-                new Address(greaterKey)), 
+                Arrays.<Type>asList(new Address(token),
+                new Uint256(value),
+                new Address(lesserKey),
+                new Address(greaterKey)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<BigInteger> numRates(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_NUMRATES, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> medianRate(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_MEDIANRATE, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -552,7 +552,7 @@ public class SortedOracles extends Contract {
 
     public RemoteFunctionCall<Tuple3<List<String>, List<BigInteger>, List<BigInteger>>> getRates(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETRATES, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}, new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Uint8>>() {}));
         return new RemoteFunctionCall<Tuple3<List<String>, List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple3<List<String>, List<BigInteger>, List<BigInteger>>>() {
@@ -569,21 +569,21 @@ public class SortedOracles extends Contract {
 
     public RemoteFunctionCall<BigInteger> numTimestamps(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_NUMTIMESTAMPS, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> medianTimestamp(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_MEDIANTIMESTAMP, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Tuple3<List<String>, List<BigInteger>, List<BigInteger>>> getTimestamps(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETTIMESTAMPS, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}, new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Uint8>>() {}));
         return new RemoteFunctionCall<Tuple3<List<String>, List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple3<List<String>, List<BigInteger>, List<BigInteger>>>() {
@@ -600,7 +600,7 @@ public class SortedOracles extends Contract {
 
     public RemoteFunctionCall<List> getOracles(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETORACLES, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {

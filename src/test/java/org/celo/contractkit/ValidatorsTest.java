@@ -4,6 +4,7 @@ import org.celo.contractkit.wrapper.AccountsWrapper;
 import org.celo.contractkit.wrapper.LockedGoldWrapper;
 import org.celo.contractkit.wrapper.ValidatorsWrapper;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.web3j.crypto.Credentials;
 import org.web3j.protocol.Web3j;
@@ -18,6 +19,7 @@ import java.util.List;
 import static org.celo.contractkit.TestData.DERIV_PRIVATE_KEYS;
 import static org.junit.Assert.assertTrue;
 
+@Ignore
 public class ValidatorsTest {
 
     ContractKit contractKit;

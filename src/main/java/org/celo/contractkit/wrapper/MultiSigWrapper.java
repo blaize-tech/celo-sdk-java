@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.MultiSig;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple4;
@@ -9,8 +13,18 @@ import java.math.BigInteger;
 import java.util.List;
 
 public class MultiSigWrapper extends BaseWrapper<MultiSig> {
-    public MultiSigWrapper(MultiSig contract) {
-        super(contract);
+
+    public MultiSigWrapper(MultiSig contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static MultiSigWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        MultiSig contract = MultiSig.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new MultiSigWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<MultiSig> deploy() {
+        return MultiSig.deploy(web3j, transactionManager, gasProvider);
     }
 
     public String getAddress() {

@@ -451,8 +451,8 @@ public class MultiSig extends Contract {
 
     public RemoteFunctionCall<Boolean> confirmations(BigInteger param0, String param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_CONFIRMATIONS, 
-                Arrays.<Type>asList(new Uint256(param0), 
-                new Address(param1)), 
+                Arrays.<Type>asList(new Uint256(param0),
+                new Address(param1)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -473,14 +473,14 @@ public class MultiSig extends Contract {
 
     public RemoteFunctionCall<Boolean> isOwner(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISOWNER, 
-                Arrays.<Type>asList(new Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<String> owners(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_OWNERS, 
-                Arrays.<Type>asList(new Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -501,7 +501,7 @@ public class MultiSig extends Contract {
 
     public RemoteFunctionCall<Tuple4<String, BigInteger, byte[], Boolean>> transactions(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_TRANSACTIONS, 
-                Arrays.<Type>asList(new Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}, new TypeReference<Uint256>() {}, new TypeReference<DynamicBytes>() {}, new TypeReference<Bool>() {}));
         return new RemoteFunctionCall<Tuple4<String, BigInteger, byte[], Boolean>>(function,
                 new Callable<Tuple4<String, BigInteger, byte[], Boolean>>() {
@@ -522,9 +522,9 @@ public class MultiSig extends Contract {
                 FUNC_INITIALIZE, 
                 Arrays.<Type>asList(new DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(_owners, Address.class)), 
-                new Uint256(_required), 
-                new Uint256(_internalRequired)), 
+                        org.web3j.abi.Utils.typeMap(_owners, Address.class)),
+                new Uint256(_required),
+                new Uint256(_internalRequired)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -532,7 +532,7 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> addOwner(String owner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_ADDOWNER, 
-                Arrays.<Type>asList(new Address(owner)), 
+                Arrays.<Type>asList(new Address(owner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -540,7 +540,7 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeOwner(String owner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVEOWNER, 
-                Arrays.<Type>asList(new Address(owner)), 
+                Arrays.<Type>asList(new Address(owner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -548,8 +548,8 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> replaceOwner(String owner, String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REPLACEOWNER, 
-                Arrays.<Type>asList(new Address(owner), 
-                new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(owner),
+                new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -557,7 +557,7 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> changeRequirement(BigInteger _required) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_CHANGEREQUIREMENT, 
-                Arrays.<Type>asList(new Uint256(_required)), 
+                Arrays.<Type>asList(new Uint256(_required)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -565,7 +565,7 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> changeInternalRequirement(BigInteger _internalRequired) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_CHANGEINTERNALREQUIREMENT, 
-                Arrays.<Type>asList(new Uint256(_internalRequired)), 
+                Arrays.<Type>asList(new Uint256(_internalRequired)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -573,9 +573,9 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> submitTransaction(String destination, BigInteger value, byte[] data) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SUBMITTRANSACTION, 
-                Arrays.<Type>asList(new Address(destination), 
-                new Uint256(value), 
-                new DynamicBytes(data)), 
+                Arrays.<Type>asList(new Address(destination),
+                new Uint256(value),
+                new DynamicBytes(data)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -583,7 +583,7 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> confirmTransaction(BigInteger transactionId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_CONFIRMTRANSACTION, 
-                Arrays.<Type>asList(new Uint256(transactionId)), 
+                Arrays.<Type>asList(new Uint256(transactionId)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -591,7 +591,7 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> revokeConfirmation(BigInteger transactionId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REVOKECONFIRMATION, 
-                Arrays.<Type>asList(new Uint256(transactionId)), 
+                Arrays.<Type>asList(new Uint256(transactionId)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -599,29 +599,29 @@ public class MultiSig extends Contract {
     public RemoteFunctionCall<TransactionReceipt> executeTransaction(BigInteger transactionId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_EXECUTETRANSACTION, 
-                Arrays.<Type>asList(new Uint256(transactionId)), 
+                Arrays.<Type>asList(new Uint256(transactionId)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Boolean> isConfirmed(BigInteger transactionId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISCONFIRMED, 
-                Arrays.<Type>asList(new Uint256(transactionId)), 
+                Arrays.<Type>asList(new Uint256(transactionId)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<BigInteger> getConfirmationCount(BigInteger transactionId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETCONFIRMATIONCOUNT, 
-                Arrays.<Type>asList(new Uint256(transactionId)), 
+                Arrays.<Type>asList(new Uint256(transactionId)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> getTransactionCount(Boolean pending, Boolean executed) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETTRANSACTIONCOUNT, 
-                Arrays.<Type>asList(new Bool(pending), 
-                new Bool(executed)), 
+                Arrays.<Type>asList(new Bool(pending),
+                new Bool(executed)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -643,7 +643,7 @@ public class MultiSig extends Contract {
 
     public RemoteFunctionCall<List> getConfirmations(BigInteger transactionId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETCONFIRMATIONS, 
-                Arrays.<Type>asList(new Uint256(transactionId)), 
+                Arrays.<Type>asList(new Uint256(transactionId)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {
@@ -658,10 +658,10 @@ public class MultiSig extends Contract {
 
     public RemoteFunctionCall<List> getTransactionIds(BigInteger from, BigInteger to, Boolean pending, Boolean executed) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETTRANSACTIONIDS, 
-                Arrays.<Type>asList(new Uint256(from), 
-                new Uint256(to), 
-                new Bool(pending), 
-                new Bool(executed)), 
+                Arrays.<Type>asList(new Uint256(from),
+                new Uint256(to),
+                new Bool(pending),
+                new Bool(executed)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint256>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {

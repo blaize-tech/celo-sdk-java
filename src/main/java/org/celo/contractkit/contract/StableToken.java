@@ -415,21 +415,21 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<Boolean> checkProofOfPossession(String sender, byte[] blsKey, byte[] blsPop) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_CHECKPROOFOFPOSSESSION, 
-                Arrays.<Type>asList(new Address(sender), 
-                new DynamicBytes(blsKey), 
-                new DynamicBytes(blsPop)), 
+                Arrays.<Type>asList(new Address(sender),
+                new DynamicBytes(blsKey),
+                new DynamicBytes(blsPop)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> fractionMulExp(BigInteger aNumerator, BigInteger aDenominator, BigInteger bNumerator, BigInteger bDenominator, BigInteger exponent, BigInteger _decimals) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_FRACTIONMULEXP, 
-                Arrays.<Type>asList(new Uint256(aNumerator), 
-                new Uint256(aDenominator), 
-                new Uint256(bNumerator), 
-                new Uint256(bDenominator), 
-                new Uint256(exponent), 
-                new Uint256(_decimals)), 
+                Arrays.<Type>asList(new Uint256(aNumerator),
+                new Uint256(aDenominator),
+                new Uint256(bNumerator),
+                new Uint256(bDenominator),
+                new Uint256(exponent),
+                new Uint256(_decimals)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -445,7 +445,7 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<BigInteger> getBlockNumberFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETBLOCKNUMBERFROMHEADER, 
-                Arrays.<Type>asList(new DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -459,7 +459,7 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<BigInteger> getEpochNumberOfBlock(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETEPOCHNUMBEROFBLOCK, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -473,21 +473,21 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<byte[]> getParentSealBitmap(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPARENTSEALBITMAP, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> getVerifiedSealBitmapFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETVERIFIEDSEALBITMAPFROMHEADER, 
-                Arrays.<Type>asList(new DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> hashHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_HASHHEADER, 
-                Arrays.<Type>asList(new DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
@@ -508,7 +508,7 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<BigInteger> minQuorumSize(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_MINQUORUMSIZE, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -529,7 +529,7 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<BigInteger> numberValidatorsInSet(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_NUMBERVALIDATORSINSET, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -559,7 +559,7 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -567,22 +567,22 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromCurrentSet(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMCURRENTSET, 
-                Arrays.<Type>asList(new Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromSet(BigInteger index, BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMSET, 
-                Arrays.<Type>asList(new Uint256(index), 
-                new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(index),
+                new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -608,18 +608,18 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String _name, String _symbol, BigInteger _decimals, String registryAddress, BigInteger inflationRate, BigInteger inflationFactorUpdatePeriod, List<String> initialBalanceAddresses, List<BigInteger> initialBalanceValues) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Utf8String(_name), 
-                new Utf8String(_symbol), 
-                new Uint8(_decimals), 
-                new Address(registryAddress), 
-                new Uint256(inflationRate), 
-                new Uint256(inflationFactorUpdatePeriod), 
+                Arrays.<Type>asList(new Utf8String(_name),
+                new Utf8String(_symbol),
+                new Uint8(_decimals),
+                new Address(registryAddress),
+                new Uint256(inflationRate),
+                new Uint256(inflationFactorUpdatePeriod),
                 new DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(initialBalanceAddresses, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(initialBalanceAddresses, Address.class)),
                 new DynamicArray<Uint256>(
                         Uint256.class,
-                        org.web3j.abi.Utils.typeMap(initialBalanceValues, Uint256.class))), 
+                        org.web3j.abi.Utils.typeMap(initialBalanceValues, Uint256.class))),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -627,8 +627,8 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setInflationParameters(BigInteger rate, BigInteger updatePeriod) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETINFLATIONPARAMETERS, 
-                Arrays.<Type>asList(new Uint256(rate), 
-                new Uint256(updatePeriod)), 
+                Arrays.<Type>asList(new Uint256(rate),
+                new Uint256(updatePeriod)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -636,8 +636,8 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> increaseAllowance(String spender, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INCREASEALLOWANCE, 
-                Arrays.<Type>asList(new Address(spender), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(spender),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -645,8 +645,8 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> decreaseAllowance(String spender, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_DECREASEALLOWANCE, 
-                Arrays.<Type>asList(new Address(spender), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(spender),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -654,8 +654,8 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> approve(String spender, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_APPROVE, 
-                Arrays.<Type>asList(new Address(spender), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(spender),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -663,8 +663,8 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> mint(String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_MINT, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -672,9 +672,9 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferWithComment(String to, BigInteger value, String comment) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFERWITHCOMMENT, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value), 
-                new Utf8String(comment)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value),
+                new Utf8String(comment)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -682,7 +682,7 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> burn(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_BURN, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -690,9 +690,9 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferFrom(String from, String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFERFROM, 
-                Arrays.<Type>asList(new Address(from), 
-                new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(from),
+                new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -720,15 +720,15 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<BigInteger> allowance(String accountOwner, String spender) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ALLOWANCE, 
-                Arrays.<Type>asList(new Address(accountOwner), 
-                new Address(spender)), 
+                Arrays.<Type>asList(new Address(accountOwner),
+                new Address(spender)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> balanceOf(String accountOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_BALANCEOF, 
-                Arrays.<Type>asList(new Address(accountOwner)), 
+                Arrays.<Type>asList(new Address(accountOwner)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -760,14 +760,14 @@ public class StableToken extends Contract {
 
     public RemoteFunctionCall<BigInteger> valueToUnits(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALUETOUNITS, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> unitsToValue(BigInteger units) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_UNITSTOVALUE, 
-                Arrays.<Type>asList(new Uint256(units)), 
+                Arrays.<Type>asList(new Uint256(units)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -775,8 +775,8 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transfer(String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFER, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -784,8 +784,8 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> debitGasFees(String from, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_DEBITGASFEES, 
-                Arrays.<Type>asList(new Address(from), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(from),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -793,14 +793,14 @@ public class StableToken extends Contract {
     public RemoteFunctionCall<TransactionReceipt> creditGasFees(String from, String feeRecipient, String gatewayFeeRecipient, String communityFund, BigInteger refund, BigInteger tipTxFee, BigInteger gatewayFee, BigInteger baseTxFee) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_CREDITGASFEES, 
-                Arrays.<Type>asList(new Address(from), 
-                new Address(feeRecipient), 
-                new Address(gatewayFeeRecipient), 
-                new Address(communityFund), 
-                new Uint256(refund), 
-                new Uint256(tipTxFee), 
-                new Uint256(gatewayFee), 
-                new Uint256(baseTxFee)), 
+                Arrays.<Type>asList(new Address(from),
+                new Address(feeRecipient),
+                new Address(gatewayFeeRecipient),
+                new Address(communityFund),
+                new Uint256(refund),
+                new Uint256(tipTxFee),
+                new Uint256(gatewayFee),
+                new Uint256(baseTxFee)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

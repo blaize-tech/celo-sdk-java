@@ -13,8 +13,8 @@ public class AddressRegistryTest {
 
     @Before
     public void initialize() {
-        Web3j web3j = Web3j.build(new HttpService(ContractKit.ALFAJORES_TESTNET));
-        ContractKit contractKit = new ContractKit(web3j);
+        Web3j web3j = Web3j.build(new HttpService("http://localhost:8545"));
+        ContractKit contractKit = new ContractKit(web3j, ContractKitOptions.GANACHE_OPTIONS);
         contracts = contractKit.contracts;
     }
 

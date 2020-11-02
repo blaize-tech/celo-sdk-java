@@ -20,7 +20,7 @@ public class CeloWallet {
     }
 
     public Credentials getKey(String publicKey) {
-        if (publicKey == null || publicKey.isBlank()) {
+        if (publicKey == null || publicKey.isEmpty()) {
             return null;
         }
         return wallet.get(publicKey.toLowerCase());

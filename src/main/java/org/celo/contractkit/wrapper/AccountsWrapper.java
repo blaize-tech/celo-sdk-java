@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.Accounts;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
@@ -11,8 +15,18 @@ import java.math.BigInteger;
  * TODO add docs, utils methods
  */
 public class AccountsWrapper extends BaseWrapper<Accounts> {
-    public AccountsWrapper(Accounts contract) {
-        super(contract);
+
+    public AccountsWrapper(Accounts contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static AccountsWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        Accounts contract = Accounts.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new AccountsWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<Accounts> deploy() {
+        return Accounts.deploy(web3j, transactionManager, gasProvider);
     }
 
     public RemoteFunctionCall<TransactionReceipt> createAccount() {

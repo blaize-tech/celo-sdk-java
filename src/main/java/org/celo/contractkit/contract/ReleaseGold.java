@@ -627,7 +627,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -642,7 +642,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -650,8 +650,8 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transfer(String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFER, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -659,20 +659,20 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(BigInteger releaseStartTime, BigInteger releaseCliffTime, BigInteger numReleasePeriods, BigInteger releasePeriod, BigInteger amountReleasedPerPeriod, Boolean revocable, String _beneficiary, String _releaseOwner, String _refundAddress, Boolean subjectToLiquidityProvision, BigInteger initialDistributionRatio, Boolean _canValidate, Boolean _canVote, String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Uint256(releaseStartTime), 
-                new Uint256(releaseCliffTime), 
-                new Uint256(numReleasePeriods), 
-                new Uint256(releasePeriod), 
-                new Uint256(amountReleasedPerPeriod), 
-                new Bool(revocable), 
-                new Address(_beneficiary), 
-                new Address(_releaseOwner), 
-                new Address(_refundAddress), 
-                new Bool(subjectToLiquidityProvision), 
-                new Uint256(initialDistributionRatio), 
-                new Bool(_canValidate), 
-                new Bool(_canVote), 
-                new Address(registryAddress)), 
+                Arrays.<Type>asList(new Uint256(releaseStartTime),
+                new Uint256(releaseCliffTime),
+                new Uint256(numReleasePeriods),
+                new Uint256(releasePeriod),
+                new Uint256(amountReleasedPerPeriod),
+                new Bool(revocable),
+                new Address(_beneficiary),
+                new Address(_releaseOwner),
+                new Address(_refundAddress),
+                new Bool(subjectToLiquidityProvision),
+                new Uint256(initialDistributionRatio),
+                new Bool(_canValidate),
+                new Bool(_canVote),
+                new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -695,7 +695,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setCanExpire(Boolean _canExpire) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETCANEXPIRE, 
-                Arrays.<Type>asList(new Bool(_canExpire)), 
+                Arrays.<Type>asList(new Bool(_canExpire)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -703,7 +703,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setMaxDistribution(BigInteger distributionRatio) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETMAXDISTRIBUTION, 
-                Arrays.<Type>asList(new Uint256(distributionRatio)), 
+                Arrays.<Type>asList(new Uint256(distributionRatio)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -711,7 +711,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setBeneficiary(String newBeneficiary) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETBENEFICIARY, 
-                Arrays.<Type>asList(new Address(newBeneficiary)), 
+                Arrays.<Type>asList(new Address(newBeneficiary)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -719,7 +719,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> withdraw(BigInteger amount) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WITHDRAW, 
-                Arrays.<Type>asList(new Uint256(amount)), 
+                Arrays.<Type>asList(new Uint256(amount)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -786,7 +786,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> lockGold(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_LOCKGOLD, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -794,7 +794,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> unlockGold(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_UNLOCKGOLD, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -802,8 +802,8 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> relockGold(BigInteger index, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_RELOCKGOLD, 
-                Arrays.<Type>asList(new Uint256(index), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(index),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -811,7 +811,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> withdrawLockedGold(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WITHDRAWLOCKEDGOLD, 
-                Arrays.<Type>asList(new Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -819,7 +819,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> authorizeVoteSigner(String signer, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_AUTHORIZEVOTESIGNER, 
-                Arrays.<Type>asList(new Address(signer), 
+                Arrays.<Type>asList(new Address(signer),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
                 new org.web3j.abi.datatypes.generated.Bytes32(r), 
                 new org.web3j.abi.datatypes.generated.Bytes32(s)), 
@@ -830,7 +830,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> authorizeValidatorSigner(String signer, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_AUTHORIZEVALIDATORSIGNER, 
-                Arrays.<Type>asList(new Address(signer), 
+                Arrays.<Type>asList(new Address(signer),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
                 new org.web3j.abi.datatypes.generated.Bytes32(r), 
                 new org.web3j.abi.datatypes.generated.Bytes32(s)), 
@@ -841,7 +841,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> authorizeValidatorSignerWithPublicKey(String signer, BigInteger v, byte[] r, byte[] s, byte[] ecdsaPublicKey) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_AUTHORIZEVALIDATORSIGNERWITHPUBLICKEY, 
-                Arrays.<Type>asList(new Address(signer), 
+                Arrays.<Type>asList(new Address(signer),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
                 new org.web3j.abi.datatypes.generated.Bytes32(r), 
                 new org.web3j.abi.datatypes.generated.Bytes32(s), 
@@ -853,7 +853,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> authorizeValidatorSignerWithKeys(String signer, BigInteger v, byte[] r, byte[] s, byte[] ecdsaPublicKey, byte[] blsPublicKey, byte[] blsPop) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_AUTHORIZEVALIDATORSIGNERWITHKEYS, 
-                Arrays.<Type>asList(new Address(signer), 
+                Arrays.<Type>asList(new Address(signer),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
                 new org.web3j.abi.datatypes.generated.Bytes32(r), 
                 new org.web3j.abi.datatypes.generated.Bytes32(s), 
@@ -867,7 +867,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> authorizeAttestationSigner(String signer, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_AUTHORIZEATTESTATIONSIGNER, 
-                Arrays.<Type>asList(new Address(signer), 
+                Arrays.<Type>asList(new Address(signer),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
                 new org.web3j.abi.datatypes.generated.Bytes32(r), 
                 new org.web3j.abi.datatypes.generated.Bytes32(s)), 
@@ -880,7 +880,7 @@ public class ReleaseGold extends Contract {
                 FUNC_SETACCOUNT, 
                 Arrays.<Type>asList(new org.web3j.abi.datatypes.Utf8String(name), 
                 new org.web3j.abi.datatypes.DynamicBytes(dataEncryptionKey), 
-                new Address(walletAddress), 
+                new Address(walletAddress),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
                 new org.web3j.abi.datatypes.generated.Bytes32(r), 
                 new org.web3j.abi.datatypes.generated.Bytes32(s)), 
@@ -907,7 +907,7 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setAccountWalletAddress(String walletAddress, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETACCOUNTWALLETADDRESS, 
-                Arrays.<Type>asList(new Address(walletAddress), 
+                Arrays.<Type>asList(new Address(walletAddress),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
                 new org.web3j.abi.datatypes.generated.Bytes32(r), 
                 new org.web3j.abi.datatypes.generated.Bytes32(s)), 
@@ -934,11 +934,11 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> revokeActive(String group, BigInteger value, String lesser, String greater, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REVOKEACTIVE, 
-                Arrays.<Type>asList(new Address(group), 
-                new Uint256(value), 
-                new Address(lesser), 
-                new Address(greater), 
-                new Uint256(index)), 
+                Arrays.<Type>asList(new Address(group),
+                new Uint256(value),
+                new Address(lesser),
+                new Address(greater),
+                new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -946,11 +946,11 @@ public class ReleaseGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> revokePending(String group, BigInteger value, String lesser, String greater, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REVOKEPENDING, 
-                Arrays.<Type>asList(new Address(group), 
-                new Uint256(value), 
-                new Address(lesser), 
-                new Address(greater), 
-                new Uint256(index)), 
+                Arrays.<Type>asList(new Address(group),
+                new Uint256(value),
+                new Address(lesser),
+                new Address(greater),
+                new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

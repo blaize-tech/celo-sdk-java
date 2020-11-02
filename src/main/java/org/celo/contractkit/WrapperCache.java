@@ -1,6 +1,5 @@
 package org.celo.contractkit;
 
-import org.celo.contractkit.contract.*;
 import org.celo.contractkit.protocol.CeloGasProvider;
 import org.celo.contractkit.protocol.CeloTransactionManager;
 import org.celo.contractkit.wrapper.*;
@@ -38,8 +37,7 @@ public class WrapperCache {
             return (AccountsWrapper) cache.get(CeloContract.Accounts);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.Accounts);
-            Accounts contract = Accounts.load(contractAddress, web3j, transactionManager, gasProvider);
-            AccountsWrapper wrapper = new AccountsWrapper(contract);
+            AccountsWrapper wrapper = AccountsWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.Accounts, wrapper);
             return wrapper;
         }
@@ -50,8 +48,7 @@ public class WrapperCache {
             return (AttestationsWrapper) cache.get(CeloContract.Attestations);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.Attestations);
-            Attestations contract = Attestations.load(contractAddress, web3j, transactionManager, gasProvider);
-            AttestationsWrapper wrapper = new AttestationsWrapper(contract);
+            AttestationsWrapper wrapper = AttestationsWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.Attestations, wrapper);
             return wrapper;
         }
@@ -62,8 +59,7 @@ public class WrapperCache {
             return (BlockchainParametersWrapper) cache.get(CeloContract.BlockchainParameters);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.BlockchainParameters);
-            BlockchainParameters contract = BlockchainParameters.load(contractAddress, web3j, transactionManager, gasProvider);
-            BlockchainParametersWrapper wrapper = new BlockchainParametersWrapper(contract);
+            BlockchainParametersWrapper wrapper = BlockchainParametersWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.BlockchainParameters, wrapper);
             return wrapper;
         }
@@ -74,8 +70,7 @@ public class WrapperCache {
             return (DoubleSigningSlasherWrapper) cache.get(CeloContract.DoubleSigningSlasher);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.DoubleSigningSlasher);
-            DoubleSigningSlasher contract = DoubleSigningSlasher.load(contractAddress, web3j, transactionManager, gasProvider);
-            DoubleSigningSlasherWrapper wrapper = new DoubleSigningSlasherWrapper(contract);
+            DoubleSigningSlasherWrapper wrapper = DoubleSigningSlasherWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.DoubleSigningSlasher, wrapper);
             return wrapper;
         }
@@ -86,8 +81,7 @@ public class WrapperCache {
             return (DowntimeSlasherWrapper) cache.get(CeloContract.DowntimeSlasher);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.DowntimeSlasher);
-            DowntimeSlasher contract = DowntimeSlasher.load(contractAddress, web3j, transactionManager, gasProvider);
-            DowntimeSlasherWrapper wrapper = new DowntimeSlasherWrapper(contract);
+            DowntimeSlasherWrapper wrapper = DowntimeSlasherWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.DowntimeSlasher, wrapper);
             return wrapper;
         }
@@ -98,8 +92,7 @@ public class WrapperCache {
             return (ElectionWrapper) cache.get(CeloContract.Election);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.Election);
-            Election contract = Election.load(contractAddress, web3j, transactionManager, gasProvider);
-            ElectionWrapper wrapper = new ElectionWrapper(contract);
+            ElectionWrapper wrapper = ElectionWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.Election, wrapper);
             return wrapper;
         }
@@ -110,8 +103,7 @@ public class WrapperCache {
             return (ExchangeWrapper) cache.get(CeloContract.Exchange);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.Exchange);
-            Exchange contract = Exchange.load(contractAddress, web3j, transactionManager, gasProvider);
-            ExchangeWrapper wrapper = new ExchangeWrapper(contract);
+            ExchangeWrapper wrapper = ExchangeWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.Exchange, wrapper);
             return wrapper;
         }
@@ -122,8 +114,7 @@ public class WrapperCache {
             return (GasPriceMinimumWrapper) cache.get(CeloContract.GasPriceMinimum);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.GasPriceMinimum);
-            GasPriceMinimum contract = GasPriceMinimum.load(contractAddress, web3j, transactionManager, gasProvider);
-            GasPriceMinimumWrapper wrapper = new GasPriceMinimumWrapper(contract);
+            GasPriceMinimumWrapper wrapper = GasPriceMinimumWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.GasPriceMinimum, wrapper);
             return wrapper;
         }
@@ -134,8 +125,7 @@ public class WrapperCache {
             return (GoldTokenWrapper) cache.get(CeloContract.GoldToken);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.GoldToken);
-            GoldToken contract = GoldToken.load(contractAddress, web3j, transactionManager, gasProvider);
-            GoldTokenWrapper wrapper = new GoldTokenWrapper(contract, web3j);
+            GoldTokenWrapper wrapper = GoldTokenWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.GoldToken, wrapper);
             return wrapper;
         }
@@ -146,8 +136,7 @@ public class WrapperCache {
             return (GovernanceWrapper) cache.get(CeloContract.Governance);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.Governance);
-            Governance contract = Governance.load(contractAddress, web3j, transactionManager, gasProvider);
-            GovernanceWrapper wrapper = new GovernanceWrapper(contract);
+            GovernanceWrapper wrapper = GovernanceWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.Governance, wrapper);
             return wrapper;
         }
@@ -158,8 +147,7 @@ public class WrapperCache {
             return (LockedGoldWrapper) cache.get(CeloContract.LockedGold);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.LockedGold);
-            LockedGold contract = LockedGold.load(contractAddress, web3j, transactionManager, gasProvider);
-            LockedGoldWrapper wrapper = new LockedGoldWrapper(contract);
+            LockedGoldWrapper wrapper = LockedGoldWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.LockedGold, wrapper);
             return wrapper;
         }
@@ -170,8 +158,7 @@ public class WrapperCache {
             return (ReserveWrapper) cache.get(CeloContract.Reserve);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.Reserve);
-            Reserve contract = Reserve.load(contractAddress, web3j, transactionManager, gasProvider);
-            ReserveWrapper wrapper = new ReserveWrapper(contract);
+            ReserveWrapper wrapper = ReserveWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.Reserve, wrapper);
             return wrapper;
         }
@@ -182,8 +169,7 @@ public class WrapperCache {
             return (SortedOraclesWrapper) cache.get(CeloContract.SortedOracles);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.SortedOracles);
-            SortedOracles contract = SortedOracles.load(contractAddress, web3j, transactionManager, gasProvider);
-            SortedOraclesWrapper wrapper = new SortedOraclesWrapper(contract);
+            SortedOraclesWrapper wrapper = SortedOraclesWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.SortedOracles, wrapper);
             return wrapper;
         }
@@ -194,8 +180,7 @@ public class WrapperCache {
             return (ValidatorsWrapper) cache.get(CeloContract.Validators);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.Validators);
-            Validators contract = Validators.load(contractAddress, web3j, transactionManager, gasProvider);
-            ValidatorsWrapper wrapper = new ValidatorsWrapper(contract);
+            ValidatorsWrapper wrapper = ValidatorsWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.Validators, wrapper);
             return wrapper;
         }
@@ -206,8 +191,7 @@ public class WrapperCache {
             return (StableTokenWrapper) cache.get(CeloContract.StableToken);
         } else {
             String contractAddress = addressRegistry.addressFor(CeloContract.StableToken);
-            StableToken contract = StableToken.load(contractAddress, web3j, transactionManager, gasProvider);
-            StableTokenWrapper wrapper = new StableTokenWrapper(contract);
+            StableTokenWrapper wrapper = StableTokenWrapper.load(contractAddress, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.StableToken, wrapper);
             return wrapper;
         }
@@ -217,8 +201,7 @@ public class WrapperCache {
         if (cache.containsKey(CeloContract.MultiSig)) {
             return (MultiSigWrapper) cache.get(CeloContract.MultiSig);
         } else {
-            MultiSig contract = MultiSig.load(address, web3j, transactionManager, gasProvider);
-            MultiSigWrapper wrapper = new MultiSigWrapper(contract);
+            MultiSigWrapper wrapper = MultiSigWrapper.load(address, web3j, transactionManager, gasProvider);
             cache.put(CeloContract.MultiSig, wrapper);
             return wrapper;
         }

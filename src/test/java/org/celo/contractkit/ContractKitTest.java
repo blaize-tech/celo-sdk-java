@@ -2,38 +2,43 @@ package org.celo.contractkit;
 
 import org.celo.contractkit.contract.GoldToken;
 import org.celo.contractkit.protocol.CeloRawTransaction;
-import org.celo.contractkit.protocol.CeloRawTransactionBuilder;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.web3j.protocol.Web3j;
-import org.web3j.protocol.core.methods.response.EthSendTransaction;
+import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.protocol.http.HttpService;
 import org.web3j.utils.Convert;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.List;
 
+import static org.celo.contractkit.ContractKitOptions.GANACHE_CHAIN_ID;
 import static org.celo.contractkit.ContractKitOptions.GANACHE_OPTIONS;
-import static org.celo.contractkit.TestData.*;
+import static org.celo.contractkit.TestData.DERIV_PRIVATE_KEYS;
+import static org.celo.contractkit.TestData.PUBLIC_KEY_2;
 import static org.celo.contractkit.protocol.CeloGasProvider.GAS_LIMIT;
 import static org.celo.contractkit.protocol.CeloGasProvider.GAS_PRICE;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class ContractKitTest {
     ContractKit contractKit;
+    Web3j web3j;
+    List<String> accounts;
 
     BigDecimal toEther(BigInteger value) {
         return Convert.fromWei(new BigDecimal(value), Convert.Unit.ETHER);
     }
 
     @Before
-    public void initialize() {
-        Web3j web3j = Web3j.build(new HttpService("http://localhost:8545"));
+    public void initialize() throws IOException {
+        web3j = Web3j.build(new HttpService("http://localhost:8545"));
 
         contractKit = new ContractKit(web3j, GANACHE_OPTIONS);
         contractKit.addAccount(DERIV_PRIVATE_KEYS[0]);
+
+        accounts = contractKit.web3j.ethAccounts().send().getAccounts();
     }
 
     @Test
@@ -47,8 +52,8 @@ public class ContractKitTest {
 
         assertEquals(1, toEther(balance.CELO).compareTo(BigDecimal.valueOf(0.1)));
         assertEquals(1, toEther(balance.cUSD).compareTo(BigDecimal.valueOf(0.1)));
-        assertEquals(BigInteger.ZERO, balance.lockedCELO);
-        assertEquals(BigInteger.ZERO, balance.pending);
+        assertTrue(balance.lockedCELO.signum() >= 0);
+        assertTrue(balance.pending.signum() >= 0);
     }
 
     @Test
@@ -66,17 +71,40 @@ public class ContractKitTest {
                 null
         );
         BigInteger gasPrice = contractKit.getGasPriceMinimum(tx.getFeeCurrency(), BigInteger.ZERO);
-        assertEquals(BigInteger.valueOf(8_000_000_000L), gasPrice);
+        assertEquals(BigInteger.valueOf(8_500_000_000L), gasPrice);
     }
 
     @Test
-    @Ignore
     public void testContractDeploy() throws Exception {
-        CeloRawTransaction tx = new CeloRawTransactionBuilder()
-                .setData(GoldToken.BINARY)
-                .setTo(contractKit.contracts.addressFor(CeloContract.GoldToken))
-                .build();
-        EthSendTransaction receipt = contractKit.sendTransaction(tx, null);
+        GoldToken deployedGoldenToken = contractKit.contracts.getGoldToken().deploy().send();
+
+        assertTrue(deployedGoldenToken.getTransactionReceipt().isPresent());
+        TransactionReceipt receipt = deployedGoldenToken.getTransactionReceipt().get();
+
         assertNotNull(receipt.getTransactionHash());
+        assertEquals(contractKit.getAddress(), receipt.getFrom());
+    }
+
+    @Test
+    public void testCustomConfig() throws Exception {
+        // Change default config
+        ContractKitOptions config = new ContractKitOptions.Builder()
+                .setFeeCurrency(CeloContract.GoldToken)
+                .setChainId(GANACHE_CHAIN_ID)
+                .build();
+
+        // Change default account
+        ContractKit contractKit = new ContractKit(web3j, config);
+        contractKit.addAccount(DERIV_PRIVATE_KEYS[1]);
+        contractKit.addAccount(DERIV_PRIVATE_KEYS[2]);
+        contractKit.setDefaultAccount(accounts.get(1));
+
+        GoldToken deployedGoldenToken = contractKit.contracts.getGoldToken().deploy().send();
+
+        assertTrue(deployedGoldenToken.getTransactionReceipt().isPresent());
+        TransactionReceipt receipt = deployedGoldenToken.getTransactionReceipt().get();
+
+        assertNotNull(receipt.getTransactionHash());
+        assertEquals(accounts.get(1), receipt.getFrom());
     }
 }

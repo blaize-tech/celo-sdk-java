@@ -141,4 +141,12 @@ public class ContractKit {
     public void addAccount(String privateKey) {
         this.transactionManager.wallet.addKey(privateKey);
     }
+
+    public void addAccount(Credentials credentials) {
+        this.transactionManager.wallet.addKey(credentials);
+    }
+
+    public void setDefaultAccount(String publicKey) {
+        this.transactionManager.wallet.setDefaultAccount(publicKey);
+    }
 }

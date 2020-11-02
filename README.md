@@ -24,23 +24,59 @@ Install from repositories:
 maven  
 ```
 <dependency>
-  <groupId>org.celo.contractkit</groupId>
-  <artifactId>core</artifactId>
-  <version>1.0.0</version>
+  <groupId>org.celo</groupId>
+  <artifactId>contractkit</artifactId>
+  <version>0.0.1</version>
 </dependency>
 ```
 Gradle
 ```
-compile 'org.celo.contractkit:core:1.0.0'
+compile 'org.celo:contractkit:0.0.1'
 ```
 
 Install manually
 If you want to generate the jar and import manually.
-
 ```
 git clone https://github.com/celo/celo-sdk-java.git
-gradle shadowJar
+./gradlew clean build -xtest
+./gradlew publishToMavenLocal
 ```
+
+#### Testing
+
+Most of tests uses Ganache testnet. 
+
+To start devchain run `./scripts/start_devchain.sh` script.
+
+To reset devchain to the initial state run `./scripts/reset_devchain.sh` script. It's recommend to run script before run all tests. 
+
+```
+./scripts/reset_devchain.sh
+./scripts/start_devchain.sh
+
+./gradlew clean test
+```
+
+#### Publishing to JFrog Bintray
+You can read more about in this [manual](https://medium.com/@ankit9673/publishing-your-android-java-library-to-jcenter-89a2beba7e6b)
+
+1. Create an Account on [JFrog Bintray](https://bintray.com/)
+2. Create maven repository (name: celo)
+3. Build and upload library
+
+```
+./gradlew bintrayUpload -Dbintray.user=<YOUR_USER_NAME> -Dbintray.key=<YOUR_API_KEY>
+```
+
+The package will be created with these parameters
+```
+Repository: celo
+Package: com.celo:contractkit
+```
+
+4 - After publish to the Bintray library can be published to the JCenter
+
+Follow these [manual](https://www.jfrog.com/confluence/display/BT/Central+Repositories)
 
 ### Initializing the ContractKit
 
@@ -79,12 +115,26 @@ The following are some examples of the capabilities of the `ContractKit`, assumi
 ```java
 Web3j web3j = Web3j.build(new HttpService(ContractKit.ALFAJORES_TESTNET));
 
-Credentials credentials = Credentials.create(somePrivateKey);
 ContractKitOptions config = new ContractKitOptions.Builder()
     .setFeeCurrency(CeloContract.GoldToken)
     .setGasPrice(BigInteger.valueOf(21_000))
     .build();
-ContractKit contractKit = new ContractKit(web3j, credentials, config);
+ContractKit contractKit = new ContractKit(web3j, config);
+```
+
+Multiple accounts can be added to the kit wallet. The first added account will be used by default.
+```java
+Credentials credentials = Credentials.create(somePrivateKey);
+contractKit.addAccount(credentials);
+
+or
+
+contractKit.addAccount(somePrivateKey);
+```
+
+To change default account to sign transactions 
+```java
+contractKit.setDefaultAccount(publicKey);
 ```
 
 ### Getting the Total Balance
@@ -97,26 +147,28 @@ AccountBalance balance = contractKit.getTotalBalance(myAddress);
 
 ### Deploy a contract
 
-Deploying a contract with the default account already set. Simply send a transaction with no `to:` field. See more about [sending custom transactions](https://docs.celo.org/developer-guide/overview/introduction/contractkit/contracts-wrappers-registry#sending-custom-transactions). 
+Deploying a contract with the default account already set. 
 
 You can verify the deployment on the [Alfajores block explorer here](https://alfajores-blockscout.celo-testnet.org/). Wait for the receipt and log it to get the transaction details.
 
 ```java
-String bytecode = "0x608060405234..."; // compiled Solidity deployment bytecode
+Web3j web3j = Web3j.build(new HttpService(ContractKit.ALFAJORES_TESTNET));
 
-CeloRawTransaction tx = new CeloRawTransactionBuilder()
-    .setData(bytecode)
-    .build();
+ContractKit contractKit = new ContractKit(web3j);
+contractKit.addAccount(PRIVATE_KEY);
 
-EthSendTransaction receipt = contractKit.sendTransaction(tx);
+GoldToken deployedGoldenToken = contractKit.contracts.getGoldToken().deploy().send();
+
+TransactionReceipt receipt = deployedGoldenToken.getTransactionReceipt().get();
 String hash = receipt.getTransactionHash();
 ```
 
 ### Buying all the CELO I can, with the cUSD in my account
 
 ```java
-Exchange exchange = contractKit.contracts.getExchange();
-StableToken stableToken = contractKit.contracts.getStableToken();
+ExchangeWrapper exchange = contractKit.contracts.getExchange();
+StableTokenWrapper stableToken = contractKit.contracts.getStableToken();
+GoldTokenWrapper goldToken = contractKit.contracts.getGoldToken();
 
 BigInteger cUsdBalance = stableToken.balanceOf(myAddress).send();
 
@@ -125,7 +177,7 @@ String approveTxHash = approveTx.getTransactionHash();
 
 BigInteger goldAmount = exchange.getBuyTokenAmount(cUsdBalance, false).send();
 TransactionReceipt sellTx = exchange.exchange(cUsdBalance, goldAmount, true).send();
-TransactionReceipt sellTxHash = sellTx.getTransactionHash();
+String sellTxHash = sellTx.getTransactionHash();
 ```
 
 ## Celo Core Contracts. Wrappers / Registry
@@ -136,21 +188,21 @@ celo-blockchain has two initial coins: CELO and cUSD (stableToken).
 Both implement the ERC20 standard, and to interact with them is as simple as:
 
 ```java
-GoldToken goldtoken = kit.contracts.getGoldToken();
+GoldTokenWrapper goldtoken = contractKit.contracts.getGoldToken();
 BigInteger goldBalance = goldtoken.balanceOf(someAddress).send();
 ```
 
 To send funds:
 
 ```java
-BigInteger ONE_GWEI = Convert.toWei(BigDecimal.ONE, Convert.Unit.GWEI).toBigInteger();
-TransactionReceipt tx = goldToken.transfer(someAddress, ONE_GWEI).send();
-String hash = tx.getTransactionHash()
+BigInteger oneGold = Convert.toWei(BigDecimal.ONE, Convert.Unit.ETHER).toBigInteger();
+TransactionReceipt tx = goldToken.transfer(someAddress, oneGold).send();
+String hash = tx.getTransactionHash();
 ```
 
 To interact with cUSD, is the same but with a different contract:
 ```java
-StableToken stableToken = kit.contracts.getStableToken();
+StableTokenWrapper stableToken = contractKit.contracts.getStableToken();
 ```
 
 ### Interacting with Other Celo Contracts
@@ -184,7 +236,7 @@ That's actually how `kit` obtain them.
 We expose the registry api, which can be accessed by:
 
 ```java
-String goldTokenAddress = kit.registry.addressFor(CeloContract.GoldToken);
+String goldTokenAddress = contractKit.contracts.addressFor(CeloContract.GoldToken);
 ```
 
 ### Sending Custom Transactions

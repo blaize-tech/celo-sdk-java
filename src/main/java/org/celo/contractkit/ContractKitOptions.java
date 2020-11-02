@@ -27,13 +27,13 @@ public class ContractKitOptions {
         this.chainId = chainId;
     }
 
-    static class Builder {
-        private double gasInflationFactor;
-        private double gasPriceSuggestionMultiplier;
-        private BigInteger gasPrice;
-        private CeloContract feeCurrency;
+    public static class Builder {
+        private double gasInflationFactor = DEFAULT_GAS_INFLATION_FACTOR;
+        private double gasPriceSuggestionMultiplier = DEFAULT_GAS_PRICE_SUGGESTION_MULTIPLIER;
+        private BigInteger gasPrice = DEFAULT_PRICE;
+        private CeloContract feeCurrency = CeloContract.StableToken;
         private String from;
-        private long chainId;
+        private long chainId = CHAIN_ID;
 
         public Builder setGasInflationFactor(double gasInflationFactor) {
             this.gasInflationFactor = gasInflationFactor;

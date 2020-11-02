@@ -675,14 +675,14 @@ public class Reserve extends Contract {
 
     public RemoteFunctionCall<byte[]> assetAllocationSymbols(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ASSETALLOCATIONSYMBOLS, 
-                Arrays.<Type>asList(new Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<BigInteger> assetAllocationWeights(byte[] param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ASSETALLOCATIONWEIGHTS, 
-                Arrays.<Type>asList(new Bytes32(param0)), 
+                Arrays.<Type>asList(new Bytes32(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -717,7 +717,7 @@ public class Reserve extends Contract {
 
     public RemoteFunctionCall<Boolean> isOtherReserveAddress(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISOTHERRESERVEADDRESS, 
-                Arrays.<Type>asList(new Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -731,14 +731,14 @@ public class Reserve extends Contract {
 
     public RemoteFunctionCall<Boolean> isSpender(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISSPENDER, 
-                Arrays.<Type>asList(new Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Boolean> isToken(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISTOKEN, 
-                Arrays.<Type>asList(new Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -752,7 +752,7 @@ public class Reserve extends Contract {
 
     public RemoteFunctionCall<String> otherReserveAddresses(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_OTHERRESERVEADDRESSES, 
-                Arrays.<Type>asList(new Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -782,7 +782,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -834,7 +834,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -860,19 +860,19 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress, BigInteger _tobinTaxStalenessThreshold, BigInteger _spendingRatio, BigInteger _frozenGold, BigInteger _frozenDays, List<byte[]> _assetAllocationSymbols, List<BigInteger> _assetAllocationWeights, BigInteger _tobinTax, BigInteger _tobinTaxReserveRatio) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Address(registryAddress), 
-                new Uint256(_tobinTaxStalenessThreshold), 
-                new Uint256(_spendingRatio), 
-                new Uint256(_frozenGold), 
-                new Uint256(_frozenDays), 
+                Arrays.<Type>asList(new Address(registryAddress),
+                new Uint256(_tobinTaxStalenessThreshold),
+                new Uint256(_spendingRatio),
+                new Uint256(_frozenGold),
+                new Uint256(_frozenDays),
                 new DynamicArray<Bytes32>(
                         Bytes32.class,
-                        org.web3j.abi.Utils.typeMap(_assetAllocationSymbols, Bytes32.class)), 
+                        org.web3j.abi.Utils.typeMap(_assetAllocationSymbols, Bytes32.class)),
                 new DynamicArray<Uint256>(
                         Uint256.class,
-                        org.web3j.abi.Utils.typeMap(_assetAllocationWeights, Uint256.class)), 
-                new Uint256(_tobinTax), 
-                new Uint256(_tobinTaxReserveRatio)), 
+                        org.web3j.abi.Utils.typeMap(_assetAllocationWeights, Uint256.class)),
+                new Uint256(_tobinTax),
+                new Uint256(_tobinTaxReserveRatio)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -880,7 +880,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setTobinTaxStalenessThreshold(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETTOBINTAXSTALENESSTHRESHOLD, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -888,7 +888,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setTobinTax(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETTOBINTAX, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -896,7 +896,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setTobinTaxReserveRatio(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETTOBINTAXRESERVERATIO, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -904,7 +904,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setDailySpendingRatio(BigInteger ratio) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETDAILYSPENDINGRATIO, 
-                Arrays.<Type>asList(new Uint256(ratio)), 
+                Arrays.<Type>asList(new Uint256(ratio)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -919,8 +919,8 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setFrozenGold(BigInteger frozenGold, BigInteger frozenDays) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETFROZENGOLD, 
-                Arrays.<Type>asList(new Uint256(frozenGold), 
-                new Uint256(frozenDays)), 
+                Arrays.<Type>asList(new Uint256(frozenGold),
+                new Uint256(frozenDays)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -930,10 +930,10 @@ public class Reserve extends Contract {
                 FUNC_SETASSETALLOCATIONS, 
                 Arrays.<Type>asList(new DynamicArray<Bytes32>(
                         Bytes32.class,
-                        org.web3j.abi.Utils.typeMap(symbols, Bytes32.class)), 
+                        org.web3j.abi.Utils.typeMap(symbols, Bytes32.class)),
                 new DynamicArray<Uint256>(
                         Uint256.class,
-                        org.web3j.abi.Utils.typeMap(weights, Uint256.class))), 
+                        org.web3j.abi.Utils.typeMap(weights, Uint256.class))),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -941,7 +941,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> addToken(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_ADDTOKEN, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -949,8 +949,8 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeToken(String token, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVETOKEN, 
-                Arrays.<Type>asList(new Address(token), 
-                new Uint256(index)), 
+                Arrays.<Type>asList(new Address(token),
+                new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -958,7 +958,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> addOtherReserveAddress(String reserveAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_ADDOTHERRESERVEADDRESS, 
-                Arrays.<Type>asList(new Address(reserveAddress)), 
+                Arrays.<Type>asList(new Address(reserveAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -966,8 +966,8 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeOtherReserveAddress(String reserveAddress, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVEOTHERRESERVEADDRESS, 
-                Arrays.<Type>asList(new Address(reserveAddress), 
-                new Uint256(index)), 
+                Arrays.<Type>asList(new Address(reserveAddress),
+                new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -975,7 +975,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> addSpender(String spender) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_ADDSPENDER, 
-                Arrays.<Type>asList(new Address(spender)), 
+                Arrays.<Type>asList(new Address(spender)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -983,7 +983,7 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeSpender(String spender) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVESPENDER, 
-                Arrays.<Type>asList(new Address(spender)), 
+                Arrays.<Type>asList(new Address(spender)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -991,8 +991,8 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferGold(String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFERGOLD, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1000,8 +1000,8 @@ public class Reserve extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferExchangeGold(String to, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEREXCHANGEGOLD, 
-                Arrays.<Type>asList(new Address(to), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(to),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

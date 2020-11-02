@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.StableToken;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -10,8 +14,18 @@ import java.math.BigInteger;
 import java.util.List;
 
 public class StableTokenWrapper extends BaseWrapper<StableToken> {
-    public StableTokenWrapper(StableToken contract) {
-        super(contract);
+
+    public StableTokenWrapper(StableToken contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static StableTokenWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        StableToken contract = StableToken.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new StableTokenWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<StableToken> deploy() {
+        return StableToken.deploy(web3j, transactionManager, gasProvider);
     }
 
     public RemoteFunctionCall<Boolean> checkProofOfPossession(String sender, byte[] blsKey, byte[] blsPop) {

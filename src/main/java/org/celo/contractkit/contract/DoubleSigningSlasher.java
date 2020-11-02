@@ -272,7 +272,7 @@ public class DoubleSigningSlasher extends Contract {
 
     public RemoteFunctionCall<Boolean> checkProofOfPossession(String sender, byte[] blsKey, byte[] blsPop) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_CHECKPROOFOFPOSSESSION, 
-                Arrays.<Type>asList(new Address(sender), 
+                Arrays.<Type>asList(new Address(sender),
                 new org.web3j.abi.datatypes.DynamicBytes(blsKey), 
                 new org.web3j.abi.datatypes.DynamicBytes(blsPop)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
@@ -281,12 +281,12 @@ public class DoubleSigningSlasher extends Contract {
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> fractionMulExp(BigInteger aNumerator, BigInteger aDenominator, BigInteger bNumerator, BigInteger bDenominator, BigInteger exponent, BigInteger _decimals) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_FRACTIONMULEXP, 
-                Arrays.<Type>asList(new Uint256(aNumerator), 
-                new Uint256(aDenominator), 
-                new Uint256(bNumerator), 
-                new Uint256(bDenominator), 
-                new Uint256(exponent), 
-                new Uint256(_decimals)), 
+                Arrays.<Type>asList(new Uint256(aNumerator),
+                new Uint256(aDenominator),
+                new Uint256(bNumerator),
+                new Uint256(bDenominator),
+                new Uint256(exponent),
+                new Uint256(_decimals)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -316,7 +316,7 @@ public class DoubleSigningSlasher extends Contract {
 
     public RemoteFunctionCall<BigInteger> getEpochNumberOfBlock(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETEPOCHNUMBEROFBLOCK, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -330,7 +330,7 @@ public class DoubleSigningSlasher extends Contract {
 
     public RemoteFunctionCall<byte[]> getParentSealBitmap(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPARENTSEALBITMAP, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
@@ -344,9 +344,9 @@ public class DoubleSigningSlasher extends Contract {
 
     public RemoteFunctionCall<String> groupMembershipAtBlock(String validator, BigInteger blockNumber, BigInteger groupMembershipHistoryIndex) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GROUPMEMBERSHIPATBLOCK, 
-                Arrays.<Type>asList(new Address(validator), 
-                new Uint256(blockNumber), 
-                new Uint256(groupMembershipHistoryIndex)), 
+                Arrays.<Type>asList(new Address(validator),
+                new Uint256(blockNumber),
+                new Uint256(groupMembershipHistoryIndex)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -374,7 +374,7 @@ public class DoubleSigningSlasher extends Contract {
 
     public RemoteFunctionCall<BigInteger> minQuorumSize(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_MINQUORUMSIZE, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -395,7 +395,7 @@ public class DoubleSigningSlasher extends Contract {
 
     public RemoteFunctionCall<BigInteger> numberValidatorsInSet(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_NUMBERVALIDATORSINSET, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -425,7 +425,7 @@ public class DoubleSigningSlasher extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -433,8 +433,8 @@ public class DoubleSigningSlasher extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setSlashingIncentives(BigInteger penalty, BigInteger reward) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETSLASHINGINCENTIVES, 
-                Arrays.<Type>asList(new Uint256(penalty), 
-                new Uint256(reward)), 
+                Arrays.<Type>asList(new Uint256(penalty),
+                new Uint256(reward)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -458,22 +458,22 @@ public class DoubleSigningSlasher extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromCurrentSet(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMCURRENTSET, 
-                Arrays.<Type>asList(new Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromSet(BigInteger index, BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMSET, 
-                Arrays.<Type>asList(new Uint256(index), 
-                new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(index),
+                new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -481,17 +481,17 @@ public class DoubleSigningSlasher extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress, BigInteger _penalty, BigInteger _reward) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Address(registryAddress), 
-                new Uint256(_penalty), 
-                new Uint256(_reward)), 
+                Arrays.<Type>asList(new Address(registryAddress),
+                new Uint256(_penalty),
+                new Uint256(_reward)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<BigInteger> checkForDoubleSigning(String signer, BigInteger index, byte[] headerA, byte[] headerB) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_CHECKFORDOUBLESIGNING, 
-                Arrays.<Type>asList(new Address(signer), 
-                new Uint256(index), 
+                Arrays.<Type>asList(new Address(signer),
+                new Uint256(index),
                 new org.web3j.abi.datatypes.DynamicBytes(headerA), 
                 new org.web3j.abi.datatypes.DynamicBytes(headerB)), 
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
@@ -501,29 +501,29 @@ public class DoubleSigningSlasher extends Contract {
     public RemoteFunctionCall<TransactionReceipt> slash(String signer, BigInteger index, byte[] headerA, byte[] headerB, BigInteger groupMembershipHistoryIndex, List<String> validatorElectionLessers, List<String> validatorElectionGreaters, List<BigInteger> validatorElectionIndices, List<String> groupElectionLessers, List<String> groupElectionGreaters, List<BigInteger> groupElectionIndices) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SLASH, 
-                Arrays.<Type>asList(new Address(signer), 
-                new Uint256(index), 
+                Arrays.<Type>asList(new Address(signer),
+                new Uint256(index),
                 new org.web3j.abi.datatypes.DynamicBytes(headerA), 
                 new org.web3j.abi.datatypes.DynamicBytes(headerB), 
-                new Uint256(groupMembershipHistoryIndex), 
+                new Uint256(groupMembershipHistoryIndex),
                 new org.web3j.abi.datatypes.DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(validatorElectionLessers, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(validatorElectionLessers, Address.class)),
                 new org.web3j.abi.datatypes.DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(validatorElectionGreaters, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(validatorElectionGreaters, Address.class)),
                 new org.web3j.abi.datatypes.DynamicArray<Uint256>(
                         Uint256.class,
-                        org.web3j.abi.Utils.typeMap(validatorElectionIndices, Uint256.class)), 
+                        org.web3j.abi.Utils.typeMap(validatorElectionIndices, Uint256.class)),
                 new org.web3j.abi.datatypes.DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(groupElectionLessers, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(groupElectionLessers, Address.class)),
                 new org.web3j.abi.datatypes.DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(groupElectionGreaters, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(groupElectionGreaters, Address.class)),
                 new org.web3j.abi.datatypes.DynamicArray<Uint256>(
                         Uint256.class,
-                        org.web3j.abi.Utils.typeMap(groupElectionIndices, Uint256.class))), 
+                        org.web3j.abi.Utils.typeMap(groupElectionIndices, Uint256.class))),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

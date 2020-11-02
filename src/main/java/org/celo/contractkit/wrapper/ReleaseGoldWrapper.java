@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.ReleaseGold;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple4;
@@ -9,8 +13,18 @@ import org.web3j.tuples.generated.Tuple5;
 import java.math.BigInteger;
 
 public class ReleaseGoldWrapper extends BaseWrapper<ReleaseGold> {
-    public ReleaseGoldWrapper(ReleaseGold contract) {
-        super(contract);
+
+    public ReleaseGoldWrapper(ReleaseGold contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static ReleaseGoldWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        ReleaseGold contract = ReleaseGold.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new ReleaseGoldWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<ReleaseGold> deploy() {
+        return ReleaseGold.deploy(web3j, transactionManager, gasProvider);
     }
 
     public RemoteFunctionCall<BigInteger> EXPIRATION_TIME() {

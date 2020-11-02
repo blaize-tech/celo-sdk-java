@@ -374,7 +374,7 @@ public class GasPriceMinimum extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -389,7 +389,7 @@ public class GasPriceMinimum extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -415,10 +415,10 @@ public class GasPriceMinimum extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String _registryAddress, BigInteger _gasPriceMinimumFloor, BigInteger _targetDensity, BigInteger _adjustmentSpeed) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Address(_registryAddress), 
-                new Uint256(_gasPriceMinimumFloor), 
-                new Uint256(_targetDensity), 
-                new Uint256(_adjustmentSpeed)), 
+                Arrays.<Type>asList(new Address(_registryAddress),
+                new Uint256(_gasPriceMinimumFloor),
+                new Uint256(_targetDensity),
+                new Uint256(_adjustmentSpeed)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -426,7 +426,7 @@ public class GasPriceMinimum extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setAdjustmentSpeed(BigInteger _adjustmentSpeed) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETADJUSTMENTSPEED, 
-                Arrays.<Type>asList(new Uint256(_adjustmentSpeed)), 
+                Arrays.<Type>asList(new Uint256(_adjustmentSpeed)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -434,7 +434,7 @@ public class GasPriceMinimum extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setTargetDensity(BigInteger _targetDensity) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETTARGETDENSITY, 
-                Arrays.<Type>asList(new Uint256(_targetDensity)), 
+                Arrays.<Type>asList(new Uint256(_targetDensity)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -442,14 +442,14 @@ public class GasPriceMinimum extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setGasPriceMinimumFloor(BigInteger _gasPriceMinimumFloor) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETGASPRICEMINIMUMFLOOR, 
-                Arrays.<Type>asList(new Uint256(_gasPriceMinimumFloor)), 
+                Arrays.<Type>asList(new Uint256(_gasPriceMinimumFloor)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<BigInteger> getGasPriceMinimum(String tokenAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETGASPRICEMINIMUM, 
-                Arrays.<Type>asList(new Address(tokenAddress)), 
+                Arrays.<Type>asList(new Address(tokenAddress)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -457,16 +457,16 @@ public class GasPriceMinimum extends Contract {
     public RemoteFunctionCall<TransactionReceipt> updateGasPriceMinimum(BigInteger blockGasTotal, BigInteger blockGasLimit) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_UPDATEGASPRICEMINIMUM, 
-                Arrays.<Type>asList(new Uint256(blockGasTotal), 
-                new Uint256(blockGasLimit)), 
+                Arrays.<Type>asList(new Uint256(blockGasTotal),
+                new Uint256(blockGasLimit)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<BigInteger> getUpdatedGasPriceMinimum(BigInteger blockGasTotal, BigInteger blockGasLimit) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETUPDATEDGASPRICEMINIMUM, 
-                Arrays.<Type>asList(new Uint256(blockGasTotal), 
-                new Uint256(blockGasLimit)), 
+                Arrays.<Type>asList(new Uint256(blockGasTotal),
+                new Uint256(blockGasLimit)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }

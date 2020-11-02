@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.Attestations;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -43,8 +47,17 @@ public class AttestationsWrapper extends BaseWrapper<Attestations> {
         }
     }
 
-    public AttestationsWrapper(Attestations contract) {
-        super(contract);
+    public AttestationsWrapper(Attestations contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static AttestationsWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        Attestations contract = Attestations.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new AttestationsWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<Attestations> deploy() {
+        return Attestations.deploy(web3j, transactionManager, gasProvider);
     }
 
     public static AttestationsStatus isAccountConsideredVerified(AttestationStat stats) {

@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.SortedOracles;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -37,8 +41,6 @@ public class SortedOraclesWrapper extends BaseWrapper<SortedOracles> {
             return null;
         }
     }
-
-
 
     public static class SortedOraclesConfig {
         public final BigInteger reportExpirySeconds;
@@ -102,8 +104,17 @@ public class SortedOraclesWrapper extends BaseWrapper<SortedOracles> {
         }
     }
 
-    public SortedOraclesWrapper(SortedOracles contract) {
-        super(contract);
+    public SortedOraclesWrapper(SortedOracles contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static SortedOraclesWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        SortedOracles contract = SortedOracles.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new SortedOraclesWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<SortedOracles> deploy() {
+        return SortedOracles.deploy(web3j, transactionManager, gasProvider);
     }
 
     public RemoteFunctionCall<Boolean> initialized() {

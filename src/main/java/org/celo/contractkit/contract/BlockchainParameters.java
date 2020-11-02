@@ -280,7 +280,7 @@ public class BlockchainParameters extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -288,11 +288,11 @@ public class BlockchainParameters extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(BigInteger major, BigInteger minor, BigInteger patch, BigInteger _gasForNonGoldCurrencies, BigInteger gasLimit) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Uint256(major), 
-                new Uint256(minor), 
-                new Uint256(patch), 
-                new Uint256(_gasForNonGoldCurrencies), 
-                new Uint256(gasLimit)), 
+                Arrays.<Type>asList(new Uint256(major),
+                new Uint256(minor),
+                new Uint256(patch),
+                new Uint256(_gasForNonGoldCurrencies),
+                new Uint256(gasLimit)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -300,9 +300,9 @@ public class BlockchainParameters extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setMinimumClientVersion(BigInteger major, BigInteger minor, BigInteger patch) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETMINIMUMCLIENTVERSION, 
-                Arrays.<Type>asList(new Uint256(major), 
-                new Uint256(minor), 
-                new Uint256(patch)), 
+                Arrays.<Type>asList(new Uint256(major),
+                new Uint256(minor),
+                new Uint256(patch)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -310,7 +310,7 @@ public class BlockchainParameters extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setBlockGasLimit(BigInteger gasLimit) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETBLOCKGASLIMIT, 
-                Arrays.<Type>asList(new Uint256(gasLimit)), 
+                Arrays.<Type>asList(new Uint256(gasLimit)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -318,7 +318,7 @@ public class BlockchainParameters extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setIntrinsicGasForAlternativeFeeCurrency(BigInteger gas) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETINTRINSICGASFORALTERNATIVEFEECURRENCY, 
-                Arrays.<Type>asList(new Uint256(gas)), 
+                Arrays.<Type>asList(new Uint256(gas)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

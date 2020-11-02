@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.LockedGold;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -10,8 +14,18 @@ import java.math.BigInteger;
 import java.util.List;
 
 public class LockedGoldWrapper extends BaseWrapper<LockedGold> {
-    public LockedGoldWrapper(LockedGold contract) {
-        super(contract);
+
+    public LockedGoldWrapper(LockedGold contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static LockedGoldWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        LockedGold contract = LockedGold.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new LockedGoldWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<LockedGold> deploy() {
+        return LockedGold.deploy(web3j, transactionManager, gasProvider);
     }
 
     public RemoteFunctionCall<Boolean> initialized() {

@@ -2,6 +2,10 @@ package org.celo.contractkit.wrapper;
 
 import io.reactivex.Flowable;
 import org.celo.contractkit.contract.Election;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.request.EthFilter;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
@@ -17,8 +21,17 @@ import java.util.List;
  */
 public class ElectionWrapper extends BaseWrapper<Election> {
 
-    public ElectionWrapper(Election contract) {
-        super(contract);
+    public ElectionWrapper(Election contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static ElectionWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        Election contract = Election.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new ElectionWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<Election> deploy() {
+        return Election.deploy(web3j, transactionManager, gasProvider);
     }
 
     public Flowable<Election.RegistrySetEventResponse> registrySetEventFlowable(EthFilter filter) {

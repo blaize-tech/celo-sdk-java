@@ -64,13 +64,13 @@ public class SortedOraclesTest {
         List<SortedOraclesWrapper.OracleRate> initialRates = sortedOracles.getRates(stableTokenAddress);
         assertFalse(initialRates.isEmpty());
 
-        String data = sortedOracles.report(stableTokenAddress, BigInteger.valueOf(16), ORACLE_ADDRESS).encodeFunctionCall();
-        EthSendTransaction tx = contractKit.sendTransaction(CeloContract.SortedOracles, data, ORACLE_ADDRESS);
+        String data = sortedOracles.report(stableTokenAddress, random(1, 10), stableTokenOracles[0]).encodeFunctionCall();
+        EthSendTransaction tx = contractKit.sendTransaction(CeloContract.SortedOracles, data, stableTokenOracles[0]);
         assertNotNull(tx.getTransactionHash());
 
         List<SortedOraclesWrapper.OracleRate> resultingRates = sortedOracles.getRates(stableTokenAddress);
         assertFalse(resultingRates.isEmpty());
-        assertNotEquals(initialRates.get(0).rate, resultingRates.get(0).rate);
+        assertNotEquals(initialRates.get(2).rate, resultingRates.get(2).rate);
     }
 
     @Test

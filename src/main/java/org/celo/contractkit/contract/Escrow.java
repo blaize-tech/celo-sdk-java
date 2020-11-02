@@ -309,7 +309,7 @@ public class Escrow extends Contract {
 
     public RemoteFunctionCall<Tuple9<byte[], String, String, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger>> escrowedPayments(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ESCROWEDPAYMENTS, 
-                Arrays.<Type>asList(new Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}, new TypeReference<Address>() {}, new TypeReference<Address>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple9<byte[], String, String, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger>>(function,
                 new Callable<Tuple9<byte[], String, String, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger>>() {
@@ -353,8 +353,8 @@ public class Escrow extends Contract {
 
     public RemoteFunctionCall<String> receivedPaymentIds(byte[] param0, BigInteger param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_RECEIVEDPAYMENTIDS, 
-                Arrays.<Type>asList(new Bytes32(param0), 
-                new Uint256(param1)), 
+                Arrays.<Type>asList(new Bytes32(param0),
+                new Uint256(param1)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -376,8 +376,8 @@ public class Escrow extends Contract {
 
     public RemoteFunctionCall<String> sentPaymentIds(String param0, BigInteger param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_SENTPAYMENTIDS, 
-                Arrays.<Type>asList(new Address(param0), 
-                new Uint256(param1)), 
+                Arrays.<Type>asList(new Address(param0),
+                new Uint256(param1)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -385,7 +385,7 @@ public class Escrow extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -393,7 +393,7 @@ public class Escrow extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -419,7 +419,7 @@ public class Escrow extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -427,12 +427,12 @@ public class Escrow extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transfer(byte[] identifier, String token, BigInteger value, BigInteger expirySeconds, String paymentId, BigInteger minAttestations) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFER, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Address(token), 
-                new Uint256(value), 
-                new Uint256(expirySeconds), 
-                new Address(paymentId), 
-                new Uint256(minAttestations)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Address(token),
+                new Uint256(value),
+                new Uint256(expirySeconds),
+                new Address(paymentId),
+                new Uint256(minAttestations)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -440,10 +440,10 @@ public class Escrow extends Contract {
     public RemoteFunctionCall<TransactionReceipt> withdraw(String paymentId, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WITHDRAW, 
-                Arrays.<Type>asList(new Address(paymentId), 
+                Arrays.<Type>asList(new Address(paymentId),
                 new org.web3j.abi.datatypes.generated.Uint8(v), 
-                new Bytes32(r), 
-                new Bytes32(s)), 
+                new Bytes32(r),
+                new Bytes32(s)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -451,14 +451,14 @@ public class Escrow extends Contract {
     public RemoteFunctionCall<TransactionReceipt> revoke(String paymentId) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REVOKE, 
-                Arrays.<Type>asList(new Address(paymentId)), 
+                Arrays.<Type>asList(new Address(paymentId)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<List> getReceivedPaymentIds(byte[] identifier) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETRECEIVEDPAYMENTIDS, 
-                Arrays.<Type>asList(new Bytes32(identifier)), 
+                Arrays.<Type>asList(new Bytes32(identifier)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {
@@ -473,7 +473,7 @@ public class Escrow extends Contract {
 
     public RemoteFunctionCall<List> getSentPaymentIds(String sender) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETSENTPAYMENTIDS, 
-                Arrays.<Type>asList(new Address(sender)), 
+                Arrays.<Type>asList(new Address(sender)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {

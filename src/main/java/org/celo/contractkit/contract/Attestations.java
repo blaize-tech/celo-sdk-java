@@ -630,28 +630,28 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> attestationRequestFees(String param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ATTESTATIONREQUESTFEES, 
-                Arrays.<Type>asList(new Address(param0)), 
+                Arrays.<Type>asList(new Address(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Boolean> checkProofOfPossession(String sender, byte[] blsKey, byte[] blsPop) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_CHECKPROOFOFPOSSESSION, 
-                Arrays.<Type>asList(new Address(sender), 
-                new DynamicBytes(blsKey), 
-                new DynamicBytes(blsPop)), 
+                Arrays.<Type>asList(new Address(sender),
+                new DynamicBytes(blsKey),
+                new DynamicBytes(blsPop)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> fractionMulExp(BigInteger aNumerator, BigInteger aDenominator, BigInteger bNumerator, BigInteger bDenominator, BigInteger exponent, BigInteger _decimals) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_FRACTIONMULEXP, 
-                Arrays.<Type>asList(new Uint256(aNumerator), 
-                new Uint256(aDenominator), 
-                new Uint256(bNumerator), 
-                new Uint256(bDenominator), 
-                new Uint256(exponent), 
-                new Uint256(_decimals)), 
+                Arrays.<Type>asList(new Uint256(aNumerator),
+                new Uint256(aDenominator),
+                new Uint256(bNumerator),
+                new Uint256(bDenominator),
+                new Uint256(exponent),
+                new Uint256(_decimals)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}, new TypeReference<Uint256>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -667,7 +667,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> getBlockNumberFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETBLOCKNUMBERFROMHEADER, 
-                Arrays.<Type>asList(new DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -681,7 +681,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> getEpochNumberOfBlock(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETEPOCHNUMBEROFBLOCK, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -695,21 +695,21 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<byte[]> getParentSealBitmap(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPARENTSEALBITMAP, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> getVerifiedSealBitmapFromHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETVERIFIEDSEALBITMAPFROMHEADER, 
-                Arrays.<Type>asList(new DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
 
     public RemoteFunctionCall<byte[]> hashHeader(byte[] header) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_HASHHEADER, 
-                Arrays.<Type>asList(new DynamicBytes(header)), 
+                Arrays.<Type>asList(new DynamicBytes(header)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
@@ -737,7 +737,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> minQuorumSize(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_MINQUORUMSIZE, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -758,7 +758,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> numberValidatorsInSet(BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_NUMBERVALIDATORSINSET, 
-                Arrays.<Type>asList(new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -772,8 +772,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> pendingWithdrawals(String param0, String param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_PENDINGWITHDRAWALS, 
-                Arrays.<Type>asList(new Address(param0), 
-                new Address(param1)), 
+                Arrays.<Type>asList(new Address(param0),
+                new Address(param1)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -803,15 +803,15 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Boolean> transferApprovals(String param0, byte[] param1) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_TRANSFERAPPROVALS, 
-                Arrays.<Type>asList(new Address(param0), 
-                new Bytes32(param1)), 
+                Arrays.<Type>asList(new Address(param0),
+                new Bytes32(param1)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -819,22 +819,22 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromCurrentSet(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMCURRENTSET, 
-                Arrays.<Type>asList(new Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<String> validatorSignerAddressFromSet(BigInteger index, BigInteger blockNumber) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATORSIGNERADDRESSFROMSET, 
-                Arrays.<Type>asList(new Uint256(index), 
-                new Uint256(blockNumber)), 
+                Arrays.<Type>asList(new Uint256(index),
+                new Uint256(blockNumber)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
@@ -842,16 +842,16 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress, BigInteger _attestationExpiryBlocks, BigInteger _selectIssuersWaitBlocks, BigInteger _maxAttestations, List<String> attestationRequestFeeTokens, List<BigInteger> attestationRequestFeeValues) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Address(registryAddress), 
-                new Uint256(_attestationExpiryBlocks), 
-                new Uint256(_selectIssuersWaitBlocks), 
-                new Uint256(_maxAttestations), 
+                Arrays.<Type>asList(new Address(registryAddress),
+                new Uint256(_attestationExpiryBlocks),
+                new Uint256(_selectIssuersWaitBlocks),
+                new Uint256(_maxAttestations),
                 new DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(attestationRequestFeeTokens, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(attestationRequestFeeTokens, Address.class)),
                 new DynamicArray<Uint256>(
                         Uint256.class,
-                        org.web3j.abi.Utils.typeMap(attestationRequestFeeValues, Uint256.class))), 
+                        org.web3j.abi.Utils.typeMap(attestationRequestFeeValues, Uint256.class))),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -877,9 +877,9 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> request(byte[] identifier, BigInteger attestationsRequested, String attestationRequestFeeToken) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REQUEST, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Uint256(attestationsRequested), 
-                new Address(attestationRequestFeeToken)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Uint256(attestationsRequested),
+                new Address(attestationRequestFeeToken)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -887,7 +887,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> selectIssuers(byte[] identifier) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SELECTISSUERS, 
-                Arrays.<Type>asList(new Bytes32(identifier)), 
+                Arrays.<Type>asList(new Bytes32(identifier)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -895,10 +895,10 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> complete(byte[] identifier, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_COMPLETE, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Uint8(v), 
-                new Bytes32(r), 
-                new Bytes32(s)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Uint8(v),
+                new Bytes32(r),
+                new Bytes32(s)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -906,8 +906,8 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> revoke(byte[] identifier, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REVOKE, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Uint256(index)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -915,15 +915,15 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> withdraw(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WITHDRAW, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>> getUnselectedRequest(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETUNSELECTEDREQUEST, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint32>() {}, new TypeReference<Uint32>() {}, new TypeReference<Address>() {}));
         return new RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>>(function,
                 new Callable<Tuple3<BigInteger, BigInteger, String>>() {
@@ -940,8 +940,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<List> getAttestationIssuers(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONISSUERS, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {
@@ -956,8 +956,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<Tuple2<BigInteger, BigInteger>> getAttestationStats(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONSTATS, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint32>() {}, new TypeReference<Uint32>() {}));
         return new RemoteFunctionCall<Tuple2<BigInteger, BigInteger>>(function,
                 new Callable<Tuple2<BigInteger, BigInteger>>() {
@@ -975,7 +975,7 @@ public class Attestations extends Contract {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_BATCHGETATTESTATIONSTATS, 
                 Arrays.<Type>asList(new DynamicArray<Bytes32>(
                         Bytes32.class,
-                        org.web3j.abi.Utils.typeMap(identifiersToLookup, Bytes32.class))), 
+                        org.web3j.abi.Utils.typeMap(identifiersToLookup, Bytes32.class))),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Address>>() {}, new TypeReference<DynamicArray<Uint64>>() {}, new TypeReference<DynamicArray<Uint64>>() {}));
         return new RemoteFunctionCall<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, List<BigInteger>>>() {
@@ -993,9 +993,9 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>> getAttestationState(byte[] identifier, String account, String issuer) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONSTATE, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Address(account), 
-                new Address(issuer)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Address(account),
+                new Address(issuer)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint8>() {}, new TypeReference<Uint32>() {}, new TypeReference<Address>() {}));
         return new RemoteFunctionCall<Tuple3<BigInteger, BigInteger, String>>(function,
                 new Callable<Tuple3<BigInteger, BigInteger, String>>() {
@@ -1012,8 +1012,8 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, byte[]>> getCompletableAttestations(byte[] identifier, String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETCOMPLETABLEATTESTATIONS, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Address(account)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint32>>() {}, new TypeReference<DynamicArray<Address>>() {}, new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicBytes>() {}));
         return new RemoteFunctionCall<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, byte[]>>(function,
                 new Callable<Tuple4<List<BigInteger>, List<String>, List<BigInteger>, byte[]>>() {
@@ -1031,7 +1031,7 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<BigInteger> getAttestationRequestFee(String token) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETATTESTATIONREQUESTFEE, 
-                Arrays.<Type>asList(new Address(token)), 
+                Arrays.<Type>asList(new Address(token)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -1039,8 +1039,8 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setAttestationRequestFee(String token, BigInteger fee) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETATTESTATIONREQUESTFEE, 
-                Arrays.<Type>asList(new Address(token), 
-                new Uint256(fee)), 
+                Arrays.<Type>asList(new Address(token),
+                new Uint256(fee)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1048,7 +1048,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setAttestationExpiryBlocks(BigInteger _attestationExpiryBlocks) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETATTESTATIONEXPIRYBLOCKS, 
-                Arrays.<Type>asList(new Uint256(_attestationExpiryBlocks)), 
+                Arrays.<Type>asList(new Uint256(_attestationExpiryBlocks)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1056,7 +1056,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setSelectIssuersWaitBlocks(BigInteger _selectIssuersWaitBlocks) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETSELECTISSUERSWAITBLOCKS, 
-                Arrays.<Type>asList(new Uint256(_selectIssuersWaitBlocks)), 
+                Arrays.<Type>asList(new Uint256(_selectIssuersWaitBlocks)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1064,7 +1064,7 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setMaxAttestations(BigInteger _maxAttestations) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETMAXATTESTATIONS, 
-                Arrays.<Type>asList(new Uint256(_maxAttestations)), 
+                Arrays.<Type>asList(new Uint256(_maxAttestations)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -1078,18 +1078,18 @@ public class Attestations extends Contract {
 
     public RemoteFunctionCall<String> validateAttestationCode(byte[] identifier, String account, BigInteger v, byte[] r, byte[] s) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_VALIDATEATTESTATIONCODE, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Address(account), 
-                new Uint8(v), 
-                new Bytes32(r), 
-                new Bytes32(s)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Address(account),
+                new Uint8(v),
+                new Bytes32(r),
+                new Bytes32(s)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Address>() {}));
         return executeRemoteCallSingleValueReturn(function, String.class);
     }
 
     public RemoteFunctionCall<List> lookupAccountsForIdentifier(byte[] identifier) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_LOOKUPACCOUNTSFORIDENTIFIER, 
-                Arrays.<Type>asList(new Bytes32(identifier)), 
+                Arrays.<Type>asList(new Bytes32(identifier)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Address>>() {}));
         return new RemoteFunctionCall<List>(function,
                 new Callable<List>() {
@@ -1105,11 +1105,11 @@ public class Attestations extends Contract {
     public RemoteFunctionCall<TransactionReceipt> approveTransfer(byte[] identifier, BigInteger index, String from, String to, Boolean status) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_APPROVETRANSFER, 
-                Arrays.<Type>asList(new Bytes32(identifier), 
-                new Uint256(index), 
-                new Address(from), 
-                new Address(to), 
-                new Bool(status)), 
+                Arrays.<Type>asList(new Bytes32(identifier),
+                new Uint256(index),
+                new Address(from),
+                new Address(to),
+                new Bool(status)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

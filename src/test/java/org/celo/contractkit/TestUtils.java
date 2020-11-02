@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 
 public class TestUtils {
     public static final BigInteger ONE_GWEI = Convert.toWei(BigDecimal.ONE, Convert.Unit.GWEI).toBigInteger();
+    public static final BigInteger ONE_ETHER = Convert.toWei(BigDecimal.ONE, Convert.Unit.ETHER).toBigInteger();
 
     public static void assertIsPositive(BigInteger val) {
         assertNotNull(val);

@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.Reserve;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -11,8 +15,18 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class ReserveWrapper extends BaseWrapper<Reserve> {
-    public ReserveWrapper(Reserve contract) {
-        super(contract);
+
+    public ReserveWrapper(Reserve contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static ReserveWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        Reserve contract = Reserve.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new ReserveWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<Reserve> deploy() {
+        return Reserve.deploy(web3j, transactionManager, gasProvider);
     }
 
     public RemoteFunctionCall<byte[]> assetAllocationSymbols(BigInteger param0) {

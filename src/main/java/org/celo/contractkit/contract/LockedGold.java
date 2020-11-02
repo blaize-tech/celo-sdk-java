@@ -530,14 +530,14 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setRegistry(String registryAddress) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETREGISTRY, 
-                Arrays.<Type>asList(new Address(registryAddress)), 
+                Arrays.<Type>asList(new Address(registryAddress)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
 
     public RemoteFunctionCall<byte[]> slashingWhitelist(BigInteger param0) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_SLASHINGWHITELIST, 
-                Arrays.<Type>asList(new Uint256(param0)), 
+                Arrays.<Type>asList(new Uint256(param0)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bytes32>() {}));
         return executeRemoteCallSingleValueReturn(function, byte[].class);
     }
@@ -552,7 +552,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> transferOwnership(String newOwner) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_TRANSFEROWNERSHIP, 
-                Arrays.<Type>asList(new Address(newOwner)), 
+                Arrays.<Type>asList(new Address(newOwner)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -566,7 +566,7 @@ public class LockedGold extends Contract {
 
     public RemoteFunctionCall<Boolean> isSlasher(String slasher) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_ISSLASHER, 
-                Arrays.<Type>asList(new Address(slasher)), 
+                Arrays.<Type>asList(new Address(slasher)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Bool>() {}));
         return executeRemoteCallSingleValueReturn(function, Boolean.class);
     }
@@ -592,8 +592,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> initialize(String registryAddress, BigInteger _unlockingPeriod) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INITIALIZE, 
-                Arrays.<Type>asList(new Address(registryAddress), 
-                new Uint256(_unlockingPeriod)), 
+                Arrays.<Type>asList(new Address(registryAddress),
+                new Uint256(_unlockingPeriod)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -601,7 +601,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> setUnlockingPeriod(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SETUNLOCKINGPERIOD, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -617,8 +617,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> incrementNonvotingAccountBalance(String account, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_INCREMENTNONVOTINGACCOUNTBALANCE, 
-                Arrays.<Type>asList(new Address(account), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(account),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -626,8 +626,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> decrementNonvotingAccountBalance(String account, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_DECREMENTNONVOTINGACCOUNTBALANCE, 
-                Arrays.<Type>asList(new Address(account), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Address(account),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -635,7 +635,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> unlock(BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_UNLOCK, 
-                Arrays.<Type>asList(new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -643,8 +643,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> relock(BigInteger index, BigInteger value) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_RELOCK, 
-                Arrays.<Type>asList(new Uint256(index), 
-                new Uint256(value)), 
+                Arrays.<Type>asList(new Uint256(index),
+                new Uint256(value)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -652,7 +652,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> withdraw(BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_WITHDRAW, 
-                Arrays.<Type>asList(new Uint256(index)), 
+                Arrays.<Type>asList(new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -673,21 +673,21 @@ public class LockedGold extends Contract {
 
     public RemoteFunctionCall<BigInteger> getAccountTotalLockedGold(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETACCOUNTTOTALLOCKEDGOLD, 
-                Arrays.<Type>asList(new Address(account)), 
+                Arrays.<Type>asList(new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<BigInteger> getAccountNonvotingLockedGold(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETACCOUNTNONVOTINGLOCKEDGOLD, 
-                Arrays.<Type>asList(new Address(account)), 
+                Arrays.<Type>asList(new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
 
     public RemoteFunctionCall<Tuple2<List<BigInteger>, List<BigInteger>>> getPendingWithdrawals(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETPENDINGWITHDRAWALS, 
-                Arrays.<Type>asList(new Address(account)), 
+                Arrays.<Type>asList(new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<DynamicArray<Uint256>>() {}, new TypeReference<DynamicArray<Uint256>>() {}));
         return new RemoteFunctionCall<Tuple2<List<BigInteger>, List<BigInteger>>>(function,
                 new Callable<Tuple2<List<BigInteger>, List<BigInteger>>>() {
@@ -703,7 +703,7 @@ public class LockedGold extends Contract {
 
     public RemoteFunctionCall<BigInteger> getTotalPendingWithdrawals(String account) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(FUNC_GETTOTALPENDINGWITHDRAWALS, 
-                Arrays.<Type>asList(new Address(account)), 
+                Arrays.<Type>asList(new Address(account)),
                 Arrays.<TypeReference<?>>asList(new TypeReference<Uint256>() {}));
         return executeRemoteCallSingleValueReturn(function, BigInteger.class);
     }
@@ -726,7 +726,7 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> addSlasher(String slasherIdentifier) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_ADDSLASHER, 
-                Arrays.<Type>asList(new Utf8String(slasherIdentifier)), 
+                Arrays.<Type>asList(new Utf8String(slasherIdentifier)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -734,8 +734,8 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> removeSlasher(String slasherIdentifier, BigInteger index) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_REMOVESLASHER, 
-                Arrays.<Type>asList(new Utf8String(slasherIdentifier), 
-                new Uint256(index)), 
+                Arrays.<Type>asList(new Utf8String(slasherIdentifier),
+                new Uint256(index)),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }
@@ -743,19 +743,19 @@ public class LockedGold extends Contract {
     public RemoteFunctionCall<TransactionReceipt> slash(String account, BigInteger penalty, String reporter, BigInteger reward, List<String> lessers, List<String> greaters, List<BigInteger> indices) {
         final org.web3j.abi.datatypes.Function function = new org.web3j.abi.datatypes.Function(
                 FUNC_SLASH, 
-                Arrays.<Type>asList(new Address(account), 
-                new Uint256(penalty), 
-                new Address(reporter), 
-                new Uint256(reward), 
+                Arrays.<Type>asList(new Address(account),
+                new Uint256(penalty),
+                new Address(reporter),
+                new Uint256(reward),
                 new DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(lessers, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(lessers, Address.class)),
                 new DynamicArray<Address>(
                         Address.class,
-                        org.web3j.abi.Utils.typeMap(greaters, Address.class)), 
+                        org.web3j.abi.Utils.typeMap(greaters, Address.class)),
                 new DynamicArray<Uint256>(
                         Uint256.class,
-                        org.web3j.abi.Utils.typeMap(indices, Uint256.class))), 
+                        org.web3j.abi.Utils.typeMap(indices, Uint256.class))),
                 Collections.<TypeReference<?>>emptyList());
         return executeRemoteCallTransaction(function);
     }

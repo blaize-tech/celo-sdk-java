@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.DoubleSigningSlasher;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -14,8 +18,17 @@ import java.util.List;
  */
 public class DoubleSigningSlasherWrapper extends BaseWrapper<DoubleSigningSlasher> {
 
-    public DoubleSigningSlasherWrapper(DoubleSigningSlasher contract) {
-        super(contract);
+    public DoubleSigningSlasherWrapper(DoubleSigningSlasher contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static DoubleSigningSlasherWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        DoubleSigningSlasher contract = DoubleSigningSlasher.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new DoubleSigningSlasherWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<DoubleSigningSlasher> deploy() {
+        return DoubleSigningSlasher.deploy(web3j, transactionManager, gasProvider);
     }
 
     public RemoteFunctionCall<BigInteger> getBlockNumberFromHeader(byte[] header) {

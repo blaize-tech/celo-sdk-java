@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.DowntimeSlasher;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
@@ -13,8 +17,17 @@ import java.util.List;
  */
 public class DowntimeSlasherWrapper extends BaseWrapper<DowntimeSlasher> {
 
-    public DowntimeSlasherWrapper(DowntimeSlasher contract) {
-        super(contract);
+    public DowntimeSlasherWrapper(DowntimeSlasher contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static DowntimeSlasherWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        DowntimeSlasher contract = DowntimeSlasher.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new DowntimeSlasherWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<DowntimeSlasher> deploy() {
+        return DowntimeSlasher.deploy(web3j, transactionManager, gasProvider);
     }
 
     public List<DowntimeSlasher.SlashableDowntimeSetEventResponse> getSlashableDowntimeSetEvents(TransactionReceipt transactionReceipt) {

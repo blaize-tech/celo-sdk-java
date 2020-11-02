@@ -1,6 +1,10 @@
 package org.celo.contractkit.wrapper;
 
 import org.celo.contractkit.contract.Governance;
+import org.celo.contractkit.protocol.CeloGasProvider;
+import org.celo.contractkit.protocol.CeloTransactionManager;
+import org.web3j.protocol.Web3j;
+import org.web3j.protocol.core.RemoteCall;
 import org.web3j.protocol.core.RemoteFunctionCall;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import org.web3j.tuples.generated.Tuple2;
@@ -16,6 +20,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class GovernanceWrapper extends BaseWrapper<Governance> {
     public enum ProposalStage {
         None(0),
@@ -170,8 +175,17 @@ public class GovernanceWrapper extends BaseWrapper<Governance> {
         }
     }
 
-    public GovernanceWrapper(Governance contract) {
-        super(contract);
+    public GovernanceWrapper(Governance contract, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        super(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public static GovernanceWrapper load(String contractAddress, Web3j web3j, CeloTransactionManager transactionManager, CeloGasProvider gasProvider) {
+        Governance contract = Governance.load(contractAddress, web3j, transactionManager, gasProvider);
+        return new GovernanceWrapper(contract, web3j, transactionManager, gasProvider);
+    }
+
+    public RemoteCall<Governance> deploy() {
+        return Governance.deploy(web3j, transactionManager, gasProvider);
     }
 
     public Config getConfig() throws Exception {
