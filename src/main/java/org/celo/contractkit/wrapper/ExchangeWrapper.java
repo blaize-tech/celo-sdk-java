@@ -87,6 +87,28 @@ public class ExchangeWrapper extends BaseWrapper<Exchange> {
     }
 
     /**
+     * Exchanges amount of CELO in exchange for at least minUsdAmount of cUsd
+     * Requires the amount to have been approved to the exchange
+     * @param amount The amount of CELO the user is selling to the exchange
+     * @param minUSDAmount The minimum amount of cUsd the user has to receive for this
+     * transaction to succeed
+     */
+    public RemoteFunctionCall<TransactionReceipt> sellGold(BigInteger amount, BigInteger minUSDAmount) {
+        return this.exchange(amount, minUSDAmount, true);
+    }
+
+    /**
+     * Exchanges amount of cUsd in exchange for at least minGoldAmount of CELO
+     * Requires the amount to have been approved to the exchange
+     * @param amount The amount of cUsd the user is selling to the exchange
+     * @param minGoldAmount The minimum amount of CELO the user has to receive for this
+     * transaction to succeed
+     */
+    public RemoteFunctionCall<TransactionReceipt> sellDollar(BigInteger amount, BigInteger minGoldAmount) {
+        return this.exchange(amount, minGoldAmount, false);
+    }
+
+    /**
      * @dev Returns the amount of buyToken a user would get for sellAmount of sellToken
      * @param sellAmount The amount of sellToken the user is selling to the exchange
      * @param sellGold `true` if gold is the sell token
@@ -94,6 +116,44 @@ public class ExchangeWrapper extends BaseWrapper<Exchange> {
      */
     public RemoteFunctionCall<BigInteger> getBuyTokenAmount(BigInteger sellAmount, Boolean sellGold) {
         return contract.getBuyTokenAmount(sellAmount, sellGold);
+    }
+
+    /**
+     * Returns the amount of CELO a user would get for sellAmount of cUsd
+     * @param sellAmount The amount of cUsd the user is selling to the exchange
+     * @return The corresponding CELO amount.
+     */
+    public RemoteFunctionCall<BigInteger> quoteUsdSell(BigInteger sellAmount) {
+        return this.getBuyTokenAmount(sellAmount, false);
+    }
+
+    /**
+     * Returns the amount of cUsd a user would get for sellAmount of CELO
+     * @param sellAmount The amount of CELO the user is selling to the exchange
+     * @return The corresponding cUsd amount.
+     */
+    public RemoteFunctionCall<BigInteger> quoteGoldSell(BigInteger sellAmount) {
+        return this.getBuyTokenAmount(sellAmount, true);
+    }
+
+    /**
+     * Returns the amount of CELO a user would need to exchange to receive buyAmount of
+     * cUsd.
+     * @param buyAmount The amount of cUsd the user would like to purchase.
+     * @return The corresponding CELO amount.
+     */
+    public RemoteFunctionCall<BigInteger> quoteUsdBuy(BigInteger buyAmount) {
+        return this.getBuyTokenAmount(buyAmount, false);
+    }
+
+    /**
+     * Returns the amount of cUsd a user would need to exchange to receive buyAmount of
+     * CELO.
+     * @param buyAmount The amount of CELO the user would like to purchase.
+     * @return The corresponding cUsd amount.
+     */
+    public RemoteFunctionCall<BigInteger> quoteGoldBuy(BigInteger buyAmount) {
+        return this.getBuyTokenAmount(buyAmount, true);
     }
 
     /**

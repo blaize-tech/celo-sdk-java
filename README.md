@@ -172,11 +172,11 @@ GoldTokenWrapper goldToken = contractKit.contracts.getGoldToken();
 
 BigInteger cUsdBalance = stableToken.balanceOf(myAddress).send();
 
-TransactionReceipt approveTx = goldToken.approve(exchange.getContractAddress(), cUsdBalance).send();
+TransactionReceipt approveTx = stableToken.approve(exchange.getContractAddress(), cUsdBalance).send();
 String approveTxHash = approveTx.getTransactionHash();
 
-BigInteger goldAmount = exchange.getBuyTokenAmount(cUsdBalance, false).send();
-TransactionReceipt sellTx = exchange.exchange(cUsdBalance, goldAmount, true).send();
+BigInteger goldAmount = exchange.quoteUsdSell(cUsdBalance).send();
+TransactionReceipt sellTx = exchange.sellDollar(cUsdBalance, goldAmount).send();
 String sellTxHash = sellTx.getTransactionHash();
 ```
 
