@@ -23,14 +23,30 @@ Gradle 6
 Install from repositories:  
 maven  
 ```
-<dependency>
-  <groupId>org.celo</groupId>
-  <artifactId>contractkit</artifactId>
-  <version>0.0.1</version>
-</dependency>
+<repositories>
+    <repository>
+        <id>bintray-celo-celo</id>
+        <name>bintray</name>
+        <url>https://dl.bintray.com/celo/celo</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+      <groupId>org.celo</groupId>
+      <artifactId>contractkit</artifactId>
+      <version>0.0.1</version>
+    </dependency>
+</dependencies>
 ```
 Gradle
 ```
+repositories {
+    maven {
+        url  "https://dl.bintray.com/celo/celo" 
+    }
+}
+
 compile 'org.celo:contractkit:0.0.1'
 ```
 

@@ -63,6 +63,7 @@ bintray {
     pkg {
         repo = 'celo'
         name = 'org.celo:contractkit'
+        userOrg = 'celo'
         websiteUrl = 'https://github.com/celo-org/celo-monorepo'
         vcsUrl = 'https://github.com/celo-org/celo-monorepo'
         licenses = ["Apache-2.0"]
@@ -70,6 +71,7 @@ bintray {
             name = '0.0.1'
             desc = '0.0.1'
             released  = new Date()
+            vcsTag = '0.0.1'
         }
     }
 
