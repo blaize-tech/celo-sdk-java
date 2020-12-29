@@ -51,9 +51,14 @@ public class ContractKit {
     }
 
     public void setFeeCurrency(CeloContract token) {
-        String contractAddress = contracts.addressFor(token);
-        transactionManager.setFeeCurrency(contractAddress);
-        contracts.setFeeCurrency(contractAddress);
+        if (token != null) {
+            String contractAddress = contracts.addressFor(token);
+            transactionManager.setFeeCurrency(contractAddress);
+            contracts.setFeeCurrency(contractAddress);
+        } else {
+            transactionManager.setFeeCurrency(null);
+            contracts.setFeeCurrency(null);
+        }
     }
 
     public void setGatewayFeeRecipient(String gatewayFeeRecipient) {

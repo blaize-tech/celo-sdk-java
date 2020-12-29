@@ -1,5 +1,6 @@
 package org.celo.contractkit;
 
+import org.celo.contractkit.wrapper.GoldTokenWrapper;
 import org.celo.contractkit.wrapper.StableTokenWrapper;
 import org.junit.Before;
 import org.junit.Test;
@@ -63,5 +64,36 @@ public class StableTokenTest {
 
         BigInteger finalBalance = stableToken.balanceOf(PUBLIC_KEY_2).send();
         assertEquals(finalBalance, initialBalance.add(ONE_GWEI));
+    }
+
+    @Test
+    public void testTransferWithGoldFee() throws Exception {
+        ContractKitOptions config = new ContractKitOptions.Builder()
+                .setFeeCurrency(CeloContract.GoldToken)
+                .build();
+
+        Web3j web3j = Web3j.build(new HttpService(ContractKit.ALFAJORES_TESTNET));
+        ContractKit contractKit = new ContractKit(web3j, config);
+        contractKit.addAccount(PRIVATE_KEY_1);
+
+        StableTokenWrapper stableToken = contractKit.contracts.getStableToken();
+        GoldTokenWrapper goldToken = contractKit.contracts.getGoldToken();
+
+        // Get initial balances
+        BigInteger initialBalance = stableToken.balanceOf(PUBLIC_KEY_1).send();
+        BigInteger initialGoldBalance = goldToken.balanceOf(PUBLIC_KEY_1);
+
+        // Transfer one gwei
+        TransactionReceipt tx = stableToken.transfer(PUBLIC_KEY_2, ONE_GWEI).send();
+        assertTrue(tx.isStatusOK());
+        assertNotNull(tx.getTransactionHash());
+
+        // Check final balance after transfer
+        BigInteger finalBalance = stableToken.balanceOf(PUBLIC_KEY_1).send();
+        assertEquals("Only specified amount without fee", initialBalance.subtract(ONE_GWEI), finalBalance);
+
+        // Should
+        BigInteger finalGoldBalance = goldToken.balanceOf(PUBLIC_KEY_1);
+        assertEquals("Used gold fee", -1, finalGoldBalance.compareTo(initialGoldBalance));
     }
 }

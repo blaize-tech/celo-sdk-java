@@ -51,7 +51,7 @@ public class ContractKitOptions {
         }
 
         public Builder setFeeCurrency(CeloContract feeCurrency) {
-            this.feeCurrency = feeCurrency;
+            this.feeCurrency = feeCurrency != CeloContract.GoldToken ? feeCurrency : null;
             return this;
         }
 
