@@ -45,43 +45,47 @@ public class ExchangeTest {
 
     @Test
     public void testBuySellQuotes() throws Exception {
-        BigInteger quoteUsdSell = exchange.getBuyTokenAmount(ONE_GWEI, false).send();
+        BigInteger quoteUsdSell = exchange.quoteUsdSell(ONE_GWEI).send();
         TestUtils.assertIsPositive(quoteUsdSell);
 
-        BigInteger quoteGoldSell = exchange.getBuyTokenAmount(ONE_GWEI, true).send();
+        BigInteger quoteGoldSell = exchange.quoteGoldSell(ONE_GWEI).send();
         TestUtils.assertIsPositive(quoteGoldSell);
 
-        BigInteger quoteUsdBuy = exchange.getSellTokenAmount(ONE_GWEI, false).send();
+        BigInteger quoteUsdBuy = exchange.quoteUsdBuy(ONE_GWEI).send();
         TestUtils.assertIsPositive(quoteUsdBuy);
 
-        BigInteger quoteGoldBuy = exchange.getSellTokenAmount(ONE_GWEI, true).send();
+        BigInteger quoteGoldBuy = exchange.quoteGoldBuy(ONE_GWEI).send();
         TestUtils.assertIsPositive(quoteGoldBuy);
     }
 
     @Test
     public void testSellDollar() throws Exception {
-        BigInteger goldAmount = exchange.getBuyTokenAmount(ONE_GWEI, false).send();
+        BigInteger goldAmount = exchange.quoteUsdSell(ONE_GWEI).send();
 
         StableTokenWrapper stableToken = contractKit.contracts.getStableToken();
+        // Prepare some test cUSD balance
+        String transferTxData = stableToken.transfer(accounts.get(6), ONE_GWEI).encodeFunctionCall();
+        contractKit.sendTransaction(CeloContract.StableToken, transferTxData, accounts.get(1));
+
         TransactionReceipt approveTx = stableToken.approve(exchange.getContractAddress(), ONE_GWEI).send();
         assertTrue(approveTx.isStatusOK());
         assertNotNull(approveTx.getTransactionHash());
 
-        TransactionReceipt sellTx = exchange.exchange(ONE_GWEI, goldAmount, false).send();
+        TransactionReceipt sellTx = exchange.sellDollar(ONE_GWEI, goldAmount).send();
         assertTrue(sellTx.isStatusOK());
         assertNotNull(sellTx.getTransactionHash());
     }
 
     @Test
     public void testSellGold() throws Exception {
-        BigInteger usdAmount = exchange.getBuyTokenAmount(ONE_GWEI, true).send();
+        BigInteger usdAmount = exchange.quoteGoldSell(ONE_GWEI).send();
 
         GoldTokenWrapper goldToken = contractKit.contracts.getGoldToken();
         TransactionReceipt approveTx = goldToken.approve(exchange.getContractAddress(), ONE_GWEI).send();
         assertTrue(approveTx.isStatusOK());
         assertNotNull(approveTx.getTransactionHash());
 
-        TransactionReceipt sellTx = exchange.exchange(ONE_GWEI, usdAmount, true).send();
+        TransactionReceipt sellTx = exchange.sellGold(ONE_GWEI, usdAmount).send();
         assertTrue(sellTx.isStatusOK());
         assertNotNull(sellTx.getTransactionHash());
     }
