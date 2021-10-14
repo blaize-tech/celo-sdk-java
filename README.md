@@ -49,6 +49,27 @@ repositories {
 
 compile 'org.celo:contractkit:0.0.1'
 ```
+### Install Web3j Dependency
+
+celo-sdk-java relies on web3j which can be imported from mavenCentral.  Currently, celo-sdk-java relies on version 4.6.3 of web3j and its recommended to use that version: 
+
+maven
+```
+<dependencies>
+    <dependency>
+      <groupId>org.web3j</groupId>
+      <artifactId>core</artifactId>
+      <version>4.6.3</version>
+    </dependency>
+</dependencies>
+```
+
+gradle
+```
+implementation 'org.web3j:core:4.6.3'
+```
+
+note: web3j has an android version which is recommended for use with the Android OS
 
 Install manually
 If you want to generate the jar and import manually.
